@@ -1,0 +1,117 @@
+*{
+  margin:0px;
+  padding:0px;
+}
+body{
+  margin: 0px;
+  padding: 0px;
+}
+.product-containers{
+    margin-left:20px;
+    width:75vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile-bg-container{
+    margin-left: 230px;
+    padding:0px;
+  }
+  .projectName{
+    font-family:roboto;
+    font-size:14px;
+    margin-top:18px;
+    margin-left:10px;
+  }
+  .change-password-text{
+    font-family:roboto;
+    font-size:14px;
+    margin-right:20px;
+    
+  }
+  .nameInput{
+    border-radius:5px;
+  }
+  .multipleInputRow{
+    display:flex;
+    flex-wrap: wrap;
+    width:800px;
+  }
+  .col-inputs{
+    display:flex;
+    flex-direction:column;
+  }
+  .projectNameInput{
+   
+    width:170px;
+    border-radius:5px;
+    margin-right:25px;
+  }
+  .checkbox-label{
+    margin-top:14px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .upload-button{
+    height:35px;
+    width:140px;
+    background-color:cornflowerblue;
+    border-radius: 7px;
+    border-width:0px;
+    color:#ffffff;
+    font-size:14px;
+  }
+  .change-password-div{
+    background-color:whitesmoke;
+    border-radius: 8px;
+    padding:10px;
+    margin-top: 20px;
+    box-sizing: border-box;
+  }
+  .password-text{
+    font-family:roboto;
+    font-size:15px;
+    font-weight:bold;
+  }
+  .profile-pic{
+    height:100px;
+    width:100px;
+    border-radius: 50%;
+  }
+  .remove-image{
+    font-size: 20px;
+    color:red;
+    margin-top:10px;
+  }
+  .upload-image{
+    font-size: 35px;
+    color:#6c757d;
+    margin-right:15px;
+
+  }
+  .update-image{
+    font-size: 20px;
+    color:#28a745;
+    margin-right:15px;
+    margin-top:10px;
+  }.navbar-logo{
+    height:60%;
+    width:100px;
+    margin-left: 5px;
+}
+  @media only screen and (max-width: 600px) {
+    .profile-bg-container{
+        margin-left: 0px;
+      }
+      .product-containers{
+        margin-left:0px;
+      }
+      .dashboard-container{
+        margin-left: 0px !important;
+       
+      }
+  }
+  .App{
+    margin-bottom: 60px;
+  }

@@ -1,0 +1,51 @@
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import "./index.css"
+import {Link,withRouter} from 'react-router-dom'
+import { CiEdit } from 'react-icons/ci';
+import {AiOutlineDelete} from 'react-icons/ai'
+import Example from './shareOptions'
+import { useState ,useEffect} from 'react';
+function TourCards(props) {
+    const {tourDetails,onClickDeleteTourDetails}=props
+    const {tour_name,thumbnail_image,tour_id,tour_description}=tourDetails
+    const [perPage,setPerPage]=useState([])
+   
+    const  onClickDeleteTour=()=>{
+      let text = "Are you sure you want to delete the Tour";
+        if (window.confirm(text) === true) {
+      onClickDeleteTourDetails(tour_id)
+        }
+    }
+    const editScenetourId=()=>{
+       localStorage.setItem("tourId",tour_id)
+       const {history}=props
+       history.push("/editvirtualtour")
+    }
+    
+  return (
+    <div className='col-lg-4 col-md-6 col-12 mt-3 '>
+    <Card style={{ width: '18rem' }}>
+    <Link to={`/viewer:${tour_id}`}><Card.Img variant="top" className="tourThumbnail" src={`https://objective-wright.69-49-231-148.plesk.page/${thumbnail_image}`} /></Link>
+      <Card.Body>
+        <div className='d-flex flex-row justify-content-between'>
+        <Link to={`/viewer:${tour_id}`}> <Card.Title className='tour-name'>{tour_name}</Card.Title></Link>
+        <Example tour_id={tour_id}/>
+       
+       
+        </div>
+        <Card.Text>
+        {tour_description}
+        </Card.Text>
+        <div className='d-flex flex-row justify-content-around'>
+     
+        {/* <Button variant="primary" size="sm" onClick={editScenetourId}> Edit <CiEdit className='icon-style'/></Button> */}
+        <Button variant="danger" size="sm" onClick={onClickDeleteTour}>Delete <AiOutlineDelete className='icon-style1'/></Button> 
+        </div>
+      </Card.Body>
+    </Card>
+    </div>
+  );
+}
+
+export default withRouter(TourCards);

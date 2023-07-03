@@ -1,0 +1,67 @@
+*{
+    padding:0px;
+    margin: 0px;
+    box-sizing: border-box;
+}
+.invite-container{
+    width:100%;
+    min-height:100vh;
+}
+.header-div{
+    height:60px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    border-radius: 1px solid gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.body-div{
+    width:100%;
+    min-height:95vh;
+    background-color:#f8f9fb;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    padding-top:40px;
+}
+.logo-login-image1{
+    height:35px;
+    
+}
+.icon-div{
+    height:35px;
+    width:45px;
+    border-radius: 4px;
+    background-color: #f3f1fe;
+    display:flex;
+    justify-content:center;
+    align-items: center;
+}
+.icon-symboll{
+    font-size:20px;
+    color: #64748b;
+}
+.invite-desigener-heading{
+    font-size:25px;
+    font-family: roboto;
+    text-align: center;
+}
+.invite-description{
+    font-family: roboto;
+    font-size: 15px;
+    color:#a0a7bd;
+    text-align: center;
+}
+.mobile-number-text{
+    font-family: roboto;
+    font-size: 15px;
+    text-align:left;
+}
+@media only screen and (max-width: 600px) {
+    .invite-container{
+       margin-top: 65px;
+       
+    }
+
+}

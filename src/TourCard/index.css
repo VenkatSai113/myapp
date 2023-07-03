@@ -1,0 +1,62 @@
+.card-containers{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.virtual-card-container{
+    height:180px;
+    width:280px;
+    border-radius: 5px;
+    border: 1px gray solid;
+    background-color: aqua;
+}
+.copy-icon{
+    font-size: larger;
+    cursor: pointer;
+}
+.tour-name{
+    text-decoration: none;
+    color: black;
+}
+.tourThumbnail{
+    height: 150px;
+}
+.login-button2{
+    font-family: 'Roboto';
+    font-weight: normalbold;
+    font-size: 14px;
+    color: #ffffff;
+    height: 35px;
+    width: 150px;
+    background-color: #b18165;
+    border-radius: 8px;
+    border: none;
+  }
+  .logout-button2{
+    font-family: 'Roboto';
+    font-weight: normalbold;
+    font-size: 14px;
+    color: #ffffff;
+    height: 35px;
+    width: 100px;
+    background-color: #282828;
+    border-radius: 8px;
+    border: none;
+  }
+.tour-cards-container{
+    margin-left: 230px;
+}
+  @media screen and (max-width: 768px) {
+    .login-button2{
+       margin-top: 20px;
+       width: 180px;
+      }
+      .tour-cards-container{
+        margin-left: 0px;
+        min-height: 70vh;
+        overflow-y: auto;
+        margin-top: 80px;
+        margin-bottom: 80px;
+
+    }
+  }

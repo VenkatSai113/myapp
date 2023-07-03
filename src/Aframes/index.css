@@ -1,0 +1,155 @@
+.aframe-div{
+    height:360px;
+    width:720px;
+}
+.thumbnail-container{
+    height:75px;
+    width:150px;
+    border-radius: 5px;
+    background-color: aqua;
+}
+#map-imagess{
+  width:200px;
+   /* margin-left: 17%;
+   margin-bottom: 30px; */
+   transform: translate(25%, -120%);
+   opacity:0.5; 
+}
+.thumbnail-image{
+    width: 100%;
+    height: 100px;
+}
+.scene-row-div{
+    display: flex;
+    flex-direction: row;
+}
+.scene-container{
+  height:75vh;
+  width: 65vw;
+}
+
+.scene-row-container{
+    display: flex;
+    flex-direction: row;
+  }
+  .thumbnail-div-2{
+   
+    width:160px;
+    border: 1px solid gray ;
+    margin: 5px;
+    border-radius: 5px;
+  }
+  .thumbnail-image-2{
+    width:100%;
+    height:70px;
+    
+  }
+  .scene-name-div-1{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .scene-name1{
+    font-family: roboto;
+    font-size: 14px;
+    font-weight: normal;
+    color:#2e2e2e;
+    cursor: pointer;
+  }
+  .scene-row-divv{
+    display: flex;
+    flex-direction: row;
+  }
+  .thumb-row-div{
+    display: flex;
+    flex-direction: row;
+  }
+  .hotspots-lists{
+  
+    width:200px;
+    background-color: whitesmoke;
+    border:1px solid gray;
+    margin-left: 3px;
+    margin-right: 3px;
+    border-radius: 5px;
+    text-align: center;
+  }
+  .hotspots-heading{
+    font-family: roboto;
+    font-size:14px;
+    font-weight: bold;
+
+  }
+  .hello{
+    border:1px solid #ef9379;
+    border-radius: 5px;
+  }
+  .tick-icon{
+    font-size: 20px;
+    cursor: pointer;
+  }
+  select{
+    border-radius: 5px;
+    height: 28px;
+  }
+  .hotspot-row-div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  .upload-image1{
+    width:200px;
+
+  }
+  .spinner{
+    position: 'absolute';
+    left: 50%;
+   top: 16%;
+    
+    
+  }
+  .hotspot-name13{
+    font-size:14px;
+  }
+  @media only screen and (max-width: 769px) {
+
+  #map-imagess{
+    width:100px;
+     /* margin-left: 17%;
+     margin-bottom: 30px; */
+     transform: translate(5%, -120%);
+    
+  }
+  .thumbnail-div-2{
+   
+    width:100px;
+    border: 1px solid gray ;
+    margin: 3px;
+    border-radius: 5px;
+  }
+  .thumbnail-image-2{
+    width:100%;
+    height:50px;
+    
+  }
+  .scene-name1{
+    font-family: roboto;
+    font-size: 12px;
+    font-weight: normal;
+    color:#2e2e2e;
+    cursor: pointer;
+  }
+  .hotspot-name13{
+    font-size:12px;
+  }
+  .dropdown-option{
+    width:32px;
+    height:30px;
+    font-size:12px;
+  }
+}
