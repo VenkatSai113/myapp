@@ -32,12 +32,21 @@
     display: flex;
     flex-direction: row;
   }
+  .create-scene-row-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+  }
   .thumbnail-div-2{
    
-    width:160px;
+    width:150px;
     border: 1px solid gray ;
-    margin: 5px;
+    margin-top: 5px;
     border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
   }
   .thumbnail-image-2{
     width:100%;
@@ -69,13 +78,42 @@
   }
   .hotspots-lists{
   
-    width:200px;
+
     background-color: whitesmoke;
     border:1px solid gray;
     margin-left: 3px;
     margin-right: 3px;
     border-radius: 5px;
     text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  .scenes-lists{
+  
+    width:170px;
+    background-color: whitesmoke;
+    border:1px solid gray;
+    margin-left: 5px;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-sizing: border-box;
+    padding-left: 7px;
+  
+  }
+  .map-lists{
+  
+    
+    background-color: whitesmoke;
+    border:1px solid gray;
+    margin-left: 3px;
+    margin-right: 3px;
+    border-radius: 5px;
+    text-align: center;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
   }
   .hotspots-heading{
     font-family: roboto;
@@ -90,6 +128,11 @@
   .tick-icon{
     font-size: 20px;
     cursor: pointer;
+    margin-top: 10px;
+    
+  }
+  .onselect-tick{
+    color:green
   }
   select{
     border-radius: 5px;
@@ -115,8 +158,171 @@
   }
   .hotspot-name13{
     font-size:14px;
+    margin-top: 12px;
   }
-  @media only screen and (max-width: 769px) {
+  .hello1{
+    display: none;
+  } 
+
+  label[for="file-upload1"] {
+    background-color: #2e2a2b;
+    padding-top: 3px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    width:85%;
+    height:29px;
+  }
+
+  label[for="file-upload"]:hover {
+    background-color: #2e2a2b
+    ;
+  }
+  
+  label[for="file-upload2"] {
+    background-color: #2e2a2b;
+    padding-top: 6px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+    width:95%;
+    height:39px;
+  }
+
+  label[for="file-upload2"]:hover {
+    background-color: #2e2a2b
+    ;
+  }
+  
+  label[for="file-upload6"] {
+    background-color: #2e2a2b;
+    padding-top: 0px;
+    color: white;
+    border-radius: 4px;
+    cursor: pointer;
+  
+    height:29px;
+ 
+    width:100px;
+  }
+
+  label[for="file-upload6"]:hover {
+    background-color: #2e2a2b
+    ;
+  }
+  
+  
+
+  label[for="file-upload6"]:hover {
+    background-color: #2e2a2b
+    ;
+  }
+  
+  
+  label[for="file-upload6"]:hover {
+    background-color: #2e2a2b
+    ;
+  }
+  .create-scene-button{
+    font-family: 'Roboto';
+    font-weight: normalbold;
+    font-size: 14px;
+    color: #ffffff;
+    height: 35px;
+    width: 140px;
+    background-color: #2e2a2b;
+    border-radius: 8px;
+    border: none;
+  }
+  #container23 { display:block; }
+  @media only screen and (orientation:portrait){
+    #container23 {  
+      height: 100vw;
+      -webkit-transform: rotate(90deg);
+      -moz-transform: rotate(90deg);
+      -o-transform: rotate(90deg);
+      -ms-transform: rotate(90deg);
+      transform: rotate(90deg);
+    }
+  }
+  @media only screen and (orientation:landscape){
+    #container23 {  
+       -webkit-transform: rotate(0deg);
+       -moz-transform: rotate(0deg);
+       -o-transform: rotate(0deg);
+       -ms-transform: rotate(0deg);
+       transform: rotate(0deg);
+    }
+  }
+
+  @media only screen and (max-device-width: 1000px) 
+                     and (orientation: landscape) {
+                      .create-scene-button{
+                        font-family: 'Roboto';
+                        font-weight: normalbold;
+                        font-size: 12px;
+                        color: #ffffff;
+                        height: 25px;
+                        width: 80px;
+                        background-color:#2e2a2b;
+                        border-radius: 5px;
+                        border: none;
+                      }
+                      .scenes-lists{
+  
+                        width:160px;
+                        background-color: whitesmoke;
+                        border:1px solid gray;
+                        margin-left: 0px;
+                        border-radius: 5px;
+                        text-align: center;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                        box-sizing: border-box;
+                        padding-left: 0px;
+                      
+                      }
+                      .map-lists{
+  
+    
+                        background-color: whitesmoke;
+                        border:1px solid gray;
+                        margin-left: 3px;
+                        margin-right: 3px;
+                        border-radius: 5px;
+                        text-align: center;
+                        margin-bottom: 10px;
+                        padding-bottom: 10px;
+                        padding-top: 0px;
+                      }
+                      .hotspots-lists{
+  
+                      
+                        background-color: whitesmoke;
+                        border:1px solid gray;
+                        margin-left: 3px;
+                        margin-right: 3px;
+                        border-radius: 5px;
+                        text-align: center;
+                        padding-top: 10px;
+                        padding-bottom: 10px;
+                      }
+ 
+  }
+  @media only screen and (max-width: 769px) and (orientation: landscape) {
+  
+    .hotspots-lists{
+  
+      
+      background-color: whitesmoke;
+      border:1px solid gray;
+      margin-left: 3px;
+      margin-right: 3px;
+      border-radius: 5px;
+      text-align: center;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
 
   #map-imagess{
     width:100px;
@@ -129,7 +335,7 @@
    
     width:100px;
     border: 1px solid gray ;
-    margin: 3px;
+    margin: auto;
     border-radius: 5px;
   }
   .thumbnail-image-2{

@@ -16,7 +16,7 @@ class Profile extends Component{
 
     componentDidMount=async()=>{
         const jwtToken=Cookies.get("jwt_token")
-        const url="http://localhost:9000/profileData";
+        const url="https://objective-wright.69-49-231-148.plesk.page/profileData";
         const options={
             headers:{
                 "authorization":`Bearer ${jwtToken}`
@@ -49,7 +49,7 @@ class Profile extends Component{
             <div className="saved-feed-container ">
                 <div className="saved-profile-div">
                     <div>
-                    <img src={`http://localhost:9000/${logo}`} alt="profile" className="profile-image-profilepic"/>
+                    <img src={`https://objective-wright.69-49-231-148.plesk.page/${logo}`} alt="profile" className="profile-image-profilepic"/>
                     <p  className="saved-profile-name">{desigener_name}</p>
                     </div>
                     <div>

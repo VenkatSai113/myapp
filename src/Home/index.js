@@ -87,7 +87,7 @@ const suggestionProfiles=[
 class Home extends Component{
     state={stateFeeds:initialFeeds,feedDetails:[]}
     componentDidMount=async()=>{
-        const feedUrl="http://localhost:9000/feedData"
+        const feedUrl="https://objective-wright.69-49-231-148.plesk.page/feedData"
         const options={
             method:"GET",
            

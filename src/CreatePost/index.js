@@ -36,7 +36,7 @@ class CreatePost extends Component{
         const {property}=this.state
         const searchData={searchResult,property}
         const {profileResult}=this.state
-        const searchApi="http://localhost:9000/selectedUsers";
+        const searchApi="https://objective-wright.69-49-231-148.plesk.page/selectedUsers";
         const options={
             method:"POST",
             headers:{
@@ -63,7 +63,7 @@ class CreatePost extends Component{
 
     }
     componentDidMount=async()=>{
-        const apiUrl="http://localhost:9000/relatedUsers";
+        const apiUrl="https://objective-wright.69-49-231-148.plesk.page/relatedUsers";
         const options={
              methos:"GET"
         }
@@ -82,7 +82,7 @@ class CreatePost extends Component{
         const designPost={description,property,uploadingFeed,subType,Occupancy,Category,DesignStyle,Locality,city,privacy}
       
         const jwtToken=Cookies.get("jwt_token");
-        const url= "http://localhost:9000/post"
+        const url= "https://objective-wright.69-49-231-148.plesk.page/post"
         const formData=new FormData()
         formData.append("description",description);
         formData.append("property",property);

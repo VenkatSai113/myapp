@@ -23,7 +23,7 @@ const SingleScene=(props)=>{
    
     return(
         <div className='scene-container'>
-            {windowWidth < 768 ? <p>Render if width is greater than 768px</p> : <p>Render if width is less than or equal to 768px</p>}
+           
         <a-scene embedded={true}>
          <a-camera id="camera" look-controls="enabled: true">
 <a-entity cursor="fuse: true; fuseTimeout: 500" world-pos

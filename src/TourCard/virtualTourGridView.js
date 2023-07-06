@@ -14,20 +14,14 @@ let jwtToken=""
 class TourGridView extends Component{
   state={stateinitialvirtualSceneDetails:initialvirtualSceneDetails,searchState:"",stateJwtToken:jwtToken}
   componentDidMount (){
-    
     const apiCallFunction =async()=>{
-        
          jwtToken=Cookies.get("jwt_token")
-       
         const tourId=localStorage.getItem("tourId")
-      
         const parseTourId=JSON.parse(tourId)
-       
-       
         const apiData={parseTourId,hello:"hello"}
         const {stateJwtToken}=this.state
         console.log(apiData)
-        const apiUrl="http://localhost:9000/tourData1"
+        const apiUrl="https://objective-wright.69-49-231-148.plesk.page/tourData1"
         const options={
             method:"POST",
             headers:{
@@ -41,11 +35,9 @@ class TourGridView extends Component{
         const response=await fetch(apiUrl,options)
         console.log(response)
         const data=await response.json()
-    
         if(response.ok===true){
             this.setState({stateinitialvirtualSceneDetails:data})
         }
-       
     }
     apiCallFunction()
   }
@@ -58,7 +50,7 @@ class TourGridView extends Component{
    console.log(tour_id)
     const apiData2={tour_id,hello:"hello"}
     const {stateJwtToken}=this.state
-        const apiUrl="http://localhost:9000/deleteTour"
+        const apiUrl="https://objective-wright.69-49-231-148.plesk.page/deleteTour"
         const options={
             method:"POST",
             headers:{

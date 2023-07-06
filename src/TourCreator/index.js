@@ -35,7 +35,7 @@ class TourCreator extends Component{
         localStorage.setItem("tourTitle",tourTitle)
         
       
-        const apiurl="http://localhost:9000/virtualtours"
+        const apiurl="https://objective-wright.69-49-231-148.plesk.page/virtualtours"
         console.log(tourTitle)
         const formData=new FormData();
         formData.append("tourTitle",tourTitle);

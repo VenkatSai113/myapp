@@ -60,7 +60,7 @@ class OtpAuth extends Component{
         const {phoneNumber,hello}=this.state
         const extra= {phoneNumber,hello}
        
-        const url="http://localhost:9000/checkingPhonenumbers/"
+        const url="https://objective-wright.69-49-231-148.plesk.page//checkingPhonenumbers/"
         const options={
           method:"POST",
           headers:{

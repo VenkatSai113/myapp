@@ -16,7 +16,7 @@ const sidebarItems=[
 //     icon:<AiOutlineHome  className='icon'/>,
 //     id:1,
 //     path:"/"
-// },
+// }                                               ,
 
 {
     name:"Invitation",

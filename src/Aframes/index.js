@@ -7,13 +7,40 @@ import Cookies from 'js-cookie'
 import HotspotNames from './HotspotNames'
 import {Link} from 'react-router-dom'
 import BarLoader from "react-loader-spinner"
+
 let jwtToken=""
 class Aframes extends Component{
-    state={sceneName:"",sceneImage:"",scenes:[],singleScene:[],jwtToken:"",hotspotData:[],activeSceneId:"",stateMap:null,isSceneLoading:""}
+    state={sceneName:"",sceneImage:"",scenes:[],uploadMapRender:false,singleScene:[],jwtToken:"",hotspotData:[],activeSceneId:"",stateMap:null,isSceneLoading:""}
     componentDidMount=()=>{
         jwtToken=Cookies.get("jwt_token");
         this.setState({jwtToken:jwtToken})
+        this.setLandscapeMode();
+    window.addEventListener('resize', this.handleResize);
     }
+    componentWillUnmount() {
+        window.removeEventListener('resize', this.handleResize);
+      }
+    
+      handleResize = () => {
+        this.setLandscapeMode();
+      };
+      setLandscapeMode() {
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        if (isMobile && window.innerWidth < window.innerHeight) {
+          // If the device is mobile and in portrait mode, force landscape mode
+          const landscapeElement = document.getElementById('landscape');
+          if (landscapeElement && landscapeElement.requestFullscreen) {
+            landscapeElement.requestFullscreen();
+          } else if (landscapeElement && landscapeElement.mozRequestFullScreen) {
+            landscapeElement.mozRequestFullScreen();
+          } else if (landscapeElement && landscapeElement.webkitRequestFullscreen) {
+            landscapeElement.webkitRequestFullscreen();
+          } else if (landscapeElement && landscapeElement.msRequestFullscreen) {
+            landscapeElement.msRequestFullscreen();
+          }
+        }
+      }
+    
     onChangesceneName=(event)=>{
        this.setState({sceneName:event.target.value})
     }
@@ -21,11 +48,15 @@ class Aframes extends Component{
         this.setState({sceneImage:event.target.files[0]})
      }
      onSubmitScene=()=>{
+        const {sceneName,sceneImage}=this.state
+        if(sceneName==="",sceneImage===""){
+            alert("Please Select Proper values")
+        }
+        else{
         this.setState({isSceneLoading:true})
         let tourId=localStorage.getItem("tourId")
         tourId=JSON.parse(tourId)
-        const {sceneName,sceneImage}=this.state
-       const apiUrl="http://localhost:9000/scenes"
+       const apiUrl="https://objective-wright.69-49-231-148.plesk.page/scenes"
        const formData=new FormData();
         formData.append("sceneName",sceneName)
         formData.append("sceneImage",sceneImage)
@@ -35,11 +66,13 @@ class Aframes extends Component{
             const responseScenes=response.data
           this.setState((PrevState)=>({scenes:[...PrevState.scenes,responseScenes]}))
           this.setState({sceneName:""})
+          this.setState({sceneImage:""})
           this.setState({isSceneLoading:false})
          }
             ).catch(error=>
                 console.log(error)
             )
+        }
     }
     selectScene=async(id)=>{
         this.setState({isSceneLoading:true})
@@ -50,7 +83,7 @@ class Aframes extends Component{
         eachItem.scene_id===id)
       this.setState({singleScene:singleScene})
       const hotspotsPerScene={id,hello:"hello"}
-      const apiUrl="http://localhost:9000/sceneHotspots";
+      const apiUrl="https://objective-wright.69-49-231-148.plesk.page/sceneHotspots";
       const options={
         method:"POST",
         headers:{
@@ -64,10 +97,11 @@ class Aframes extends Component{
       console.log(data)
       this.setState({hotspotData:data})
       this.setState({isSceneLoading:false})
-      console.log(data,"arfghjewrh")
+      this.setState({uploadMapRender:true})
+     
       const mapImageFunction=async()=>{
         this.setState({isSceneLoading:true})
-        const mapapiUrl="http://localhost:9000/getmapImage";
+        const mapapiUrl="https://objective-wright.69-49-231-148.plesk.page/getmapImage";
         const activateSceneId={id,hello:"hello"}
         const mapOptions={
             method:"POST",
@@ -103,7 +137,7 @@ class Aframes extends Component{
             const {singleScene}=this.state
             const sceneId=singleScene[0].scene_id
             const scenehotspot={sceneId,parsehotspots,hotspotName}
-            const apiUrl="http://localhost:9000/hotspots"
+            const apiUrl="https://objective-wright.69-49-231-148.plesk.page/hotspots"
             const options={
                 method:'POST',
                 headers:{
@@ -143,7 +177,7 @@ class Aframes extends Component{
         this.setState({isSceneLoading:true})
         const {activeSceneId}=this.state
         const mapFile=event.target.files[0]
-        const apiUrl="http://localhost:9000/mapImage"
+        const apiUrl="https://objective-wright.69-49-231-148.plesk.page/mapImage"
         const config={
             headers:{
                 "Content-Type":"Application/json",
@@ -172,33 +206,55 @@ class Aframes extends Component{
         window.open(`https://designalley.69-49-231-148.plesk.page/viewer:${parseTourId}`,"__blank")
     }
     render(){
-        const {scenes,singleScene,hotspotData,activeSceneId,stateMap,sceneName,isSceneLoading}=this.state
+        const {scenes,uploadMapRender,singleScene,hotspotData,activeSceneId,stateMap,sceneName,isSceneLoading}=this.state
         return(
             <>
-            <div>
+              
+            <div  id="container23">
             {isSceneLoading?( <BarLoader type="TailSpin"  style={{ position: 'absolute', top: '50%', left: '55%',  zIndex: '999' }} color="#0275d8" height={50} width={50} />) :""}
-                <div className="d-flex flex-row justify-content-around mt-2">
-                <input type="text" onChange={this.onChangesceneName} value={sceneName} placeholder="Enter Scene Name"/>
-                <input type="file" onChange={this.onChangesceneImage}  className="upload-image1"/>
-                <button onClick={this.onSubmitScene} className="btn btn-primary btn-sm">Create Scene</button>
+                <div className="create-scene-row-container mt-2 ">
+                <input type="text"  className='username-input-filed ' onChange={this.onChangesceneName} value={sceneName} placeholder="Enter Scene Name"/>
+                <div className="col-3 col-md-2"> 
+            <label htmlFor="file-upload1" className="create-scene-button" style={{textAlign:"center"}}>Upload Image</label>
+<input type="file" id="file-upload1"   className="hello1"  onChange={this.onChangesceneImage}/>
+            </div>
+                {/* <input type="file" onChange={this.onChangesceneImage}  className="upload-image1"/> */}
+                <button onClick={this.onSubmitScene} className="create-scene-button">Create Scene</button>
+                <button onClick={this.onClickpreview} className="create-scene-button">Preview</button>
+                <Link to="/savedTours"><button className="create-scene-button">Save</button></Link>
                 </div>
-                <div className="d-flex flex-row justify-content-around mt-2 mb-2">
+                <hr></hr>
+                {/* <div className="d-flex flex-row justify-content-around mt-2 mb-2">
                 <button onClick={this.onClickpreview} className="btn btn-primary btn-sm">Preview</button>
                 <Link to="/savedTours"><button className="btn btn-primary btn-sm">Save</button></Link>
-             </div>
+             </div> */}
                 <div className="scene-row-div">
-                    <div>
+                    <div className="scenes-lists">
+                    <h6 className="hotspots-heading">Scenes</h6>
                     {scenes.map(eachItem=>
                        <Thumbnail sceneDetails={eachItem} key={eachItem.scene_id} selectScene={this.selectScene} deleteScenes={this.deleteScenes}/>)}
                     </div>
-                    <div className="hotspots-lists">
+                    <div className="">
+                        {uploadMapRender?
+                    <div className="map-lists">
                     <h6 className="hotspots-heading">Upload Map</h6>
-            <input type="file" className="form-control" onChange={this.onChangeMap}/>
+                    <p>{singleScene[0].scene_name}</p>
+                    <div> 
+            <label htmlFor="file-upload6" className="" style={{textAlign:"center"}}>Upload</label>
+<input type="file" id="file-upload6"   className="hello1"  onChange={this.onChangeMap}/>
+            </div>
+            {/* <input type="file" className="form-control" /> */}
+            </div>:""}
+                    <div className="hotspots-lists">
+                    {/* <h6 className="hotspots-heading">Upload Map</h6>
+            <input type="file" className="form-control" onChange={this.onChangeMap}/> */}
                             <h6 className="hotspots-heading">Hotspots</h6>
                             <button onClick={this.addHotspots} className="btn btn-primary btn-sm">Create Hotspot</button>
                             {hotspotData.map(eachItem=>
                                <HotspotNames hotspotData={eachItem} key={eachItem.hotspot_id} scenes={scenes} activeSceneId={activeSceneId} updatedHotspots={this.updatedHotspots} />  )}
                         </div>
+                        </div>
+                        
                     <div className="aframe-div">
                         {singleScene.map(eachItem=>
                             <SingleScene scenes={eachItem} key={eachItem.scene_id} hotspotData={hotspotData} stateMap={stateMap} /> )}
