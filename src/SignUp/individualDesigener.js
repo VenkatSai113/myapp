@@ -110,7 +110,7 @@ requiredHandle=(event)=>{
             this.setState({PhoneNumberStatus:false})
         }
        
-        if(name!==""&&address!==""&&email!=="",area!==""&&budget!==""&&bankName!==""&&accountNumber!==""&&branch!==""&&ifscCode!==""&&PhoneNumber!==""){
+        if(name!==""&&address!==""&&email!=="",area!==""&&budget!==""&&PhoneNumber!==""){
             this.setState({isLoading:true})
             const {name,address,email,area,budget,bankName,accountNumber,branch,ifscCode,PhoneNumber,logoFile}=this.state
             const designerDetails={name,address,email,area,budget,bankName,accountNumber,branch,ifscCode,PhoneNumber,logoFile};
@@ -254,7 +254,7 @@ requiredHandle=(event)=>{
               </div>
               </div>
               {budgetStatus&&<p className='error-msg'>*{budgetError}</p>}
-              <div className="bank-details-div">
+              {/* <div className="bank-details-div">
               <label className='bank-details mt-3'>Bank Details</label>
               </div>
              
@@ -287,7 +287,7 @@ requiredHandle=(event)=>{
                 </div>
                 </div> 
                 
-                {ifscCodeStatus&&<p className='error-msg'>*{ifscCodeError}</p>}   
+                {ifscCodeStatus&&<p className='error-msg'>*{ifscCodeError}</p>}    */}
               <div className="elements-div">
              
                 <div className='text-element-residential'>

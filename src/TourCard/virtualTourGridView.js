@@ -49,13 +49,13 @@ class TourGridView extends Component{
   onClickDeleteTourDetails=async(tour_id)=>{
    console.log(tour_id)
     const apiData2={tour_id,hello:"hello"}
-    const {stateJwtToken}=this.state
+    console.log(jwtToken)
         const apiUrl="https://objective-wright.69-49-231-148.plesk.page/deleteTour"
         const options={
             method:"POST",
             headers:{
                 "Content-Type":"Application/json",
-                 "authorization":`Bearer ${stateJwtToken}`
+                 "authorization":`Bearer ${jwtToken}`
             },
             mode: "cors",
             body:JSON.stringify(apiData2)

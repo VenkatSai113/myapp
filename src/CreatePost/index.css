@@ -7,6 +7,37 @@
     color: #ffffff;
     border-width:0px;
 }
+.create-scene-button1{
+
+  font-family: 'Roboto';
+  font-weight: normalbold;
+  font-size: 14px;
+  color: #ffffff;
+  height: 35px;
+  width: 100px;
+  background-color: #2e2a2b;
+  border-radius: 8px;
+  border: none;
+}
+
+.hello1{
+  display: none;
+} 
+
+label[for="file-upload1"] {
+  background-color: #2e2a2b;
+  padding-top: 3px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  width:130px;
+  height:29px;
+}
+
+label[for="file-upload"]:hover {
+  background-color: #2e2a2b
+  ;
+}
 .uploadPost{
     font-family:roboto;
     font-size:14px;
@@ -15,6 +46,12 @@
 .post-image-size{
   height:200px;
   width:100%;
+}
+.post-div-size{
+  height:200px;
+width:45vw;;
+  overflow-y: auto;
+  margin-bottom: 10px;
 }
 .formDiv{
     display: flex;
@@ -156,4 +193,10 @@
       margin-top:50px;
     
   }
+  .post-div-size{
+    height:200px;
+  width:100%;;
+    overflow-y: auto;
+  }
+
   }

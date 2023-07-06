@@ -11,12 +11,12 @@ import {Tb360View} from "react-icons/tb"
 import Cookies from 'js-cookie';
 
 const sidebarItems=[
-//     {
-//     name:"Home",
-//     icon:<AiOutlineHome  className='icon'/>,
-//     id:1,
-//     path:"/"
-// }                                               ,
+    {
+    name:"Home",
+    icon:<AiOutlineHome  className='icon'/>,
+    id:1,
+    path:"/"
+},
 
 {
     name:"Invitation",
@@ -24,12 +24,12 @@ const sidebarItems=[
     id:26,
     path:"/invitation"
 },
-// {
-//     name:"Create Post",
-//     icon:<AiOutlinePlus  className='icon'/>,
-//     id:6,
-//     path:"/createPost"
-// },
+{
+    name:"Create Post",
+    icon:<AiOutlinePlus  className='icon'/>,
+    id:6,
+    path:"/createPost"
+},
 // {
 //     name:"Explore",
 //     icon:<AiOutlineSearch  className='icon'/>,

@@ -129,17 +129,26 @@ class CreatePost extends Component{
             <div>
                <div className='formDiv'>
                 <div className='postForm'> 
+                <div className='post-div-size'>
                  {
                     Array.from(uploadingFeed).map(item=>{
                         return(
-                            <img src={item? URL.createObjectURL(item):null} className='post-image-size'/>
+                            <img src={item? URL.createObjectURL(item):null} className='post-image-size mb-2'/>
                         )
-
                     })
                  }
-                
-                        <img src="C:\\Users\\Pinite info\\database/uploads/1681713893864_ashura img.png"/>
+                 </div>
+                 <div className='d-flex flex-row justify-content-around'>
+                   <label htmlFor="file-upload1" className="create-scene-button1" style={{textAlign:"center"}}>Upload Image</label>
+<input type="file" id="file-upload1"   className="hello1"  multiple onChange={this.onChangeFileUpload}/>
+<label htmlFor="file-upload1" className="create-scene-button" style={{textAlign:"center"}}>Upload Video</label>
+<input type="file" id="file-upload1"   className="hello1"  onChange={this.onChangesceneImage}/>
+<label htmlFor="file-upload1" className="create-scene-button" style={{textAlign:"center"}}>Upload 360 Image</label>
+<input type="file" id="file-upload1"   className="hello1"  onChange={this.onChangesceneImage}/>
+</div>
                     <p className='postTitle'>Post Your Images</p>
+                   <input type="file" className='form-control' multiple onChange={this.onChangeFileUpload}/>
+                   <p className='postTitle'>Post Your Video</p>
                    <input type="file" className='form-control' multiple onChange={this.onChangeFileUpload}/>
                     <p className='postTitle'>Post Description</p>
                    <textarea rows="2" cols="10" className='form-control' value={description} name="description" onChange={this.onChangeUpdateStatus} placeholder='Describe Your Design Style Here'></textarea>

@@ -15,7 +15,6 @@ class OtpAuth extends Component{
     onChangeMobileNumber=(event)=>{
         this.setState({phoneNumber:event.target.value})
     }
-  
     onOtp=(jwtToken)=>{
       this.setState({isLoading:false})
       const {phoneNumber,otp}=this.state
@@ -23,9 +22,7 @@ class OtpAuth extends Component{
      let phone=`+91${phoneNumber}`
      const auth = firebase.auth();
      auth.signInWithPhoneNumber(phone, appVerifier)
-   
 .then((confirmationResult) => {
-
  const code = prompt('Enter the verification code:');
  console.log(otp)
  confirmationResult.confirm(code)
@@ -34,22 +31,15 @@ class OtpAuth extends Component{
      console.log("successfully varified")
      const {history}=this.props
      history.replace("/savedTours")
-    
    })
    .catch((error) => {
      // Verification code is incorrect
-    
-    
      this.setState({submittMsg:error.code})
      console.log("Verification code is incorrect")
    });
-   
 })
-
 .catch((error) => {
  // Error sending SMS verification code
- 
- 
  console.log("Error sending SMS verification code")
  console.log(error.message)
  this.setState({submittMsg:error.message})
@@ -59,7 +49,6 @@ class OtpAuth extends Component{
       this.setState({isLoading:true})
         const {phoneNumber,hello}=this.state
         const extra= {phoneNumber,hello}
-       
         const url="https://objective-wright.69-49-231-148.plesk.page//checkingPhonenumbers/"
         const options={
           method:"POST",
@@ -74,30 +63,23 @@ class OtpAuth extends Component{
       console.log(response,"datta")
        this.setState({submittMsg:data.error_msg})
        this.setState({isLoading:false})
-       
         if(response.ok===true){
           this.onOtp(data.jwtToken)
           console.log(data,"ioukjyhgfd")
         }
-
-       
     }
     render(){
       const {submittMsg,isLoading}=this.state
-    
         return(
             <form >
               {isLoading?( <Box sx={{ display: 'flex' }} color="red" style={{ position: 'absolute', top: '50%', left: '45%',  zIndex: '999' }}  height={50} width={50}>
       <CircularProgress   />
     </Box>):""}
-              
             <div className='login-bg-container' >
             <img className="logo-image" src="https://designalley.in/wp-content/uploads/2022/03/Logo.png" alt="piniteinfo Logo"/>
             <div className="login-card-container">
             <img className="logo-login-image" src="https://designalley.in/wp-content/uploads/2022/03/Logo.png" alt="piniteinfo Logo"/>
-            
                <input type="text" placeholder='Enter phone number' className='username-input-filed ' onChange={this.onChangeMobileNumber}/>
-              
                {/* {isPasswordTrue&&<p className='error-message'>*{errorMessage}</p>} */}
               <label></label>
               <div id="recaptcha"></div>
@@ -105,7 +87,6 @@ class OtpAuth extends Component{
                <label className='error-message12'>{submittMsg}</label>
                {/* <p className='forgot-password'><Link to="/forgotpassword">Forgot Password?</Link></p> */}
                <p className='dont-have-account'>Don't Have an Account?<span className='signup-text'><Link className="link" to="signup">Sign Up</Link></span></p>
-              
             </div>
             </div>
             </form>

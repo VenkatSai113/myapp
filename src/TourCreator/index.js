@@ -6,10 +6,13 @@ import TopNavbar from "../Home/topNavbar";
 import BottomNavbar from "../Home/bottomNavbar";
 import Sidebar from "../Sidebar";
 import Button from 'react-bootstrap/Button';
+import BarLoader from 'react-loader-spinner'
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 let jwtToken=""
 class TourCreator extends Component{
-    state={tourTitle:"",description:"",tourThumbnail:"",tourImgSrc:"",}
+    state={tourTitle:"",description:"",tourThumbnail:"",tourImgSrc:"",isLoading:false}
     componentDidMount=()=>{
         jwtToken=Cookies.get("jwt_token")
     }
@@ -32,6 +35,7 @@ class TourCreator extends Component{
         if(tourTitle==="" || description=== ""){
             alert("Please Give Proper Title, Description and Image")
         }else{
+            this.setState({isLoading:true})
         localStorage.setItem("tourTitle",tourTitle)
         
       
@@ -49,6 +53,7 @@ class TourCreator extends Component{
         }
         axios.post(apiurl,formData,config).then(response=>{
                 const {history}=this.props
+                this.setState({isLoading:false})
                 history.push("/virtualTours")
             localStorage.setItem("tourId",response.data.tourId)
             
@@ -59,9 +64,12 @@ class TourCreator extends Component{
     }
     }
     render(){
-        const {tourTitle,description,errorMsg,tourImgSrc}=this.state
+        const {tourTitle,description,errorMsg,tourImgSrc,isLoading}=this.state
         return(
             <>
+              {isLoading?( <Box sx={{ display: 'flex' }} color="red" style={{ position: 'absolute', top: '50%', left: '45%',  zIndex: '999' }}  height={50} width={50}>
+      <CircularProgress   />
+    </Box>):""}
             {/* <TopNavbar/> */}
             <div className="d-flex flex-row">
                 <Sidebar/>

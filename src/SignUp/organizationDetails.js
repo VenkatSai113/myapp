@@ -105,7 +105,7 @@ class OrganizationDetails extends Component{
             this.setState({PhoneNumberError:""})
             this.setState({PhoneNumberStatus:false})
         }
-        if(name!==""&&address!==""&&email!=="",area!==""&&budget!==""&&bankName!==""&&accountNumber!==""&&branch!==""&&ifscCode!==""&&PhoneNumber!==""){
+        if(name!==""&&address!==""&&email!=="",area!==""&&budget!==""&&PhoneNumber!==""){
             this.setState({isLoading:true})
             const {name,address,email,area,budget,bankName,accountNumber,branch,ifscCode,PhoneNumber,logoFile}=this.state
             const designerDetails={name,address,email,area,budget,bankName,accountNumber,branch,ifscCode,PhoneNumber,logoFile};
@@ -200,12 +200,12 @@ class OrganizationDetails extends Component{
                   <input type="file" onChange={this.handleFileChange} />
                   </div>
                   </div>
-                  <div className="elements-div">
+                  {/* <div className="elements-div">
                 <label className='property mt-3'>GST Number</label>
                 <div className='text-element-residential'>
                 <input type="text" className='form-control'  placeholder=" Enter GST Number" name="timeDuration" />
                 </div>
-                </div>
+                </div> */}
                   <div className='w-100'>
                       <div className="elements-div">
                   <label className='property mt-3'>Budget</label>
@@ -218,7 +218,7 @@ class OrganizationDetails extends Component{
                 <label className='bank-details mt-3'>Bank Details</label>
                 </div>
                
-                <div className="elements-div">
+                {/* <div className="elements-div">
                   <label className='property mt-3'>Bank Name</label>
                   <div className='text-element-residential'>
                   <input type="text" className='form-control' value={bankName} placeholder=" Enter Bank Name" name="bankName" onChange={this.requiredHandle} />
@@ -246,7 +246,7 @@ class OrganizationDetails extends Component{
                   </div>
                   </div> 
                   
-                  {ifscCodeStatus&&<p className='error-msg'>*{ifscCodeError}</p>}
+                  {ifscCodeStatus&&<p className='error-msg'>*{ifscCodeError}</p>} */}
                 <div className="elements-div">
                
                   <div className='text-element-residential'>
