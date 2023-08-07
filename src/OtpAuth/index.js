@@ -30,7 +30,7 @@ class OtpAuth extends Component{
     const jwtTokenLogin=Cookies.set("jwt_token",jwtToken,{expires:30})
      console.log("successfully varified")
      const {history}=this.props
-     history.replace("/savedTours")
+     history.replace("/")
    })
    .catch((error) => {
      // Verification code is incorrect
@@ -49,7 +49,7 @@ class OtpAuth extends Component{
       this.setState({isLoading:true})
         const {phoneNumber,hello}=this.state
         const extra= {phoneNumber,hello}
-        const url="https://objective-wright.69-49-231-148.plesk.page//checkingPhonenumbers/"
+        const url="http://localhost:9000/checkingPhonenumbers/"
         const options={
           method:"POST",
           headers:{
@@ -79,7 +79,7 @@ class OtpAuth extends Component{
             <img className="logo-image" src="https://designalley.in/wp-content/uploads/2022/03/Logo.png" alt="piniteinfo Logo"/>
             <div className="login-card-container">
             <img className="logo-login-image" src="https://designalley.in/wp-content/uploads/2022/03/Logo.png" alt="piniteinfo Logo"/>
-               <input type="text" placeholder='Enter phone number' className='username-input-filed ' onChange={this.onChangeMobileNumber}/>
+               <input type="number" placeholder='Enter phone number' className='username-input-filed ' onChange={this.onChangeMobileNumber}/>
                {/* {isPasswordTrue&&<p className='error-message'>*{errorMessage}</p>} */}
               <label></label>
               <div id="recaptcha"></div>

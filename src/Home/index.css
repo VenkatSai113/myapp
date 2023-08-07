@@ -30,16 +30,33 @@
     margin-left: 0px;
 }
 .comment-profile-image{
-    height: 40px;
-    width:40px;
+    height: 50px;
+    width:50px;
     border-radius: 50%;
     padding:8px;
     margin-left: 0px;
 }
-.profile-name{
-    font-family:roboto;
+.profile-name1{
+    font-family:"roboto";
     font-size:15px;
+    margin-top: 7px;
   
+}
+.comment-text{
+    font-family: "Roboto";
+    font-size: 13px;
+    font-weight: normal;
+}
+.comment-time-text{
+    font-family: "roboto";
+    font-size: 13px;
+    font-weight: normal;
+    
+}
+.time-text{
+    font-family: "roboto";
+    font-size:11px;
+    margin-top:-10px;
 }
 .profile-name-city{
     font-family:roboto;
@@ -54,15 +71,40 @@
     margin-top: 14px;
     padding-right:5px;
 }
-.more-icon{
-    align-self:flex-end;
-    margin-left: auto;
-    margin-right: 30px;
+.more-icon1{
+   
     font-size:25px;
+    margin-left: 25px;
+}
+.designer-time-column-div{
+    display: flex;
+    flex-direction: column;
+}
+.comments-text{
+    font-size: 13px;
+    margin: -10px;
+    font-family: roboto;
 }
 .feed-image{
     width:100%;
-    margin-bottom: 10px;
+    height:340px;   
+}
+.virtual-feed{
+    width:100%;
+    height:340px;   
+    cursor: pointer;
+}
+.feed-video{
+    width:100%;
+    height:340px;
+  
+    object-fit: cover;
+}
+.likes-text{
+    font-family: roboto;
+    font-size: 14px;
+    margin-left:50%;
+    margin-top:-50px;
 }
 .like-symbol-div{
     display:flex;
@@ -73,8 +115,8 @@
     display: flex;
 
 }
-.like{
-    margin-left:15px;
+.like1{
+    margin-left:25px;
     font-size: 20px;
 }
 .liked{
@@ -131,14 +173,14 @@
 }
 .bottom-navbar11{
     height:55px;
-  
     background-color:#ffffff;
     position:fixed;
-  
+    margin-left: 0px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    width: 80vw;
    
 
    
@@ -176,7 +218,7 @@ outline: none;
    
    
 }
-.navbar-logo{
+.navbar-logo1{
     height:60%;
     width:100px;
     margin-left: 5px;
@@ -278,7 +320,8 @@ outline: none;
 }
 .descktop-comment-image{
     height:70vh;
-    width:50%;
+    width:100%;
+    object-fit: cover;
 }
 .comment-body{
     display:flex;
@@ -286,7 +329,7 @@ outline: none;
 .comment-section{
     display: flex;
     flex-direction: column;
-    width:50%;
+    width:100%;
 }
 .comment-section-mobile-view{
     display: flex;
@@ -303,12 +346,15 @@ outline: none;
     align-items: center;
 }
 .commenting-container{
+    width:100%;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
     height:55vh;
     overflow-y: auto;
+    
+    
 }
 .commenting-container-mobile-view{
     display: flex;
@@ -321,9 +367,10 @@ outline: none;
 .comments-profiles{
     display:flex;
     flex-direction: row;
-    flex-wrap:wrap;
-    align-items: center;
-    width:100%;
+   width: 100%;
+    align-items: flex-start;
+   
+   border-bottom: 1px solid gray;
     
 }
 
@@ -332,6 +379,26 @@ outline: none;
     color: black;
    
   }
+  .post-count-div{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top:0;
+    background-color:black;
+    height:30px;
+    width:50px;
+    border-radius: 6px;
+    text-align: center;
+    align-items: center;
+  }
+  .post-count{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top:0;
+    COLOR:#ffffff;
+    
+  }
 @media only screen and (min-width: 769px) {
     .navbar-container{
         display:none;
@@ -339,7 +406,7 @@ outline: none;
     .emty-div{
         margin-top:0px;
     }
-    .bottom-navbar{
+    .bottom-navbar11{
        display: none;
     
        
@@ -376,9 +443,9 @@ outline: none;
         width:100%;
        
     }
-    .desktop-comment{
+    /* .desktop-comment{
         display:none;
-    }
+    } */
 
     .feed-container{
       

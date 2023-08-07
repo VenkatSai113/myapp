@@ -14,19 +14,24 @@ import {withRouter} from 'react-router-dom'
 
 const BottomNavbar=(props)=>{
   const logout=()=>{
-    Cookies.remove("jwt_token")
+    if (window.confirm("Are you Sure you want to LogOut") == true) {
+      Cookies.remove("jwt_token")
     const {history}=props
     history.replace("/login")
+    } 
+   
+    
 }
     return(
-        <div id="footer" className="bottom-navbar">
-        <Link to="/savedTours" className="nav-link"><p className="notifications-icon1"><Tb360View/></p></Link>
+        <div id="footer" className="bottom-navbar11">
+        <Link to="/" className="nav-link"><p className="notifications-icon1"><GrHomeRounded  /></p></Link>
+        <Link to="/savedTours"><p className="notifications-icon1"><Tb360View/></p></Link>
+        <Link to="/createPost"><p className="notifications-icon1"><FaRegPlusSquare/></p></Link> 
+          {/* <BottomNavigationAction id="bottom-nav-dashboard" label="Dashboard" icon={ } />  */}
         
-        {/*<Link to="/createPost"><p className="notifications-icon1"><FaRegPlusSquare/></p></Link> */}
-          {/* <BottomNavigationAction id="bottom-nav-dashboard" label="Dashboard" icon={ } /> */}
-        {/* <Link to="/shop"><p className="notifications-icon1"><img src={logoImage} className='dashbord-image1'/></p></Link> */}
         <Link to="/invitation"  className="nav-link"><p className="notifications-icon1"><AiOutlineUserAdd/></p></Link>
-       <p className="notifications-icon1" onClick={logout}><IoMdLogOut/></p>
+        <Link to="/profile"  className="nav-link"> <p className="notifications-icon1" ><CgProfile/></p></Link>
+      
        
       </div>
     )

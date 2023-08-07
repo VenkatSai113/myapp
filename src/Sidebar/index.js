@@ -9,7 +9,7 @@ import {BsBell} from 'react-icons/bs'
 import {BiTimeFive} from 'react-icons/bi'
 import {Tb360View} from "react-icons/tb"
 import Cookies from 'js-cookie';
-
+import {IoMdLogOut} from 'react-icons/io'
 const sidebarItems=[
     {
     name:"Home",
@@ -42,19 +42,19 @@ const sidebarItems=[
 //     id:7,
 //     path:"/trending"
 // },
-// {
-//     name:"Projects",
-//     icon:<AiFillProject  className='icon'/>,
-//     id:4,
-//     path:"/projects"
-// },
+{
+    name:"Projects",
+    icon:<AiFillProject  className='icon'/>,
+    id:4,
+    path:"/projects"
+},
 
-// {
-//     name:"Shop",
-//     icon:<AiOutlineShop  className='icon'/>,
-//     id:3,
-//     path:"/shop"
-// },
+{
+    name:"Shop",
+    icon:<AiOutlineShop  className='icon'/>,
+    id:3,
+    path:"/shop"
+},
 
 // {
 //     name:"Chat",
@@ -69,12 +69,12 @@ const sidebarItems=[
     id:20,
     path:"/savedTours"
 },
-// {
-//     name:"Profile",
-//     icon:<CgProfile  className='icon'/>,
-//     id:8,
-//     path:"/Profile"
-// },
+{
+    name:"Profile",
+    icon:<CgProfile  className='icon'/>,
+    id:8,
+    path:"/Profile"
+},
 
 ]
 
@@ -127,14 +127,14 @@ class Sidebar extends Component{
                 <Link className='sub-card-container' to="/activity">
                     <p className='sub-container-item'>Activity</p>
                     <p className='subicons'><BiTimeFive /></p>
-                </Link>
+                    </Link>*/}
                 <Link className='sub-card-container' to="/savedposts">
                     <p className='sub-container-item'>Saved</p>
                     <p className='subicons'><BsBookmark /></p>
-                </Link> */}
+                </Link> 
                 
                 <div className='sub-card-container'>
-                    <p className='sub-container-item' onClick={this.logout}>Log Out</p>
+                    <p className='sub-container-item' onClick={this.logout}>Log Out <IoMdLogOut className='icon-style ml-2'/></p>
                 </div></>}
             </div>
         )

@@ -1,14 +1,12 @@
 import {Component} from 'react'
 import './index.css'
-import Button from 'react-bootstrap/Button';
 import { withRouter } from 'react-router-dom';
-import UploadLogo from './uploadLogo'
 import axios from 'axios';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
 class OrganizationDetails extends Component{
-    state={name:"",address:"",email:"",logoFile:"",PhoneNumber:"",area:"",gstNumber:"",logo:"",budget:"",bankName:"",accountNumber:"",branch:"",ifscCode:"",nameError:"",PhoneNumberError:"",addressError:"",areaError:"",budgetError:"",bankNameError:"",accountNumberError:"",branchError:"",ifscCodeError:"",nameStatus:false,
+    state={areaMaxCharacters: 50,areaCharcterLength:0,isEmailValid: false, maxCharacters: 50,addressMaxCharacters: 100,charcterLength:0,addressCharcterLength:0,open:false,userState:false,name:"",address:"",email:"",logoFile:"",PhoneNumber:"",area:"",gstNumber:"",logo:"",budget:"",bankName:"",accountNumber:"",branch:"",ifscCode:"",nameError:"",PhoneNumberError:"",addressError:"",areaError:"",budgetError:"",bankNameError:"",accountNumberError:"",branchError:"",ifscCodeError:"",nameStatus:false,
     addressStatus:false,emailStatus:false,emailError:"",areaStatus:false,budgetStatus:false,bankNameStatus:false,accountNumberStatus:false,branchStatus:false,ifscCodeStatus:false,PhoneNumberStatus:false,isLoading:false}
       requiredHandle=(event)=>{
           const {name,value}=event.target
@@ -20,9 +18,43 @@ class OrganizationDetails extends Component{
         console.log(event.target.files[0])
         this.setState({logoFile:event.target.files[0]})
     }
+    onChangeName=(event)=>{
+        const { maxCharacters } = this.state;
+        const {name,value}=event.target
+        if (value.length <= maxCharacters) {
+            this.setState({charcterLength:value.length})
+             console.log(value.length)
+             this.setState({
+                 [name]:value
+             })
+           }
+    }
+    onChangeAddress=(event)=>{
+        const { addressMaxCharacters } = this.state;
+        const {name,value}=event.target
+        if (value.length <= addressMaxCharacters) {
+            this.setState({addressCharcterLength:value.length})
+             console.log(value.length)
+             this.setState({
+                 [name]:value
+             })
+           }
+    }
+    onChangeEmail=(event)=>{
+        const { name, value } = event.target;
+
+        // Email validation using a regular expression
+        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        const isValid = emailRegex.test(value);
+    
+        this.setState({
+          [name]: value,
+          isEmailValid: isValid,
+        });
+       
+    }
       onSubmitSignUp=()=>{
-  
-        const {name,address,email,area,budget,bankName,accountNumber,branch,ifscCode,PhoneNumber,logoFile}=this.state
+        const {name,address,email,area,budget,bankName,accountNumber,branch,ifscCode,PhoneNumber}=this.state
           if(name===""){
               this.setState({nameError:"Name is Requeried"})
               this.setState({nameStatus:true})
@@ -105,7 +137,7 @@ class OrganizationDetails extends Component{
             this.setState({PhoneNumberError:""})
             this.setState({PhoneNumberStatus:false})
         }
-        if(name!==""&&address!==""&&email!=="",area!==""&&budget!==""&&PhoneNumber!==""){
+        if(name!==""&&address!==""&&email!=="",area!==""&&budget!==""&&PhoneNumber!=="",bankName!=="",accountNumber!=="",branch!=="",ifscCode!==""){
             this.setState({isLoading:true})
             const {name,address,email,area,budget,bankName,accountNumber,branch,ifscCode,PhoneNumber,logoFile}=this.state
             const designerDetails={name,address,email,area,budget,bankName,accountNumber,branch,ifscCode,PhoneNumber,logoFile};
@@ -121,22 +153,17 @@ class OrganizationDetails extends Component{
             formData.append("ifscCode",ifscCode);
             formData.append("PhoneNumber",PhoneNumber);
             formData.append("logoFile",logoFile);
-            const url="https://objective-wright.69-49-231-148.plesk.page//designer/signup/"
+            const url="http://localhost:9000//designer/signup/"
             axios.post(url,formData).then
             (response=> 
                this.setState({responseData:response.data}),
-              
-               this.setState({open:true}),
-             
-               
+               this.setState({open:true}),  
             ).then((result) => {
                 this.setState({isLoading:false})
                 //  const {history}=this.props
                 //  history.replace("/")
-                
                })
             .catch(error=>console.log(error))
-          
             // const options={
             //     method:"POST",
             //     headers:{
@@ -149,37 +176,34 @@ class OrganizationDetails extends Component{
             // const response=await fetch(url,options)
             // const data=await response.json()
             // console.log(data)
-             
         }
       }
       render(){
-        const {name,address,email,area,budget,bankName,accountNumber,branch,ifscCode,nameError,nameStatus,emailStatus,areaError,budgetError,bankNameError,accountNumberError,branchError,ifscCodeError,
-            addressStatus,PhoneNumber,PhoneNumberError,PhoneNumberStatus,emailError,areaStatus,budgetStatus,bankNameStatus,accountNumberStatus,addressError,branchStatus,ifscCodeStatus,responseData,isLoading}=this.state
+        const {name,isEmailValid,address,email,area,budget,bankName,accountNumber,branch,ifscCode,nameError,nameStatus,emailStatus,areaError,budgetError,bankNameError,accountNumberError,branchError,ifscCodeError,
+            addressStatus,PhoneNumber,PhoneNumberError,PhoneNumberStatus,emailError,areaStatus,addressCharcterLength,addressMaxCharacters,charcterLength,maxCharacters,budgetStatus,bankNameStatus,accountNumberStatus,addressError,branchStatus,ifscCodeStatus,responseData,isLoading}=this.state
           return(
              
              <> <div className="elements-div mt-2"><label className='property mt-3' htmlFor="residentType">Organization Name</label>
                 <div className='text-element-residential'>
-                <input type="text" className='form-control' value={name} placeholder=" Enter Your name" name="name" onChange={this.requiredHandle}/></div>
+                <input type="text" className='form-control' value={name} placeholder=" Enter Your name" name="name"  onChange={this.onChangeAddress}/></div>
               
               </div> 
-              {nameStatus&&<p className='error-msg'>*{nameError}</p>}
+              {nameStatus?<p className='error-msg'>{nameError}</p>:<p  className='input-length'>{charcterLength}/{maxCharacters}</p>}
                <div className="elements-div mt-2">
               <label className='property mt-3'>Address</label>
               <div className='text-element-residential'>
-              <textarea row="13" cols="50" value={address} className='form-control mb-3' name="address" placeholder=' Enter your address' onChange={this.requiredHandle}>
-  
+              <textarea row="13" cols="50" value={address} className='form-control mb-3' name="address" placeholder=' Enter your address' onChange={this.onChangeAddress}>
               </textarea>
-             
                  </div>
                  </div>
-                 {addressStatus&&<p className='error-msg'>*{addressError}</p>}
+                 {addressStatus?<p className='error-msg'>*{addressError}</p>:  <p  className='input-length'>{addressCharcterLength}/{addressMaxCharacters}</p> }
                  <div className="elements-div">
                  <label className='property mt-3'>Email Id</label>
                  <div className='text-element-residential'>
-                 <input type="email" className='form-control' value={email} placeholder=" Enter Valid Email id" name="email" onChange={this.requiredHandle} />
+                 <input type="email" className='form-control' value={email} placeholder=" Enter Valid Email id" name="email" onChange={this.onChangeEmail} />
                   </div>
                   </div>
-                  {emailStatus&&<p className='error-msg'>*{emailError}</p>}
+                  {emailStatus?<p className='error-msg'>*{emailError}</p>:<> {isEmailValid ? <p className='input-length mt-2'>Email is valid!</p> : <p  className='error-msg mt-2'>Email is not valid!</p>}</>}
                   <div className="elements-div">
                <label className='property mt-3'>Mobile Number</label>
                <div className='text-element-residential'>
@@ -197,7 +221,7 @@ class OrganizationDetails extends Component{
                   <div className="elements-div">
                   <label className='property mt-3'>Logo</label>
                   <div className='text-element-residential'>
-                  <input type="file" onChange={this.handleFileChange} />
+                  <input type="file" onChange={this.handleFileChange} accept="image/png, image/gif, image/jpeg" />
                   </div>
                   </div>
                   {/* <div className="elements-div">
@@ -217,8 +241,7 @@ class OrganizationDetails extends Component{
                 <div className="bank-details-div">
                 <label className='bank-details mt-3'>Bank Details</label>
                 </div>
-               
-                {/* <div className="elements-div">
+                <div className="elements-div">
                   <label className='property mt-3'>Bank Name</label>
                   <div className='text-element-residential'>
                   <input type="text" className='form-control' value={bankName} placeholder=" Enter Bank Name" name="bankName" onChange={this.requiredHandle} />
@@ -246,7 +269,7 @@ class OrganizationDetails extends Component{
                   </div>
                   </div> 
                   
-                  {ifscCodeStatus&&<p className='error-msg'>*{ifscCodeError}</p>} */}
+                  {ifscCodeStatus&&<p className='error-msg'>*{ifscCodeError}</p>}
                 <div className="elements-div">
                
                   <div className='text-element-residential'>

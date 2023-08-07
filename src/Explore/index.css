@@ -1,0 +1,118 @@
+*{
+    margin: 0px;
+}
+.explore-bg-container{
+    width:70vw;
+    background-color:whitesmoke;
+    padding:20px;
+    box-sizing: border-box;
+    margin-left: 260px;
+   
+}
+.product-card-container{
+    width:100%;
+    background-color:#ffffff;
+    box-sizing: border-box;
+    margin-top:10px;
+    border-radius:10px;
+    text-align: center;
+   
+}
+
+.image-style{
+    width: 100%;
+    height:170px;
+    border-radius:10px;
+}
+.addButton{
+    width:100%;
+    height:30px;
+    border-radius: 10px;
+    color:#ffffff;
+    background-color:#0e80ae;
+    border-width: 0px;
+}
+.productName{
+    font-family:roboto;
+    font-size: 15px;
+    color:black;
+}
+.productPrice{
+    font-family:roboto;
+    font-size: 15px;
+    color:black;
+    font-weight: bold;
+
+}
+.emtyDiv{
+    margin-top:20px;
+}
+.applayBtn{
+    margin-left:80px;
+    margin-top: 20px;
+}
+.filter-row-div{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+.filter-icons-desktop-view{
+    width:100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 13px;
+    display: flex;
+    justify-content: space-between;
+
+}
+.explore-icon-div{
+    display: flex;
+    align-items: center;
+}
+.explore-icon{
+    font-family:roboto;
+    font-size:16px;
+    margin-left: 6px;
+}
+.explore-icon-text{
+    font-family:roboto;
+    font-size:13px;
+    margin-left: 6px;
+}
+.filter-icons-mobile-view{
+    width:100%;
+    margin-top: 13px;
+    display: flex;
+    justify-content: space-around;
+
+}
+.explore-icon-mobile-view{
+
+    font-size:25px;
+    margin-left: 6px;
+}
+.all-explore-icon-mobile-view{
+
+    font-size:20px;
+    margin-left: 6px;
+}
+.active-tab-item{
+    border-bottom:1px solid blue 
+}
+@media screen and (max-width: 768px) {
+    .explore-bg-container{
+        width:99vw;
+        margin-left: 0px;
+        padding:0px;
+    }
+    .filter-icons-desktop-view{
+        display: none;
+    }
+}
+@media screen and (min-width: 768px) {
+    .filter-icons-mobile-view{
+        display: none;
+    }
+    
+    
+}

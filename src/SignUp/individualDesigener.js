@@ -13,21 +13,69 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
 class IndividualDesigener extends Component{
-    state={name:"",open:false,userState:false,logoFile:"",address:"",email:"",PhoneNumber:"",area:"",gstNumber:"",logo:"",budget:"",bankName:"",accountNumber:"",branch:"",ifscCode:"",nameError:"",PhoneNumberError:"",addressError:"",areaError:"",budgetError:"",bankNameError:"",accountNumberError:"",branchError:"",ifscCodeError:"",nameStatus:false,
+    state={name:"",areaMaxCharacters: 50,areaCharcterLength:0, maxCharacters: 50,addressMaxCharacters: 100,charcterLength:0,addressCharcterLength:0,open:false,userState:false,logoFile:"",address:"",email:"",isEmailValid: false,PhoneNumber:"",area:"",gstNumber:"",logo:"",budget:"",bankName:"",accountNumber:"",branch:"",ifscCode:"",nameError:"",PhoneNumberError:"",addressError:"",areaError:"",budgetError:"",bankNameError:"",accountNumberError:"",branchError:"",ifscCodeError:"",nameStatus:false,
 addressStatus:false,emailStatus:false,emailError:"",areaStatus:false,budgetStatus:false,bankNameStatus:false,accountNumberStatus:false,branchStatus:false,ifscCodeStatus:false,PhoneNumberStatus:false,responseData:"",isLoading:false,notifications:false}
 
 requiredHandle=(event)=>{
         const {name,value}=event.target
+      
         this.setState({
-            [name]:value
-        })
+                     [name]:value
+                 })
+       
     }
+    onChangeName=(event)=>{
+        const { maxCharacters } = this.state;
+        const {name,value}=event.target
+        if (value.length <= maxCharacters) {
+            this.setState({charcterLength:value.length})
+             console.log(value.length)
+             this.setState({
+                 [name]:value
+             })
+           }
+    }
+    onChangeAddress=(event)=>{
+        const { addressMaxCharacters } = this.state;
+        const {name,value}=event.target
+        if (value.length <= addressMaxCharacters) {
+            this.setState({addressCharcterLength:value.length})
+             console.log(value.length)
+             this.setState({
+                 [name]:value
+             })
+           }
+    }
+    onChangeArea=(event)=>{
+        const { areaMaxCharacters } = this.state;
+        const {name,value}=event.target
+        if (value.length <= areaMaxCharacters) {
+            this.setState({areaCharcterLength:value.length})
+             console.log(value.length)
+             this.setState({
+                 [name]:value
+             })
+           }
+    }
+    onChangeEmail=(event)=>{
+        const { name, value } = event.target;
+
+        // Email validation using a regular expression
+        const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
+        const isValid = emailRegex.test(value);
+    
+        this.setState({
+          [name]: value,
+          isEmailValid: isValid,
+        });
+       
+    }
+   
     handleFileChange=(event)=>{
         console.log(event.target.files[0])
         this.setState({logoFile:event.target.files[0]})
     }
     onSubmitSignUp=async()=>{
-
         const {name,address,email,area,budget,bankName,accountNumber,branch,ifscCode,PhoneNumber,logoFile}=this.state
         if(name===""){
             this.setState({nameError:"Name is Requeried"})
@@ -110,7 +158,8 @@ requiredHandle=(event)=>{
             this.setState({PhoneNumberStatus:false})
         }
        
-        if(name!==""&&address!==""&&email!=="",area!==""&&budget!==""&&PhoneNumber!==""){
+        if(name!==""&&address!==""&&email!=="",area!==""&&budget!==""&&PhoneNumber!=="",bankName!=="",accountNumber!=="",branch!=="",ifscCode!==""){
+           
             this.setState({isLoading:true})
             const {name,address,email,area,budget,bankName,accountNumber,branch,ifscCode,PhoneNumber,logoFile}=this.state
             const designerDetails={name,address,email,area,budget,bankName,accountNumber,branch,ifscCode,PhoneNumber,logoFile};
@@ -126,40 +175,17 @@ requiredHandle=(event)=>{
             formData.append("ifscCode",ifscCode);
             formData.append("PhoneNumber",PhoneNumber);
             formData.append("logoFile",logoFile);
-            const url="https://objective-wright.69-49-231-148.plesk.page//designer/signup/"
+            const url="http://localhost:9000/designer/signup/"
             axios.post(url,formData).then
             (response=> 
                this.setState({responseData:response.data}),
-              
                this.setState({open:true})
-              
             ).then((result) => {
                 this.setState({isLoading:false})
-                
-                
-                
                })
             .catch(error=>console.log(error))
-          
-            // const options={
-            //     method:"POST",
-            //     headers:{
-            //         "content-Type":'multipart/form-data'
-            //     },
-            //     mode:"cors",
-            //     body:JSON.stringify(designerDetails),
-
-            // }
-            // const response=await fetch(url,options)
-            // const data=await response.json()
-            // console.log(data)
-             
         }
-       
-        
-
     }
-    
     handleClose = (event, reason,prpos) => {
         if (reason === 'clickaway') {
           return;
@@ -168,29 +194,19 @@ requiredHandle=(event)=>{
                 const responseSplit=responseData.split(" ")
                 console.log(responseSplit)
                 const responseLength=responseSplit.length -1
-
-                if(responseSplit[responseLength]==="Successfull"){
+                if(responseSplit[responseLength]==="Successfully"){
                     this.setState({open:false})
                     const {history}=this.props
                     history.replace("/")
-               
                 }
-    
-        
       }
-    
     render(){
-       
-      
-       
-        const {name,open,userState,address,email,area,budget,bankName,accountNumber,branch,ifscCode,nameError,nameStatus,emailStatus,areaError,budgetError,bankNameError,accountNumberError,branchError,ifscCodeError,
+        const {name,open,isEmailValid ,userState,maxCharacters,areaMaxCharacters ,areaCharcterLength,addressCharcterLength,addressMaxCharacters,charcterLength,address,email,area,budget,bankName,accountNumber,branch,ifscCode,nameError,nameStatus,emailStatus,areaError,budgetError,bankNameError,accountNumberError,branchError,ifscCodeError,
             addressStatus,PhoneNumber,PhoneNumberError,PhoneNumberStatus,emailError,areaStatus,budgetStatus,bankNameStatus,accountNumberStatus,addressError,branchStatus,ifscCodeStatus,responseData,isLoading}=this.state
             console.log(responseData)
         return(
-           
            <> 
          <Stack spacing={2} sx={{ width: '100%' }}>
-      
       <Snackbar open={open} autoHideDuration={2000} onClose={this.handleClose}>
         <Alert onClose={this.handleClose} severity="success" sx={{ width: '100%' }}>
          {responseData}
@@ -203,46 +219,46 @@ requiredHandle=(event)=>{
     </Stack>
            <div className="elements-div mt-2"><label className='property mt-3' htmlFor="residentType">Name</label>
               <div className='text-element-residential'>
-              <input type="text" className='form-control' value={name} placeholder="  Enter Your name" name="name" onChange={this.requiredHandle}/></div>
-            
+              <input type="text" className='form-control' value={name} placeholder="  Enter Your name" name="name" onChange={this.onChangeName}/></div>
             </div> 
-            {nameStatus&&<p className='error-msg'>{nameError}</p>}
+            
+            {nameStatus?<p className='error-msg'>{nameError}</p>:<p  className='input-length'>{charcterLength}/{maxCharacters}</p>}
              <div className="elements-div mt-2">
             <label className='property mt-3'>Address</label>
             <div className='text-element-residential'>
-            <textarea row="13" cols="50" value={address} className='form-control mb-3' name="address" placeholder='  Enter your address' onChange={this.requiredHandle}>
-
+            <textarea row="13" cols="50" value={address} className='form-control mb-3' name="address" placeholder='  Enter your address' onChange={this.onChangeAddress}>
             </textarea>
-           
                </div>
                </div>
-              
-               {addressStatus&&<p className='error-msg'>*{addressError}</p>}
+             
+               {addressStatus?<p className='error-msg'>*{addressError}</p>:  <p  className='input-length'>{addressCharcterLength}/{addressMaxCharacters}</p> }
                <div className="elements-div">
                <label className='property mt-3'>Email Id</label>
                <div className='text-element-residential'>
-               <input type="email" className='form-control' value={email} placeholder="  Enter Valid Email id" name="email" onChange={this.requiredHandle} />
+               <input type="email" className='form-control' value={email} placeholder="  Enter Valid Email id" name="email" onChange={this.onChangeEmail} />
                 </div>
                 </div>
-                {emailStatus&&<p className='error-msg'>*{emailError}</p>}
+                {emailStatus?<p className='error-msg'>*{emailError}</p>:<> {isEmailValid ? <p className='input-length mt-2'>Email is valid!</p> : <p  className='error-msg mt-2'>Email is not valid!</p>}</>}
+               
                 <div className="elements-div">
                <label className='property mt-3'>Mobile Number</label>
                <div className='text-element-residential'>
-               <input type="email" className='form-control' value={PhoneNumber} placeholder="Enter Valid Mobile number" name="PhoneNumber" onChange={this.requiredHandle} />
+               <input type="number" className='form-control' value={PhoneNumber} placeholder="Enter Valid Mobile number" name="PhoneNumber" onChange={this.requiredHandle} />
                 </div>
                 </div>
                 {PhoneNumberStatus&&<p className='error-msg'>*{PhoneNumberError}</p>}
                 <div className="elements-div">
                 <label className='property mt-3'>Area/City </label>
                 <div className='text-element-residential'>
-                <input type="text" className='form-control'  value={area}  placeholder="  Enter Area/City" name="area" onChange={this.requiredHandle} />
+                <input type="text" className='form-control'  value={area}  placeholder="  Enter Area/City" name="area" onChange={this.onChangeArea} />
                 </div>
                 </div>
-                {areaStatus&&<p className='error-msg'>*{areaError}</p>}
+                
+                {areaStatus?<p className='error-msg'>*{areaError}</p>:<p className='input-length'>{areaCharcterLength}/{areaMaxCharacters}</p>}
                 <div className="elements-div">
                 <label className='property mt-3'>Logo</label>
                 <div className='text-element-residential'>
-                <input type="file" onChange={this.handleFileChange} />
+                <input type="file" onChange={this.handleFileChange}  accept="image/png, image/gif, image/jpeg"/>
                 </div>
                 </div>
                 
@@ -254,7 +270,7 @@ requiredHandle=(event)=>{
               </div>
               </div>
               {budgetStatus&&<p className='error-msg'>*{budgetError}</p>}
-              {/* <div className="bank-details-div">
+              <div className="bank-details-div">
               <label className='bank-details mt-3'>Bank Details</label>
               </div>
              
@@ -287,25 +303,18 @@ requiredHandle=(event)=>{
                 </div>
                 </div> 
                 
-                {ifscCodeStatus&&<p className='error-msg'>*{ifscCodeError}</p>}    */}
+                {ifscCodeStatus&&<p className='error-msg'>*{ifscCodeError}</p>}   
               <div className="elements-div">
-             
                 <div className='text-element-residential'>
-               
              <div>
               </div>
               </div>
               </div>
-              
-      
       {/* <Snackbar open={open} autoHideDuration={2000} >
         {userState?<Alert severity="error">  {  responseData}</Alert>:<Alert severity="success" sx={{ width: '100%' }}>
         {  responseData}
         </Alert>}
-       
-     
       </Snackbar> */}
-     
               <div className='d-flex flex-row justify-content-between'>
               <button className='login-button' onClick={this.onSubmitSignUp}>Sign Up</button>
               </div>

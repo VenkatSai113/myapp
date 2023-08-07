@@ -33,6 +33,7 @@
 .sub-container-item{
     font-family:roboto;
     font-size:13px; 
+    cursor: pointer;
 }
 .subicons{
     font-size:15px;

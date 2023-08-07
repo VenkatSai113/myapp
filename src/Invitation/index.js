@@ -26,7 +26,7 @@ class InviteDesigner extends Component{
     const {mobileNumber,invitationMsg}=this.state
     const invitationDetails={mobileNumber,invitationMsg}
     console.log(invitationDetails)
-    const url="https://objective-wright.69-49-231-148.plesk.page/invitationApi"
+    const url="http://localhost:9000/invitationApi"
     const options={
       method:"POST",
       headers:{
@@ -84,11 +84,11 @@ class InviteDesigner extends Component{
       </Snackbar>
       {/* </Snackbar> */}
                   <p className="invite-description">Invite through Social Media</p>
-                  <div  >
-                    <FacebookShareButton url="https://nervous-poincare.69-49-231-148.plesk.page/signup" quote="I'm inviting you to register with Design Alley! Here is the link" hashtag="react">
+                  <div  > 
+                    {/* <FacebookShareButton url="https://nervous-poincare.69-49-231-148.plesk.page/signup" quote="I'm inviting you to register with Design Alley! Here is the link" hashtag="react">
                       <FacebookIcon size={35}  logoFillColor="white" round={true}>
                       </FacebookIcon>
-                    </FacebookShareButton>
+                    </FacebookShareButton> */}
                     <WhatsappShareButton url="https://designalley.69-49-231-148.plesk.page/signup" title="I'm inviting you to register with Design Alley! Here is the link">
                       <WhatsappIcon className="ml-3" size={35} logoFillColor="white" round={true}>
                       </WhatsappIcon>

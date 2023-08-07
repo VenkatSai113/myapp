@@ -3,9 +3,10 @@ import Card from 'react-bootstrap/Card';
 import "./index.css"
 import {Link,withRouter} from 'react-router-dom'
 import { CiEdit } from 'react-icons/ci';
-import {AiOutlineDelete} from 'react-icons/ai'
+import {AiOutlineDelete,AiFillEye} from 'react-icons/ai'
 import Example from './shareOptions'
 import { useState ,useEffect} from 'react';
+
 function TourCards(props) {
     const {tourDetails,onClickDeleteTourDetails}=props
     const {tour_name,thumbnail_image,tour_id,tour_description}=tourDetails
@@ -26,7 +27,7 @@ function TourCards(props) {
   return (
     <div className='col-lg-4 col-md-6 col-12 mt-3 '>
     <Card style={{ width: '18rem' }}>
-    <Link to={`/viewer:${tour_id}`}><Card.Img variant="top" className="tourThumbnail" src={`https://objective-wright.69-49-231-148.plesk.page/${thumbnail_image}`} /></Link>
+    <Link to={`/viewer:${tour_id}`}><Card.Img variant="top" className="tourThumbnail" src={`http://localhost:9000/${thumbnail_image}`} /></Link>
       <Card.Body>
         <div className='d-flex flex-row justify-content-between'>
         <Link to={`/viewer:${tour_id}`}> <Card.Title className='tour-name'>{tour_name}</Card.Title></Link>
@@ -37,8 +38,8 @@ function TourCards(props) {
         <Card.Text>
         {tour_description}
         </Card.Text>
-        <div className='d-flex flex-row justify-content-around'>
-     
+        <div className='d-flex flex-row justify-content-between'>
+       <Link to={`/VirtualtourdetailView:${tour_id}`}><Button variant="primary" size="sm" >Detail View <AiFillEye className='icon-style1'/></Button></Link> 
         {/* <Button variant="primary" size="sm" onClick={editScenetourId}> Edit <CiEdit className='icon-style'/></Button> */}
         <Button variant="danger" size="sm" onClick={onClickDeleteTour}>Delete <AiOutlineDelete className='icon-style1'/></Button> 
         </div>

@@ -157,6 +157,14 @@
     margin-left: 25%;
     margin-top: -10px;
 }
+.input-length{
+    font-family: roboto;
+    font-size:12px;
+    color: green;
+    text-align: left;
+    margin-left: 25%;
+    margin-top: -10px;
+}
 .reaponse-msg{
     font-family:roboto;
     font-size:13px;
@@ -176,6 +184,11 @@
 }
 .radio-style{
     font-size:12px;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* Optional: Some browsers may add a margin by default */
 }
 @media screen and (max-width: 768px) {
     .body-content{

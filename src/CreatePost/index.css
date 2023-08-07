@@ -1,4 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+*{
+  box-sizing: border-box;
+}
 .menu-button{
     height:40px;
     width: 100px;
@@ -38,22 +41,58 @@ label[for="file-upload"]:hover {
   background-color: #2e2a2b
   ;
 }
+label[for="file-upload9"] {
+  background-color: #2e2a2b;
+  padding-top: 3px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  width:100%;
+  height:29px;
+}
+
+label[for="file-upload9"]:hover {
+  background-color: #2e2a2b
+  ;
+}
+
+label[for="file-upload7"] {
+  background-color: #2e2a2b;
+  padding-top: 3px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  width:100%;
+  height:29px;
+}
+
+label[for="file-upload7"]:hover {
+  background-color: #2e2a2b
+  ;
+}
 .uploadPost{
     font-family:roboto;
     font-size:14px;
     font-weight:bold;
 }
 .post-image-size{
-  height:200px;
+  height:96%;
   width:100%;
 }
 .post-div-size{
-  height:200px;
+ 
 width:45vw;;
   overflow-y: auto;
   margin-bottom: 10px;
 }
-.formDiv{
+.post1-div-size{
+ 
+  width:45vw;;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    height: 45vh;
+  }
+.formDiv1{
     display: flex;
     flex-direction:column;
     align-items: center;
@@ -61,32 +100,84 @@ width:45vw;;
     background-color:whitesmoke;
     padding:20px;
     margin-left: 150px;
-    min-height:100vh;
+    height:100vh;
+    box-sizing: border-box;
+    overflow-y: hidden;
 }
-.postForm{
+.thumb-nails{
+  height:60px;
+  width: 60px;
+  margin-left: 5px;
+  border-radius: 7px;
+  margin-bottom: 5px;
+  object-fit: cover;
+}
+.postForm1{
     display: flex;
     flex-direction:column;
     align-items: left;
     text-align: left;
-    box-shadow: 1px 1px 1px 1px lightblue;
-    min-width:45vw;
+    box-shadow: 2px 2px 2px 2px lightblue;
+    width:55vw;
     margin-left: auto;
     margin-right: auto;
     padding:30px;
     background-color:#ffffff;
-    min-height:200vh;
+    height:100vh;
+    overflow-y: auto;
+    margin-left: 300px;
+    
   
+}
+.suggitions-div{
+  display: flex;
+  flex-direction: row;
+  max-width:45vw;
+  flex-wrap: wrap;
+  height:20vh;
+  overflow-y: auto;
+  
+}
+.suggition-card-div{
+  height: 50px;
+  background-color: blue;
+  border-radius: 5px;
+  text-align: center;
+  min-width: none;
+}
+
+.hash-tag {
+  margin-top: 3px;
+  outline: 0;
+  border-width: 0 0 2px;
+  border-color: #2e2a2b;
+  width:100%;
+}
+.setting-icon{
+  font-size:20px;
+  color:#6772a8;
+}
+.video-player{
+  width:100%;
+  height: 96%;
+  object-fit: cover;
+  position: 'absolute'
+}
+
+.hash-tag:focus {
+  border-color: #b18165;
+ 
 }
 .postTitle{
     font-family:roboto;
-    font-size:15px;
+    font-size:14px;
     font-weight:normal;
-    margin-top:10px;
+    margin-bottom:2px;
+    margin-top: 5px;
 }
 .rowButtonDiv{
     display:flex;
-    margin-left: auto;
-    margin-right: auto;  
+    margin-left: 35%;
 }
 .post-button{
     height:40px;
@@ -173,30 +264,59 @@ width:45vw;;
   .post-image{
     width:80%;
   }
+  
+  .form-scrool-div{
+   
+    overflow-y: auto;
+    box-sizing: border-box;
+    margin-bottom: 50px;
+  }
 @media screen and (max-width: 600px) {
-    .formDiv{
+  
+  .suggitions-div{
+    max-width:100%;
+    overflow-y: auto;
+  }
+    .formDiv1{
    
         display: flex;
         flex-direction:column;
         align-items: center;
         min-width:60vw;
         margin-left: 0px;
+        height:100vh;
+        overflow-y: hidden;
+        
     }
-    .postForm{
+    .postForm1{
      
-      width:100%;
+      width:100vw;
       margin-left: 0px;
       margin-right: 0px;
       padding:0px;
-      min-height:100vh;
-      margin-bottom:60px;
-      margin-top:50px;
+      height:92vh;
+      background-color:#ffffff;
+      box-sizing: border-box;
+      margin-top:55px;
+      
     
   }
   .post-div-size{
     height:200px;
   width:100%;;
     overflow-y: auto;
+  }
+  .post1-div-size{
+ 
+    height:200px;
+    width:100%;;
+      overflow-y: auto;
+    }
+  .form-scrool-div{
+  height:40vh;
+    overflow-y: auto;
+    box-sizing: border-box;
+    margin-bottom: 40px;
   }
 
   }

@@ -7,10 +7,13 @@ import Cookies from 'js-cookie'
 import HotspotNames from './HotspotNames'
 import {Link} from 'react-router-dom'
 import BarLoader from "react-loader-spinner"
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 
 let jwtToken=""
 class Aframes extends Component{
-    state={sceneName:"",sceneImage:"",scenes:[],uploadMapRender:false,singleScene:[],jwtToken:"",hotspotData:[],activeSceneId:"",stateMap:null,isSceneLoading:""}
+    state={sceneName:"",open:false,sceneImage:"",scenes:[],uploadMapRender:false,singleScene:[],jwtToken:"",hotspotData:[],activeSceneId:"",stateMap:null,isSceneLoading:""}
     componentDidMount=()=>{
         jwtToken=Cookies.get("jwt_token");
         this.setState({jwtToken:jwtToken})
@@ -46,6 +49,8 @@ class Aframes extends Component{
     }
     onChangesceneImage=(event)=>{
         this.setState({sceneImage:event.target.files[0]})
+        this.setState({open:true})
+        
      }
      onSubmitScene=()=>{
         const {sceneName,sceneImage}=this.state
@@ -56,14 +61,14 @@ class Aframes extends Component{
         this.setState({isSceneLoading:true})
         let tourId=localStorage.getItem("tourId")
         tourId=JSON.parse(tourId)
-       const apiUrl="https://objective-wright.69-49-231-148.plesk.page/scenes"
+       const apiUrl="http://localhost:9000/scenes"
        const formData=new FormData();
         formData.append("sceneName",sceneName)
         formData.append("sceneImage",sceneImage)
         formData.append("tourId",tourId)
         axios.post(apiUrl,formData).then
         (response=>{
-            const responseScenes=response.data
+            const responseScenes=response.data  
           this.setState((PrevState)=>({scenes:[...PrevState.scenes,responseScenes]}))
           this.setState({sceneName:""})
           this.setState({sceneImage:""})
@@ -83,7 +88,7 @@ class Aframes extends Component{
         eachItem.scene_id===id)
       this.setState({singleScene:singleScene})
       const hotspotsPerScene={id,hello:"hello"}
-      const apiUrl="https://objective-wright.69-49-231-148.plesk.page/sceneHotspots";
+      const apiUrl="http://localhost:9000/sceneHotspots";
       const options={
         method:"POST",
         headers:{
@@ -101,7 +106,7 @@ class Aframes extends Component{
      
       const mapImageFunction=async()=>{
         this.setState({isSceneLoading:true})
-        const mapapiUrl="https://objective-wright.69-49-231-148.plesk.page/getmapImage";
+        const mapapiUrl="http://localhost:9000/getmapImage";
         const activateSceneId={id,hello:"hello"}
         const mapOptions={
             method:"POST",
@@ -137,7 +142,7 @@ class Aframes extends Component{
             const {singleScene}=this.state
             const sceneId=singleScene[0].scene_id
             const scenehotspot={sceneId,parsehotspots,hotspotName}
-            const apiUrl="https://objective-wright.69-49-231-148.plesk.page/hotspots"
+            const apiUrl="http://localhost:9000/hotspots"
             const options={
                 method:'POST',
                 headers:{
@@ -177,7 +182,7 @@ class Aframes extends Component{
         this.setState({isSceneLoading:true})
         const {activeSceneId}=this.state
         const mapFile=event.target.files[0]
-        const apiUrl="https://objective-wright.69-49-231-148.plesk.page/mapImage"
+        const apiUrl="http://localhost:9000/mapImage"
         const config={
             headers:{
                 "Content-Type":"Application/json",
@@ -200,16 +205,28 @@ class Aframes extends Component{
             console.log(error)}
         )
     }
+      handleClose = (event, reason,prpos) => {
+        this.setState({open:false})
+      
+     
+    }
     onClickpreview=()=>{
         const tourId=localStorage.getItem("tourId")
         const parseTourId=JSON.parse(tourId)
         window.open(`https://designalley.69-49-231-148.plesk.page/viewer:${parseTourId}`,"__blank")
     }
     render(){
-        const {scenes,uploadMapRender,singleScene,hotspotData,activeSceneId,stateMap,sceneName,isSceneLoading}=this.state
+        const {scenes,uploadMapRender,open,singleScene,hotspotData,activeSceneId,stateMap,sceneName,isSceneLoading}=this.state
         return(
             <>
-              
+                <Stack spacing={2} sx={{ width: '100%' }} style={{ vertical: 'top', horizontal: 'left' }}>
+      
+      <Snackbar open={open} autoHideDuration={2000} onClose={this.handleClose}>
+        <Alert onClose={this.handleClose} severity="success" sx={{ width: '100%' }}>
+        Image Uploaded Successfully!
+        </Alert>
+      </Snackbar>
+      </Stack>
             <div  id="container23">
             {isSceneLoading?( <BarLoader type="TailSpin"  style={{ position: 'absolute', top: '50%', left: '55%',  zIndex: '999' }} color="#0275d8" height={50} width={50} />) :""}
                 <div className="create-scene-row-container mt-2 ">

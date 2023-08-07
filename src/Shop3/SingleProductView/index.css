@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+.bg-container1{
+    width:70vw;
+    border-radius: 10px;
+    background-color: #ffffff;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    box-sizing: border-box;
+    margin-left:auto;
+    margin-right: auto;
+}
+.productSize{
+    height:300px;
+    border-radius:10px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+.descDiv{
+    margin-top: 40px;
+}
+.discountText{
+    text-decoration: line-through;
+}
+.informationDiv{
+  padding-left: 20%;
+}
+.information{
+    font-size: 15px;
+   font-family:roboto;
+}
+.referImgDiv{
+    display:flex;
+    flex-direction: row;
+    overflow-x: auto;
+}
+.referedImg{
+    height:80px;
+    width:150px;
+    border-radius:10px;
+    margin:15px;
+
+}
+.bg-container-product-view{
+    margin-left:200px;
+}
+.add-project-single-product-view{
+    width:100%;
+    height:250px;
+    border-radius:8px;
+}
+.welcome-text{
+    font-family:Roboto;
+    font-size:23px;
+    
+}
+.mobile-num-text{
+    font-family:roboto;
+    font-size:14px;
+    font-weight:normal;
+
+}
+.material-depot-text{
+    font-family:roboto;
+    text-align: left;
+    font-weight:normal;
+    color:#86a3a8;
+}
+.post-count-div{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top:0;
+    background-color:black;
+    height:30px;
+    width:50px;
+    border-radius: 6px;
+    text-align: center;
+    align-items: center;
+  }
+  .post-count{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top:0;
+    COLOR:#ffffff;
+    
+  }
+@media only screen and (max-width: 768px) {
+    .bg-container1{
+        width:100vw;
+        margin-left:0px;
+        margin-right: 0px;
+    }
+    .bg-container-product-view{
+        margin-left:0px;
+    }
+}

@@ -10,10 +10,10 @@ import NavbarItems1 from './reactModel'
     return(
         <>
         <div className="navbar-container">
-        <img src="https://designalley.in/wp-content/uploads/2022/03/Logo.png" alt="sidebar logo" className='navbar-logo'/>
+        <img src="https://designalley.in/wp-content/uploads/2022/03/Logo.png" alt="sidebar logo" className='navbar-logo1'/>
         <div className="d-flex flex-row">
-        {/* <Link to="/notifications"><p className="notifications-icon"><IoIosNotificationsOutline/></p></Link>
-        <p className="notifications-icon ml-3 mr-4" onClick={moreItems}><NavbarItems1/></p> */}
+        <Link to="/notifications"><p className="notifications-icon"><IoIosNotificationsOutline/></p></Link>
+        <p className="notifications-icon ml-3 mr-4" onClick={moreItems}><NavbarItems1/></p>
         </div>
         </div>
     </>

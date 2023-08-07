@@ -30,18 +30,18 @@ const  NavbarItems1=(props)=>{
         </Modal.Header>
         <Modal.Body>
             <>
-                <Link className='sub-card-container' to="/notifications">
-                    <p className='sub-container-item'>Notifications</p>
+                <Link className='sub-card-container' to="/shop">
+                    <p className='sub-container-item'>Shop</p>
                    
                 </Link>
-                <Link className='sub-card-container' to="/activity">
+                {/* <Link className='sub-card-container' to="/activity">
                     <p className='sub-container-item'>Activity</p>
                    
-                </Link>
-                <Link className='sub-card-container' to="/trending">
+                </Link> */}
+                {/* <Link className='sub-card-container' to="/trending">
                     <p className='sub-container-item'>Trending</p>
                   
-                </Link>
+                </Link> */}
                 <Link className='sub-card-container' to="/projects">
                     <p className='sub-container-item'>Projects</p>
                   

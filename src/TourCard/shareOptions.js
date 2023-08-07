@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import {IoCopyOutline,IoCopy} from "react-icons/io5"
 import {BsFillShareFill} from "react-icons/bs"
@@ -18,13 +17,11 @@ function Example(props) {
     <>
     
       <BsFillShareFill style={{cursor:"pointer"}} onClick={() => setSmShow(true)}/>
-      
       <Modal
         size="sm"
         show={smShow}
         onHide={() => setSmShow(false)}
-        aria-labelledby="example-modal-sizes-title-sm"
-      >
+        aria-labelledby="example-modal-sizes-title-sm">
         <Modal.Header closeButton>
           <Modal.Title id="example-modal-sizes-title-sm">
            Share With
@@ -33,7 +30,7 @@ function Example(props) {
         <Modal.Body>
           <div className='d-flex flex-row justify-content-around'>
           {copyIcon? <p className='copy-icon' onClick={copyTourUrl}> <IoCopy/></p>:<p className='copy-icon' onClick={copyTourUrl}> <IoCopyOutline/></p>} 
-          <div>
+          {/* <div>
       <FacebookShareButton
         url={`${window.location.origin}/viewer:${tour_id}`}
         quote={'Dummy text!'}
@@ -42,7 +39,7 @@ function Example(props) {
         <FacebookIcon size={32} round />
       </FacebookShareButton>
 
-    </div>
+    </div> */}
     <div>
       <WhatsappShareButton
         url={`${window.location.origin}/viewer:${tour_id}`}

@@ -1,0 +1,286 @@
+
+*{
+    box-sizing: border-box;
+}
+.slider-image-shop{
+    height:550px;
+   width:100%;
+}
+.shop-carousel-label-text{
+    font-family: roboto;
+    font-size:30px;
+    color:#ffffff;
+    font-weight: bolder;
+}
+.shop3-container{
+    margin-left:200px;
+    width:100%;
+}
+.shop-content-div{
+    background-color:#000000;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+}
+.shop-material-text{
+    font-family:roboto;
+    color:#ffffff;
+    margin-top:20px;
+}
+.material-row-div{
+    display: flex;
+    flex-wrap:wrap;
+}
+.material-image{
+   
+    width:100px;
+    height:100px;
+    border-radius: 50%;
+}
+.navbar-logo{
+    height:60px;
+    width:90%;
+}
+.material-name{
+    font-size:14px;
+    font-family: roboto;
+    padding:5px;
+    color:#ffffff;
+}
+.material-coloumn-div{
+margin-left:20px;
+overflow:auto;
+}
+.categories-text{
+    font-family:roboto;
+    color:#ffffff;
+    font-size:30px;
+    font-weight:bold;
+    margin-top:25px;
+    margin-left:10px;
+}
+.architects-and-designers-div{
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items:center;
+    flex-wrap:wrap;
+    width:80vw;
+    margin-top:100px;
+    margin-left: auto;
+}
+.shop-slider-div{
+    width:35vw;
+    text-align: left;
+    border-radius:8px;
+    background-color:#232323;
+    margin-top:20px;
+    margin-bottom:30px;
+    margin-left: 10px;
+}
+.slider-content-div{
+    
+    width:100%;
+    background-color: #232323;
+    padding:10px;
+   
+    border-radius: 8px;
+}
+.inner-slider-content-div{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    overflow: hidden;
+}
+.slider-row-div{
+    display:flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.slider-profile-name{
+    font-family: roboto;
+    font-size:17px;
+    font-weight:bold;
+    color:#ffffff;
+}
+.slider-profile-description{
+    font-family: roboto;
+    font-size:15px;
+    font-weight:normal;
+    color:#ffffff;
+}
+.slider-profile-review-description{
+    font-family: roboto;
+    font-size:20px;
+    font-weight:normal;
+    color:#ffffff;
+    margin-left:10px;
+}
+.slider-profile-image{
+    height:50px;
+    width:50px;
+    border-radius: 50%;
+    margin-left: 10px;
+
+}
+.review-div{
+    width:40vw;
+    margin-left:35px;
+    text-align: left;
+  
+}
+.signup-button1{
+    width:40vw;
+    text-align: left;
+}
+.curated-architects-designers{
+    width:80vw;
+    border-radius: 8px;
+  
+    background-color:#232323;
+    margin-top:50px;
+    padding:20px;
+    
+}
+.curated-architects-designers-body{
+    width:100%;
+    height:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content:flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+   
+}
+.shop-Curated-text{
+    font-family:roboto;
+    text-align: left;
+    font-weight:normal;
+    color:#ffffff;
+}
+.shop-Curated-text1{
+    font-family:roboto;
+    text-align: left;
+    font-weight:normal;
+    color:#ffffff;
+}
+.material-depot-text{
+    font-family:roboto;
+    text-align: left;
+    font-weight:normal;
+    color:#86a3a8;
+}
+.curated-architects-designers-content{
+    width:50%;
+   
+}
+.curated-architects-designers-content1{
+    width:50%;
+    padding-left:30px;
+   
+}
+.verified-icon{
+    color: #ffffff;
+    text-align: left;
+    font-size:24px;
+}
+.actual-materials-text{
+    font-size:17px;
+    font-family: roboto;
+    font-weight: normal;
+    color:#ffffff;
+    margin-left: 3px;
+}
+.explore1-div{
+    text-align: left;
+}
+.curated-architects-image{
+    height:80vh;
+    width:50%;
+}
+.indian-brands-text{
+    font-weight:bold;
+}
+.brand-images{
+    width:100%;
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+    align-items: center;
+   
+    flex-wrap: wrap;
+}
+.brand-image{
+    width:170px;
+    text-align: left;
+    margin-left: 50px;
+}
+@media only screen and (max-width: 768px) {
+    .shop3-container{
+        margin-left:0px;
+    }
+    .shop-slider-div{
+        width:90%;
+        margin-top:20px;
+        margin-bottom:30px;
+        margin-left: 0px;
+    }
+    .review-div{
+        width:90%;
+        margin-left:0px;
+    }
+    .categories-text{
+       
+        margin-left:0px;
+    }
+    .slider-profile-review-description{
+       
+        margin-left:0px;
+    }
+    .signup-button1{
+        width:90%;
+        text-align: center;
+    }
+    .curated-architects-image{
+        height:40vh;
+        width:90%;
+        margin-top: 20px;
+    }
+    .actual-materials-text{
+        font-size:14px;
+        margin-left: 3px;
+        margin-top: 2px;
+    }
+    .verified-icon{
+        
+        text-align:center;
+        font-size:14px;
+    }
+    .curated-architects-designers-content{
+        width:90%;
+    }
+    .curated-architects-designers-content1{
+        width:90%;
+        padding-left:0px;
+       
+    }
+    .shop-Curated-text1{
+       
+        text-align: center;
+      
+    }
+    .shop-content-div{
+        margin-bottom: 55px;
+    }
+
+      
+}
+@media only screen and (min-width: 768px) {
+    .navbar-logo{
+        display: none;
+    }
+}

@@ -8,7 +8,7 @@ import "./index.css"
  const TopNavbar=()=>{
     return(
         <div id="upper" className="navbar-container">
-        <img src="https://designalley.in/wp-content/uploads/2022/03/Logo.png" alt="sidebar logo" className='navbar-logo'/>
+        <img src="https://designalley.in/wp-content/uploads/2022/03/Logo.png" alt="sidebar logo" className='navbar-logo1'/>
         <div className="d-flex flex-row ">
         {/* <Link className="nav-link" to="/notifications"><p className="notifications-icon2"><BsChatDots/></p></Link>
         <Link  className="nav-link"  to="/chat"><p className="notifications-icons "><IoMdNotificationsOutline/></p></Link>

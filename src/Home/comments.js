@@ -7,6 +7,7 @@ import Button from 'react-bootstrap/Button'
 import AddingComments from './addingComments'
 import { useState,useEffect } from 'react';
 import Cookies from 'js-cookie';
+import SwipeableViews from 'react-swipeable-views';
 
 const comments=[{
     profileImage:"https://savvywomen.tomorrowmakers.com/sites/default/files/2020-03/women%20entrepreneurship.jpg",
@@ -26,25 +27,37 @@ const comments=[{
     id:3
 },]
 function DescktopComments(props) {
-  //const {gettingFeedid}=props
+  const {deignerName,thumbnail,commentData}=props
+  console.log(deignerName,"deignerNamedeignerName")
  const [comment,setComment]=useState("");
  const [postId,setPostId]=useState("");
  const [jwtToken,setjwtToken]=useState("")
+ const [commentSet,setCommentSet]=useState([])
+ const [activeIndex, setActiveIndex] = useState(0);
+ const [selectedPostId,setSelectedPostId]=useState(1)
+ 
+ const handleSlideChange = (index) => {
+  setActiveIndex(index);
+};
+ const thumbnails = thumbnail.split(",")
+
 const addComment=(event)=>{
   setComment(event.target.value)
   //gettingFeedid()
 }
 useEffect(()=>{
+  // setCommentSet(commentData)
   const jwtToken=Cookies.get("jwt_token")
   setjwtToken(jwtToken)
   const localpostId=localStorage.getItem("postId")
   const intpostId=parseInt(localpostId)
+  console.log(intpostId)
   setPostId(intpostId)
-
+  
 })
 const commentPosted=async()=>{
   const comments={comment,postId}
-  const apiUrl="https://objective-wright.69-49-231-148.plesk.page/comments"
+  const apiUrl="http://localhost:9000/comments"
   const options={
     method:"POST",
     headers:{
@@ -58,6 +71,8 @@ const commentPosted=async()=>{
   const response=await fetch(apiUrl,options)
   const data=await response.json()
   console.log(data)
+  setCommentSet(data)
+  setComment("")
 }
   
   return (
@@ -70,23 +85,48 @@ const commentPosted=async()=>{
       <Modal.Body>
         <div className='comments-model-bg-container'>
             <div className='comment-body'>
-            <img src="https://s3images.zee5.com/wp-content/uploads/2021/08/aa2ca5d9-883f-4d12-8fdb-2fa13bc6d1b5-Carpetright-House-Beautiful-Portobello-Carpet-In-Riverside-designsecrets.jpeg" className="descktop-comment-image" alt=""/>
-            <div className='comment-section'>
+              <div className='w-100 d-none d-md-block'>
+            <SwipeableViews enableMouseEvents index={activeIndex} onChangeIndex={handleSlideChange}>
+              {thumbnails.map(eachImage=>{
+                <img src={`http://localhost:9000/${eachImage}`} className="descktop-comment-image" alt=""/>
+                
+                if(eachImage.split(".")[1]=="mp4"){
+                  return(
+                    <>
+                     <div className='post-count-div'> <p className='post-count'>{`${activeIndex+1}/${thumbnails.length}`}</p></div>
+                  <video  src={`http://localhost:9000/${eachImage}`} autoPlay loop muted  className="descktop-comment-image"/>
+                  </>)
+                }
+                else{
+                  return(
+                  <>
+                  <img alt="" src={`http://localhost:9000/${eachImage}`} className="descktop-comment-image" />
+                  <div className='post-count-div'> <p className='post-count'>{`${activeIndex+1}/${thumbnails.length}`}</p></div>
+                </>)
+                }
+                
+               } )}
+
+            </SwipeableViews>
+            </div>
+            
+            <div className='comment-section '>
                 <div className='comment-header'>
                 <img alt="" src="https://savvywomen.tomorrowmakers.com/sites/default/files/2020-03/women%20entrepreneurship.jpg" className="profile-image1"/>
                
-                <p className="profile-name-comments">Venkat_sai_113</p>
+                <p className="profile-name-comments">{deignerName}</p>
                 
             <p className="more-icon"><MoreModel/></p>
+         
                 </div>
-                <div className="commenting-container">
-                    {comments.map(eachComment=>
+                <div className="commenting-container w-100">
+                    {commentSet.map(eachComment=>
                       <AddingComments comment1={eachComment}/>)}
                    
                 </div>
                 <form className="d-flex flex-row">
-                <input type="text" className="form-control" placeholder="Add A Comment..." onChange={addComment}/>
-                <Button type="button" onClick={commentPosted} variant="primary">Post</Button>
+                <input type="text" className="form-control"  placeholder="Add A Comment..." value={comment} onChange={addComment}/>
+                <Button type="button" variant="primary" onClick={commentPosted}>Post</Button>
                 </form>
             </div>
             </div>
@@ -100,15 +140,22 @@ const commentPosted=async()=>{
 function DescktopCommentsPopup(props) {
 
   const [modalShow, setModalShow] = React.useState(false);
+  const {deignerName,thumbnail,commentData}=props
+  console.log(thumbnail,"deignerNamedeignerName457467")
+  console.log("arsdfghVJBKNfgchvjbnm")
+
 
   return (
     <>
-      
-      <SlBubble onClick={() => setModalShow(true)}/>
+      <p onClick={() => setModalShow(true)} className='comments-text'>View All Comments...</p>
+      {/* <SlBubble /> */}
 
       <DescktopComments
         show={modalShow}
         onHide={() => setModalShow(false)}
+        deignerName={deignerName}
+        thumbnail={thumbnail}
+        commentData={commentData}
       />
     </>
   );

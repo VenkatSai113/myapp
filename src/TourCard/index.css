@@ -52,7 +52,8 @@
        width: 180px;
       }
       .tour-cards-container{
-        margin-left: 0px;
+        margin-left: auto;
+        margin-right: auto;
         min-height: 70vh;
         overflow-y: auto;
         margin-top: 80px;
