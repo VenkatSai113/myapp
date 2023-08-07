@@ -16,7 +16,7 @@ class ShopProducts extends Component{
         const materialName=localStorage.getItem("materialName")
         const productDetails={materialName,hello:"hello"}
         console.log(materialName)
-        const apiUrl="http://localhost:9000/storeProducts"
+        const apiUrl="https://objective-wright.69-49-231-148.plesk.page/storeProducts"
         const options={
             method:"POST",
             headers:{

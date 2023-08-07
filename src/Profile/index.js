@@ -20,7 +20,7 @@ class Profile extends Component{
     componentDidMount=async()=>{
         
          jwtToken=Cookies.get("jwt_token")
-        const url="http://localhost:9000/profileData";
+        const url="https://objective-wright.69-49-231-148.plesk.page/profileData";
         const options={
             headers:{
                 "authorization":`Bearer ${jwtToken}`
@@ -36,7 +36,7 @@ class Profile extends Component{
             console.log(fetchedData)
 
         }
-        const postApiUrl="http://localhost:9000/profileAllposts"
+        const postApiUrl="https://objective-wright.69-49-231-148.plesk.page/profileAllposts"
         const postOptions={
             headers:{
                 "Content-Type":"Application/json",
@@ -81,7 +81,7 @@ class Profile extends Component{
 
     }
     virtualImages=async()=>{
-        const postApiUrl="http://localhost:9000/360ImagesOnProfile"
+        const postApiUrl="https://objective-wright.69-49-231-148.plesk.page/360ImagesOnProfile"
         const postOptions={
             headers:{
                 "Content-Type":"Application/json",
@@ -110,7 +110,7 @@ class Profile extends Component{
             <div className="saved-feed-container ">
                 <div className="saved-profile-div">
                     <div>
-                    <img src={`http://localhost:9000/${logo}`} alt="profile" className="profile-image-profilepic"/>
+                    <img src={`https://objective-wright.69-49-231-148.plesk.page/${logo}`} alt="profile" className="profile-image-profilepic"/>
                     <p  className="saved-profile-name">{desigener_name}</p>
                     </div>
                     <div>

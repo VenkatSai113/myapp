@@ -60,7 +60,7 @@ class Home extends Component{
     componentDidMount=async()=>{
         const jwtToken=Cookies.get("jwt_token")
         const hello=async()=>{
-            const logUrl="http://localhost:9000/logedInUser"
+            const logUrl="https://objective-wright.69-49-231-148.plesk.page/logedInUser"
         const options={
             method:"GET",
             headers:{
@@ -89,7 +89,7 @@ class Home extends Component{
         const userPost=profilePost[0]
        
         if(userPost==="profilePosts"){
-            const designerPostsUrl="http://localhost:9000/designerPost"
+            const designerPostsUrl="https://objective-wright.69-49-231-148.plesk.page/designerPost"
             const selectedPostId=profilePost[1]
             const postInfo={selectedPostId,hello:"hello"}
 
@@ -110,7 +110,7 @@ class Home extends Component{
           
         }
         else if(userPost==="sharedPost"){
-            const designerPostsUrl1="http://localhost:9000/designerSelectedPost"
+            const designerPostsUrl1="https://objective-wright.69-49-231-148.plesk.page/designerSelectedPost"
             const selectedPostId1=profilePost[1]
             const postInfo1={selectedPostId1,hello:"hello"}
 
@@ -131,7 +131,7 @@ class Home extends Component{
           
         }
         else{
-        const feedUrl="http://localhost:9000/feedData"
+        const feedUrl="https://objective-wright.69-49-231-148.plesk.page/feedData"
         const options={
             method:"GET",
             headers:{

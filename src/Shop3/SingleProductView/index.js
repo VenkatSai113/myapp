@@ -32,7 +32,7 @@ class SingleProductView extends Component{
         jwtToken=Cookies.get("jwt_token")
         const productId=localStorage.getItem("productId")
         const productDetails={productId,hello:"hello"}
-        const apiUrl="http://localhost:9000/productDetailview"
+        const apiUrl="https://objective-wright.69-49-231-148.plesk.page/productDetailview"
         const options={
             method:"POST",
             headers:{
@@ -80,13 +80,13 @@ class SingleProductView extends Component{
                         {splitedImages.map(eachImage=>
                         <>
                           <div className='post-count-div'> <p className='post-count'>{`${activeIndex+1}/${splitedImages.length}`}</p></div>
-                           <img alt="products" src={`http://localhost:9000/${eachImage}`} className='img-fluid productSize'/></> )}
+                           <img alt="products" src={`https://objective-wright.69-49-231-148.plesk.page/${eachImage}`} className='img-fluid productSize'/></> )}
                           
                            </SwipeableViews>
                         
                         <div className='referImgDiv'>
                         {splitedImages.map(eachImage=>
-                           <img alt="smallimg" src={`http://localhost:9000/${eachImage}`} className="referedImg"/>)}
+                           <img alt="smallimg" src={`https://objective-wright.69-49-231-148.plesk.page/${eachImage}`} className="referedImg"/>)}
                         </div>
                     </Col>
                     <Col md={6}>

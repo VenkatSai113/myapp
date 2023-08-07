@@ -27,7 +27,7 @@ function TourCards(props) {
   return (
     <div className='col-lg-4 col-md-6 col-12 mt-3 '>
     <Card style={{ width: '18rem' }}>
-    <Link to={`/viewer:${tour_id}`}><Card.Img variant="top" className="tourThumbnail" src={`http://localhost:9000/${thumbnail_image}`} /></Link>
+    <Link to={`/viewer:${tour_id}`}><Card.Img variant="top" className="tourThumbnail" src={`https://objective-wright.69-49-231-148.plesk.page/${thumbnail_image}`} /></Link>
       <Card.Body>
         <div className='d-flex flex-row justify-content-between'>
         <Link to={`/viewer:${tour_id}`}> <Card.Title className='tour-name'>{tour_name}</Card.Title></Link>

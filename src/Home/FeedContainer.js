@@ -65,7 +65,7 @@ const FeedContainer=(props)=>{
       console.log(postIds)
     
         setSavedFeed(false)
-        const savedApiUrl="http://localhost:9000/savedPost";
+        const savedApiUrl="https://objective-wright.69-49-231-148.plesk.page/savedPost";
         const options={
           method:"post",
           headers:{
@@ -85,7 +85,7 @@ const FeedContainer=(props)=>{
     const postIds={postId,hello:"hello"}
     console.log(postIds)
    
-      const savedApiUrl="http://localhost:9000/deleteSavedPost";
+      const savedApiUrl="https://objective-wright.69-49-231-148.plesk.page/deleteSavedPost";
         const options={
           method:"post",
           headers:{
@@ -104,7 +104,7 @@ const FeedContainer=(props)=>{
       const postIds={postId,hello:"hello"}
       console.log(postId)
          if(likeButton===true){
-          const likesApiUrl="http://localhost:9000/likesCount";
+          const likesApiUrl="https://objective-wright.69-49-231-148.plesk.page/likesCount";
           const options={
             method:"post",
             headers:{
@@ -141,7 +141,7 @@ const FeedContainer=(props)=>{
         localStorage.setItem("postId",postId)
         console.log(postId,"lk,mjgfh")
         const commentPostId={comment:"comment",postId}
-        const apiUrl="http://localhost:9000/viewComments"
+        const apiUrl="https://objective-wright.69-49-231-148.plesk.page/viewComments"
         const options={
           method:"POST",
           headers:{
@@ -170,20 +170,20 @@ const FeedContainer=(props)=>{
        }
     return(
         <div className='feed-container-div'>
-        {(postType =="image" || "imageVideo" || "virlTourImage") ?  ((splitedImages.length===1)? <img alt="" src={`http://localhost:9000/${splitedImages[0]}`} className="virtual-feed" onClick={virtualTour}/>:
+        {(postType =="image" || "imageVideo" || "virlTourImage") ?  ((splitedImages.length===1)? <img alt="" src={`https://objective-wright.69-49-231-148.plesk.page/${splitedImages[0]}`} className="virtual-feed" onClick={virtualTour}/>:
         <> <SwipeableViews enableMouseEvents  index={activeIndex} onChangeIndex={handleSlideChange}>
         {splitedImages.map(eachImage=>{
           if(eachImage.split(".")[1]=="mp4"){
             return(
               <>
                <div className='post-count-div'> <p className='post-count'>{`${activeIndex+1}/${splitedImages.length}`}</p></div>
-            <video  src={`http://localhost:9000/${eachImage}`} autoPlay loop muted  className="feed-video"/>
+            <video  src={`https://objective-wright.69-49-231-148.plesk.page/${eachImage}`} autoPlay loop muted  className="feed-video"/>
             </>)
           }
           else{
             return(
             <>
-            <img alt="" src={`http://localhost:9000/${eachImage}`} className="feed-image" onClick={onImageLikeAndDislike}/>
+            <img alt="" src={`https://objective-wright.69-49-231-148.plesk.page/${eachImage}`} className="feed-image" onClick={onImageLikeAndDislike}/>
             <div className='post-count-div'> <p className='post-count'>{`${activeIndex+1}/${splitedImages.length}`}</p></div>
           </>)
           }
@@ -194,12 +194,12 @@ const FeedContainer=(props)=>{
          onChangeIndex={handleSlideChange}>
             {splitedImages.map(eachImage=>
             <>
-            <video  src={`http://localhost:9000/${eachImage}`} autoPlay loop muted  className="feed-video"/>
-            <div className='post-count-div'> <p className='post-count'>{`${activeIndex+1}/${splitedImages.length}`}</p></div> </>)}</SwipeableViews></>:<video  src={`http://localhost:9000/${splitedImages[0]}`} autoPlay loop muted  className="feed-image"/>}
+            <video  src={`https://objective-wright.69-49-231-148.plesk.page/${eachImage}`} autoPlay loop muted  className="feed-video"/>
+            <div className='post-count-div'> <p className='post-count'>{`${activeIndex+1}/${splitedImages.length}`}</p></div> </>)}</SwipeableViews></>:<video  src={`https://objective-wright.69-49-231-148.plesk.page/${splitedImages[0]}`} autoPlay loop muted  className="feed-image"/>}
        
         <div className="like-symbol-div">
         <div className="profile-row-container">
-        <img alt="Profile Image"   src={`http://localhost:9000/${designerLogo}`} className="profile-image1"/>
+        <img alt="Profile Image"   src={`https://objective-wright.69-49-231-148.plesk.page/${designerLogo}`} className="profile-image1"/>
        <div className="designer-time-column-div">
         <p className="profile-name1" >{deignerName}</p>
         <p className='time-text'>{getTimeElapsed()}</p>

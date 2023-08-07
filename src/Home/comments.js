@@ -57,7 +57,7 @@ useEffect(()=>{
 })
 const commentPosted=async()=>{
   const comments={comment,postId}
-  const apiUrl="http://localhost:9000/comments"
+  const apiUrl="https://objective-wright.69-49-231-148.plesk.page/comments"
   const options={
     method:"POST",
     headers:{
@@ -88,19 +88,19 @@ const commentPosted=async()=>{
               <div className='w-100 d-none d-md-block'>
             <SwipeableViews enableMouseEvents index={activeIndex} onChangeIndex={handleSlideChange}>
               {thumbnails.map(eachImage=>{
-                <img src={`http://localhost:9000/${eachImage}`} className="descktop-comment-image" alt=""/>
+                <img src={`https://objective-wright.69-49-231-148.plesk.page/${eachImage}`} className="descktop-comment-image" alt=""/>
                 
                 if(eachImage.split(".")[1]=="mp4"){
                   return(
                     <>
                      <div className='post-count-div'> <p className='post-count'>{`${activeIndex+1}/${thumbnails.length}`}</p></div>
-                  <video  src={`http://localhost:9000/${eachImage}`} autoPlay loop muted  className="descktop-comment-image"/>
+                  <video  src={`https://objective-wright.69-49-231-148.plesk.page/${eachImage}`} autoPlay loop muted  className="descktop-comment-image"/>
                   </>)
                 }
                 else{
                   return(
                   <>
-                  <img alt="" src={`http://localhost:9000/${eachImage}`} className="descktop-comment-image" />
+                  <img alt="" src={`https://objective-wright.69-49-231-148.plesk.page/${eachImage}`} className="descktop-comment-image" />
                   <div className='post-count-div'> <p className='post-count'>{`${activeIndex+1}/${thumbnails.length}`}</p></div>
                 </>)
                 }

@@ -153,7 +153,7 @@ class OrganizationDetails extends Component{
             formData.append("ifscCode",ifscCode);
             formData.append("PhoneNumber",PhoneNumber);
             formData.append("logoFile",logoFile);
-            const url="http://localhost:9000//designer/signup/"
+            const url="https://objective-wright.69-49-231-148.plesk.page//designer/signup/"
             axios.post(url,formData).then
             (response=> 
                this.setState({responseData:response.data}),
