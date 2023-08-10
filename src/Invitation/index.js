@@ -11,7 +11,7 @@ import TopNavbar from "../Home/topNavbar";
 import BottomNavbar from "../Home/bottomNavbar";
 
 class InviteDesigner extends Component{
-  state={mobileNumber:"",invitationMsg: "I'm inviting you to register with Design Alley! Here is the link https://designalley.69-49-231-148.plesk.page/login",errorMsg:"",open:false, vertical: 'top',
+  state={mobileNumber:"",invitationMsg: "I'm inviting you to register with Design Alley! Here is the link http://localhost:3000/login",errorMsg:"",open:false, vertical: 'top',
   horizontal: 'center',successMsg:""}
   onChangeMobileNumber=(event)=>{
     this.setState({mobileNumber:event.target.value})
@@ -89,7 +89,7 @@ class InviteDesigner extends Component{
                       <FacebookIcon size={35}  logoFillColor="white" round={true}>
                       </FacebookIcon>
                     </FacebookShareButton> */}
-                    <WhatsappShareButton url="https://designalley.69-49-231-148.plesk.page/signup" title="I'm inviting you to register with Design Alley! Here is the link">
+                    <WhatsappShareButton url="http://localhost:3000/signup" title="I'm inviting you to register with Design Alley! Here is the link">
                       <WhatsappIcon className="ml-3" size={35} logoFillColor="white" round={true}>
                       </WhatsappIcon>
                     </WhatsappShareButton>

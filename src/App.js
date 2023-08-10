@@ -31,6 +31,9 @@ import Shop3 from './Shop3'
 import ShopProducts from './Shop3/Products/index'
 import SingleProductView from './Shop3/SingleProductView/index'
 import VirtualTourDetailView from './virtualTourDetailView/index'
+import IndividualDesigener from './UserOtpAuth/index'
+import UserOtpLogin from './UserLogin/index'
+import ProtecteRoute from './ProtectRoute';
 
 function App() {
   return (
@@ -38,13 +41,15 @@ function App() {
    <BrowserRouter>
    <Switch>
    <Route exact path="/login" component={OtpAuth}/>
+   <Route exact path="/userLogin" component={UserOtpLogin}/>
     <ProtectedRoute exact path="/virtualTours" component={Aframes}/>
-    <Route exact path="/viewer:tour_id" component={Viewer}/>
+    <ProtecteRoute exact path="/viewer:tour_id" component={Viewer}/>
     <ProtectedRoute  exact path="/comments" component={MobileViewComments}/>
     <ProtectedRoute exact path="/createtour" component={TourCreator}/>
     <ProtectedRoute exact path="/invitation" component={InviteDesigner}/>  
     <ProtectedRoute exact path="/" component={Home}/> 
-    <ProtectedRoute exact path="/sharedPost:selectedPostId1" component={Home}/>
+    <ProtecteRoute exact path="/" component={Home}/> 
+    <ProtecteRoute exact path="/sharedPost:selectedPostId1" component={Home}/>
     <ProtectedRoute exact path="/profilePosts:postId" component={Home}/> 
     <ProtectedRoute exact path="/savedTours" component={TourCards}/>  
     <ProtectedRoute exact path="/savedposts" component={SavedPosts}/>  
@@ -64,9 +69,11 @@ function App() {
     <ProtectedRoute exact path="/addproduct" component={AddProduct}/>   
     <ProtectedRoute  exact path="/shop" component={Shop3}/> 
     <ProtectedRoute  exact path="/shopproducts" component={ShopProducts}/> 
-    <ProtectedRoute  exact path="/singleproductview" component={SingleProductView}/>   
+    <ProtectedRoute  exact path="/singleproductview" component={SingleProductView}/> 
+    <Route  exact path="/UserOtpAuth" component={IndividualDesigener}/>   
     <ProtectedRoute  exact path="/VirtualtourdetailView:tour_id" component={VirtualTourDetailView}/>                    
-    <Route exact path="/signup" component={SignUp}/>
+    <Route exact path="/signup" component={SignUp}/> 
+ 
     <Route exact path="/not-found" component={NotFound}/>       
     <Redirect to="/not-found"/>
    </Switch>

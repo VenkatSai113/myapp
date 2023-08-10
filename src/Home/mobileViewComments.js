@@ -1,7 +1,5 @@
-import { Component } from "react";
 import TopNavbar from "./topNavbar";
 import BottomNavbar from "./bottomNavbar";
-
 import MoreModel from './moreMode'
 import Button from 'react-bootstrap/Button'
 import AddingComments from './addingComments'

@@ -1,6 +1,6 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-
+import { getAuth ,Auth} from "firebase/auth";
 const config={
     apiKey: "AIzaSyBcnkJ-5BS4gI7_AxnuYXZXhD0b1M7VJps",
     authDomain: "phone-auth-b208f.firebaseapp.com",

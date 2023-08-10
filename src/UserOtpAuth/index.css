@@ -1,0 +1,128 @@
+@import url("https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap");
+body{
+    padding:0px;
+    margin:0px;
+}
+.login-bg-container{
+    min-height:100vh;
+    background-image: url("https://img.freepik.com/free-photo/gray-sofa-white-living-room-interior-with-copy-space-3d-rendering_43614-802.jpg");
+    background-size: cover;
+    display: flex;
+    align-items:center;
+}
+.otp-div{
+  height:100vh;
+  width:100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.otpInput{
+  height:30px;
+  width:70px;
+  border-radius:3px;
+  border: solid 1px red;
+}
+.logo-image{
+    margin-left:auto;
+    margin-right:auto;
+    width:30%;
+}
+.login-card-container{
+    min-height:350px;
+    background-color:#ffffff;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 80%;
+    max-width: 350px;
+    box-shadow: brown;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.logo-login-image{
+    height:50px;
+    margin-bottom: 25px;
+    
+}
+.error-message{
+  font-size:12px;
+  font-family:roboto;
+  color:red;
+  text-align: left;
+}
+.username-input-filed {
+    font-size: 14px;
+    height: 30px;
+    border: 1px solid #d7dfe9;
+    background-color: #e2e8f0;
+    color: #64748b;
+    border-radius: 2px;
+    margin-top: 5px;
+    padding: 8px 16px 8px 16px;
+  }
+  .password-input-filed {
+    font-size: 14px;
+    height: 30px;
+    border: 1px solid #d7dfe9;
+    background-color: #e2e8f0;
+    color: #64748b;
+    border-radius: 2px;
+    margin-top: 15px;
+    padding: 8px 16px 8px 16px;
+  }
+  .login-button1{
+    font-family: 'Roboto';
+    font-weight: normalbold;
+    font-size: 14px;
+    color: #ffffff;
+    height: 35px;
+    width: 140px;
+    margin-top: 20px;
+   
+    background-color: #b18165;
+    border-radius: 8px;
+    border: none;
+  }
+  .forgot-password{
+    font-family: roboto;
+    font-size:14px;
+    color:#0E80AE;
+  }
+  .dont-have-account{
+    font-family: roboto;
+    font-size:14px;
+    margin-top: 15px;
+   
+  }
+  .link{
+    text-decoration: none;
+  }
+  .signup-text{
+    font-family: roboto;
+    font-size:16px;
+ 
+    font-weight: bold;
+    margin-left: 10px;
+    text-decoration: none;
+  }
+@media only screen and (max-width: 768px) {
+    .logo-image{
+        display:none;
+    }
+  }
+.error-message12{
+    font-family:roboto;
+    font-size:13px;
+    color:red;
+    text-align: center;
+}
+.success-message{
+    font-family:roboto;
+    font-size:13px;
+    color:green;
+    text-align: center;
+}

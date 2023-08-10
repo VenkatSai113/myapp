@@ -213,7 +213,7 @@ class Aframes extends Component{
     onClickpreview=()=>{
         const tourId=localStorage.getItem("tourId")
         const parseTourId=JSON.parse(tourId)
-        window.open(`https://designalley.69-49-231-148.plesk.page/viewer:${parseTourId}`,"__blank")
+        window.open(`http://localhost:3000/viewer:${parseTourId}`,"__blank")
     }
     render(){
         const {scenes,uploadMapRender,open,singleScene,hotspotData,activeSceneId,stateMap,sceneName,isSceneLoading}=this.state

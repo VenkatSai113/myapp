@@ -5,14 +5,15 @@ import {BsFillShareFill} from "react-icons/bs"
 import { FacebookShareButton ,FacebookIcon, WhatsappShareButton,WhatsappIcon, TelegramShareButton, TelegramIcon} from 'react-share';
 
 function Example(props) {
-  const {tour_id}=props
+  const {tour_id,postId,tour_description}=props
   const [smShow, setSmShow] = useState(false);
   const [lgShow, setLgShow] = useState(false);
   const [copyIcon,setCopyIcon]=useState(false)
   const copyTourUrl=()=>{
-    navigator.clipboard.writeText(`${window.location.origin}/viewer:${tour_id}`)
+    navigator.clipboard.writeText(`${window.location.origin}/sharedPost:${postId}`)
     setCopyIcon(true)
   }
+  let imageUrl='https://objective-wright.69-49-231-148.plesk.page/virtualThumbnails/1691574163284_Royal-Suite-.jpg'
   return (
     <>
     
@@ -42,9 +43,11 @@ function Example(props) {
     </div> */}
     <div>
       <WhatsappShareButton
-        url={`${window.location.origin}/viewer:${tour_id}`}
+        url={`${window.location.origin}/sharedPost:${postId}`}
         quote={'Dummy text!'}
+        title={tour_description}
         hashtag="#muo"
+        image={imageUrl}
       >
         <WhatsappIcon size={32} round />
       </WhatsappShareButton>
@@ -52,7 +55,7 @@ function Example(props) {
     </div>
     <div>
       <TelegramShareButton
-        url={`${window.location.origin}/viewer:${tour_id}`}
+        url={`${window.location.origin}/sharedPost:${postId}`}
         quote={'Dummy text!'}
         hashtag="#muo"
       >

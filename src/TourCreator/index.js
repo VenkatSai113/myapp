@@ -7,7 +7,7 @@ import Sidebar from "../Sidebar";
 import Button from 'react-bootstrap/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-
+import {Link,withRouter} from 'react-router-dom'
 let jwtToken=""
 let feedImages=""
 class TourCreator extends Component{
@@ -52,7 +52,8 @@ class TourCreator extends Component{
         axios.post(apiurl,formData,config).then(response=>{
                 const {history}=this.props
                 this.setState({isLoading:false})
-                history.push("/virtualTours")
+                // history.push("/virtualTours")
+                window.open("http://localhost:3000/virtualTours", '_blank');
             localStorage.setItem("tourId",response.data.tourId)
             
         })
@@ -154,4 +155,4 @@ class TourCreator extends Component{
     }
 }
 
-export default TourCreator
+export default withRouter(TourCreator)

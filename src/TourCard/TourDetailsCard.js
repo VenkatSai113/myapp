@@ -9,7 +9,7 @@ import { useState ,useEffect} from 'react';
 
 function TourCards(props) {
     const {tourDetails,onClickDeleteTourDetails}=props
-    const {tour_name,thumbnail_image,tour_id,tour_description}=tourDetails
+    const {tour_name,thumbnail_image,tour_id,tour_description,postId}=tourDetails
     const [perPage,setPerPage]=useState([])
    
     const  onClickDeleteTour=()=>{
@@ -31,7 +31,7 @@ function TourCards(props) {
       <Card.Body>
         <div className='d-flex flex-row justify-content-between'>
         <Link to={`/viewer:${tour_id}`}> <Card.Title className='tour-name'>{tour_name}</Card.Title></Link>
-        <Example tour_id={tour_id}/>
+        <Example tour_id={tour_id} postId={postId} tour_description={tour_description}/>
        
        
         </div>

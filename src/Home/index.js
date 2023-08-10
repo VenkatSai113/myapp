@@ -56,9 +56,17 @@ const suggestionProfiles=[
 ]
 
 class Home extends Component{
+    
     state={stateFeeds:initialFeeds,feedDetails:[],loginUser:""}
     componentDidMount=async()=>{
         const jwtToken=Cookies.get("jwt_token")
+        const userJwtToken=Cookies.get("userJwtToken")
+        const currentUrl = window.location.href;
+        const splitCurrentUrl=currentUrl.split("/");
+       
+        const urlLength=splitCurrentUrl.length-1
+        const profilePost=splitCurrentUrl[urlLength].split(":")
+        const userPost=profilePost[0]
         const hello=async()=>{
             const logUrl="https://objective-wright.69-49-231-148.plesk.page/logedInUser"
         const options={
@@ -81,12 +89,7 @@ class Home extends Component{
         }
         hello()
      
-        const currentUrl = window.location.href;
-        const splitCurrentUrl=currentUrl.split("/");
        
-        const urlLength=splitCurrentUrl.length-1
-        const profilePost=splitCurrentUrl[urlLength].split(":")
-        const userPost=profilePost[0]
        
         if(userPost==="profilePosts"){
             const designerPostsUrl="https://objective-wright.69-49-231-148.plesk.page/designerPost"
@@ -110,6 +113,7 @@ class Home extends Component{
           
         }
         else if(userPost==="sharedPost"){
+            console.log("Helllooo")
             const designerPostsUrl1="https://objective-wright.69-49-231-148.plesk.page/designerSelectedPost"
             const selectedPostId1=profilePost[1]
             const postInfo1={selectedPostId1,hello:"hello"}
@@ -118,7 +122,8 @@ class Home extends Component{
                 method:"POST",
                 headers:{
                     "Content-Type":"Application/json",
-                    "Authorization":`Bearer ${jwtToken}`
+                    "Authorization":`Bearer ${userJwtToken}`
+                   
                 },
                 mode: "cors",
                 body:JSON.stringify(postInfo1)

@@ -1,4 +1,4 @@
-import {Component, useState,useEffect} from 'react'
+import {useState,useEffect} from 'react'
 import {SlHeart} from 'react-icons/sl'
 import {BsBookmark,BsFillBookmarkFill} from 'react-icons/bs'
 import {BsFillShareFill} from 'react-icons/bs'
@@ -204,10 +204,7 @@ const FeedContainer=(props)=>{
         <p className="profile-name1" >{deignerName}</p>
         <p className='time-text'>{getTimeElapsed()}</p>
         </div>
-    
-       
         </div>
-        
         {/* <div className="save-share-symbol">
          <p className="like"><BsBookmark/></p>
          <p className="like"><BsFillShareFill/></p>
