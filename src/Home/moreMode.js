@@ -28,7 +28,7 @@ const ModelItems=(props)=>{
 }
 
 function MoreModel(props) {
-  const {selectedPostId1}=props
+  const {selectedPostId1,caption}=props
   
   console.log(selectedPostId1,"qwaesrdtfhgjk")
   const [show, setShow] = useState(false);
@@ -54,7 +54,7 @@ const onclickPin=()=>{
              <p className='model-report-text' onClick={onclickPin}>Pin to your Profile</p>
         </div>
             <div className='d-flex flex-row justify-content-around'>
-            <div>
+            {/* <div>
       <FacebookShareButton
         url={`${window.location.origin}/sharedPost:${selectedPostId1}`}
         quote={'Dummy text!'}
@@ -63,12 +63,13 @@ const onclickPin=()=>{
         <FacebookIcon size={32} round />
       </FacebookShareButton>
 
-    </div>
+    </div> */}
     <div>
       <WhatsappShareButton
         url={`${window.location.origin}/sharedPost:${selectedPostId1}`}
         quote={'Dummy text!'}
         hashtag="#muo"
+        title={caption}
       >
         <WhatsappIcon size={32} round />
       </WhatsappShareButton>

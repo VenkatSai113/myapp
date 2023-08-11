@@ -6,6 +6,7 @@ import { FacebookShareButton ,FacebookIcon, WhatsappShareButton,WhatsappIcon, Te
 
 function Example(props) {
   const {tour_id,postId,tour_description}=props
+  
   const [smShow, setSmShow] = useState(false);
   const [lgShow, setLgShow] = useState(false);
   const [copyIcon,setCopyIcon]=useState(false)
@@ -13,7 +14,7 @@ function Example(props) {
     navigator.clipboard.writeText(`${window.location.origin}/sharedPost:${postId}`)
     setCopyIcon(true)
   }
-  let imageUrl='https://objective-wright.69-49-231-148.plesk.page/virtualThumbnails/1691574163284_Royal-Suite-.jpg'
+  let imageUrl='http://localhost:9000/virtualThumbnails/1691574163284_Royal-Suite-.jpg'
   return (
     <>
     

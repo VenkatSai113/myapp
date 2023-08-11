@@ -26,7 +26,7 @@ class InviteDesigner extends Component{
     const {mobileNumber,invitationMsg}=this.state
     const invitationDetails={mobileNumber,invitationMsg}
     console.log(invitationDetails)
-    const url="https://objective-wright.69-49-231-148.plesk.page/invitationApi"
+    const url="http://localhost:9000/invitationApi"
     const options={
       method:"POST",
       headers:{

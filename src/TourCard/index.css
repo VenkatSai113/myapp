@@ -46,6 +46,9 @@
 .tour-cards-container{
     margin-left: 230px;
 }
+/* .tour-name{
+  text-decoration: none;
+} */
   @media screen and (max-width: 768px) {
     .login-button2{
        margin-top: 20px;

@@ -75,7 +75,7 @@ class SavedPosts extends Component{
     state={projectItems:initialCardItems,onSearch:"",name:"",description:"",savedFeed:[] }
     componentDidMount=async()=>{
         jwtToken=Cookies.get("jwt_token")
-        const feedUrl="https://objective-wright.69-49-231-148.plesk.page/getSavedPost"
+        const feedUrl="http://localhost:9000/getSavedPost"
         const options={
             method:"GET",
             headers:{

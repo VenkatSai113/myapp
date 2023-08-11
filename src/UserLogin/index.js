@@ -11,12 +11,12 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
 
 class UserOtpLogin extends Component{
-    state={phoneNumber:"",userName:"",hello:"hello",submittMsg:[],validationStatus:"",isLoading:false}
+    state={phoneNumber:"",name:"",hello:"hello",submittMsg:[],validationStatus:"",isLoading:false}
     onChangeMobileNumber=(event)=>{
         this.setState({phoneNumber:event.target.value})
     }
     onChangeUserName=(event)=>{
-      this.setState({userName:event.target.value})
+      this.setState({name:event.target.value})
       console.log(event.target.value)
   }
     onOtp=(jwtToken)=>{
@@ -52,27 +52,55 @@ class UserOtpLogin extends Component{
 });
      }
     handleClick=async(e)=>{
-      this.setState({isLoading:true})
-        const {phoneNumber,hello}=this.state
-        const extra= {phoneNumber,hello}
-        const url="https://objective-wright.69-49-231-148.plesk.page/userLoginCheck/"
+      const {phoneNumber,name}=this.state
+      if(phoneNumber!==""){
+          
+        this.setState({isLoading:true})
+        const signupUrl="http://localhost:9000/userRegister"
+        let signupDetails={name,phoneNumber}
+     
         const options={
-          method:"POST",
-          headers:{
-            "Content-Type":"application/json"
-          },
-          mode:"cors",
-          body:JSON.stringify(extra)
+            method:"POST",
+            headers:{
+                "Content-Type":"Application/json"
+            },
+            mode:"cors",
+            body:JSON.stringify(signupDetails)
         }
-        const response=await fetch(url,options)
+        const response=await fetch(signupUrl,options)
         const data=await response.json()
-      console.log(response,"datta")
-       this.setState({submittMsg:data.error_msg})
-       this.setState({isLoading:false})
+        console.log(data)
         if(response.ok===true){
-          this.onOtp(data.jwtToken)
-          console.log(data,"ioukjyhgfd")
+            // this.setState({responseData:data})
+            // this.setState({open:true})
+            this.onOtp(data.jwtToken)
+            this.setState({isLoading:false})
         }
+    }
+    else{
+       
+    }
+      // this.setState({isLoading:true})
+      //   const {phoneNumber,hello}=this.state
+      //   const extra= {phoneNumber,hello}
+      //   const url="http://localhost:9000/userLoginCheck/"
+      //   const options={
+      //     method:"POST",
+      //     headers:{
+      //       "Content-Type":"application/json"
+      //     },
+      //     mode:"cors",
+      //     body:JSON.stringify(extra)
+      //   }
+      //   const response=await fetch(url,options)
+      //   const data=await response.json()
+      // console.log(response,"datta")
+      //  this.setState({submittMsg:data.error_msg})
+      //  this.setState({isLoading:false})
+      //   if(response.ok===true){
+      //     this.onOtp(data.jwtToken)
+      //     console.log(data,"ioukjyhgfd")
+      //   }
     }
     render(){
       const {submittMsg,isLoading}=this.state

@@ -13,7 +13,7 @@ const ProfilePosts=(props)=>{
    }
     return(
         <>
-        {splitDisplayedImage=="mp4"?<Link to={`/profilePosts:${postId}`}><video  src={`https://objective-wright.69-49-231-148.plesk.page/${displayedImage}`} onClick={onPostClick} autoPlay loop muted  className="profile-post-gridView"/></Link>:<Link to={`/profilePosts:${postId}`}><img src={`https://objective-wright.69-49-231-148.plesk.page/${displayedImage}`} onClick={onPostClick} className="profile-post-gridView"/></Link>}
+        {splitDisplayedImage=="mp4"?<Link to={`/profilePosts:${postId}`}><video  src={`http://localhost:9000/${displayedImage}`} onClick={onPostClick} autoPlay loop muted  className="profile-post-gridView"/></Link>:<Link to={`/profilePosts:${postId}`}><img src={`http://localhost:9000/${displayedImage}`} onClick={onPostClick} className="profile-post-gridView"/></Link>}
         
         
         </>

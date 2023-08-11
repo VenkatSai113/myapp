@@ -20,7 +20,7 @@ class Profile extends Component{
     componentDidMount=async()=>{
         
          jwtToken=Cookies.get("jwt_token")
-        const url="https://objective-wright.69-49-231-148.plesk.page/profileData";
+        const url="http://localhost:9000/profileData";
         const options={
             headers:{
                 "authorization":`Bearer ${jwtToken}`
@@ -36,7 +36,7 @@ class Profile extends Component{
             console.log(fetchedData)
 
         }
-        const postApiUrl="https://objective-wright.69-49-231-148.plesk.page/profileAllposts"
+        const postApiUrl="http://localhost:9000/profileAllposts"
         const postOptions={
             headers:{
                 "Content-Type":"Application/json",
@@ -81,18 +81,26 @@ class Profile extends Component{
 
     }
     virtualImages=async()=>{
-        const postApiUrl="https://objective-wright.69-49-231-148.plesk.page/360ImagesOnProfile"
-        const postOptions={
-            headers:{
-                "Content-Type":"Application/json",
-                "authorization":`Bearer ${jwtToken}`
-            },
-            method:"GET"
+        const virtualData=postData.filter(eachItem=>{
+            const virtualImages=eachItem.postType.includes("virtualTourImage") 
+        
+            return virtualImages; 
+         } )
+        console.log(virtualData)
+        this.setState({profilePosts:virtualData});
+
+        // const postApiUrl="http://localhost:9000/360ImagesOnProfile"
+        // const postOptions={
+        //     headers:{
+        //         "Content-Type":"Application/json",
+        //         "authorization":`Bearer ${jwtToken}`
+        //     },
+        //     method:"GET"
            
-        }
-        const postResponse=await fetch(postApiUrl,postOptions)
-         postData=await postResponse.json()
-         console.log(postData)
+        // }
+        // const postResponse=await fetch(postApiUrl,postOptions)
+        //  postData=await postResponse.json()
+        //  console.log(postData)
        
     }
     render(){
@@ -110,7 +118,7 @@ class Profile extends Component{
             <div className="saved-feed-container ">
                 <div className="saved-profile-div">
                     <div>
-                    <img src={`https://objective-wright.69-49-231-148.plesk.page/${logo}`} alt="profile" className="profile-image-profilepic"/>
+                    <img src={`http://localhost:9000/${logo}`} alt="profile" className="profile-image-profilepic"/>
                     <p  className="saved-profile-name">{desigener_name}</p>
                     </div>
                     <div>
@@ -144,10 +152,10 @@ class Profile extends Component{
                         <p className='explore-icon'><MdSlowMotionVideo/></p>
                         <p className='explore-icon-text'>Videos</p>
                         </div>
-                        {/* <div className='explore-icon-div' onClick={this.virtualImages}>
+                        <div className='explore-icon-div' onClick={this.virtualImages}>
                         <p className='explore-icon'><TbRotate360/></p>
                         <p className='explore-icon-text'>360 Toures</p>
-                        </div> */}
+                        </div>
                         
                        </div>
                        <div className='filter-icons-mobile-view'>

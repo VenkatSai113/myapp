@@ -18,11 +18,11 @@ function SelectedProducts(props) {
   return (
    
     <Card style={{ width: '18rem' ,margin:"7px" }} onClick={onClickProduct}>
-      {splitedImages.length===1?<Card.Img variant="top" src={`https://objective-wright.69-49-231-148.plesk.page/${splitedImages}`} style={{height:"180px" ,width:"100%"}} /> :<SwipeableViews enableMouseEvents  index={activeIndex} onChangeIndex={handleSlideChange}>
+      {splitedImages.length===1?<Card.Img variant="top" src={`http://localhost:9000/${splitedImages}`} style={{height:"180px" ,width:"100%"}} /> :<SwipeableViews enableMouseEvents  index={activeIndex} onChangeIndex={handleSlideChange}>
       {splitedImages.map(eachImage=>
       <>
       <div className='post-count-div'> <p className='post-count'>{`${activeIndex+1}/${splitedImages.length}`}</p></div>
-       <Card.Img variant="top" src={`https://objective-wright.69-49-231-148.plesk.page/${eachImage}`} style={{height:"180px" ,width:"100%"}} />  </>)}
+       <Card.Img variant="top" src={`http://localhost:9000/${eachImage}`} style={{height:"180px" ,width:"100%"}} />  </>)}
       </SwipeableViews>}
       <Card.Body>
         <Card.Title>{title}</Card.Title>

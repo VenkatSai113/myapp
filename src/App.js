@@ -44,6 +44,7 @@ function App() {
    <Route exact path="/userLogin" component={UserOtpLogin}/>
     <ProtectedRoute exact path="/virtualTours" component={Aframes}/>
     <ProtecteRoute exact path="/viewer:tour_id" component={Viewer}/>
+    <ProtectedRoute exact path="/createdviewer:tour_id" component={Viewer}/>
     <ProtectedRoute  exact path="/comments" component={MobileViewComments}/>
     <ProtectedRoute exact path="/createtour" component={TourCreator}/>
     <ProtectedRoute exact path="/invitation" component={InviteDesigner}/>  

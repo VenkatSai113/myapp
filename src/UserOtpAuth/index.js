@@ -66,7 +66,7 @@ requiredHandle=(event)=>{
         if(PhoneNumber!==""){
           
             this.setState({isLoading:true})
-            const signupUrl="https://objective-wright.69-49-231-148.plesk.page/userRegister"
+            const signupUrl="http://localhost:9000/userRegister"
             let signupDetails={name,PhoneNumber}
          
             const options={

@@ -29,7 +29,7 @@ const Thumbnail=(props)=>{
      console.log(id,"idd")
       if (window.confirm(text) === true) {
          
-      const apiUrl="https://objective-wright.69-49-231-148.plesk.page/deleteScene";
+      const apiUrl="http://localhost:9000/deleteScene";
       const options={
           method:"DELETE",
           headers:{

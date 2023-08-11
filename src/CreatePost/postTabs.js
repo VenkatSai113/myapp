@@ -134,7 +134,7 @@ function FullWidthTabs() {
 const uploadVideoPost=async()=>{
   
     setIsLoading(true)
-    const apiUrl = "https://objective-wright.69-49-231-148.plesk.page/postVideo";
+    const apiUrl = "http://localhost:9000/postVideo";
     const formData = new FormData();
     formData.append("caption", caption);
     formData.append("designStyle", designStyle);
@@ -187,7 +187,7 @@ const emtyVideos=()=>{
 
   const onCreatePost = async () => {
     setIsLoading(true)
-    const apiUrl = "https://objective-wright.69-49-231-148.plesk.page/postImage";
+    const apiUrl = "http://localhost:9000/postImage";
     const formData = new FormData();
     formData.append("caption", caption);
     formData.append("designStyle", designStyle);

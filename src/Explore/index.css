@@ -68,6 +68,7 @@
 .explore-icon-div{
     display: flex;
     align-items: center;
+    cursor: pointer;
 }
 .explore-icon{
     font-family:roboto;
@@ -78,6 +79,7 @@
     font-family:roboto;
     font-size:13px;
     margin-left: 6px;
+    cursor: pointer;
 }
 .filter-icons-mobile-view{
     width:100%;

@@ -37,7 +37,7 @@ class TourCreator extends Component{
         }else{
             this.setState({isLoading:true})
         localStorage.setItem("tourTitle",tourTitle)
-        const apiurl="https://objective-wright.69-49-231-148.plesk.page/virtualtours"
+        const apiurl="http://localhost:9000/virtualtours"
         console.log(tourTitle)
         const formData=new FormData();
         formData.append("tourTitle",tourTitle);
@@ -60,7 +60,7 @@ class TourCreator extends Component{
         .catch(error=>{
             console.log(error)
         })
-        const apiUrl = "https://objective-wright.69-49-231-148.plesk.page/virtualTourCreater";
+        const apiUrl = "http://localhost:9000/virtualTourCreater";
        const tourId= localStorage.getItem("tourId")
        const parseTourId=parseInt(tourId)
        const presentTourd=parseTourId+1

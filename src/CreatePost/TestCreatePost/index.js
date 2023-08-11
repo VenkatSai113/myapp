@@ -16,7 +16,7 @@ class TestCreatePost extends Component{
     }
      onCreatePost = async () => {
         const {feedImages}=this.state
-        const apiUrl = "https://objective-wright.69-49-231-148.plesk.page/postImage";
+        const apiUrl = "http://localhost:9000/postImage";
         const formData = new FormData();
         formData.append("feedImages", feedImages);
         const config={

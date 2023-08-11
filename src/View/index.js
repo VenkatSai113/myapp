@@ -4,9 +4,11 @@ import axios from "axios"
 import hotspotImage from "./next.png"
 import "./index.css"
 import { useLocation } from 'react-router-dom'
-import { Redirect } from 'react-router-dom';
+import { Redirect,withRouter } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const  Viewer =()=>{
+  const history = useHistory();
   const location = useLocation();
   const [singleScene,setSingleScene]=useState("");
     const [hotspots,setHotspots]=useState([]);
@@ -19,10 +21,15 @@ const  Viewer =()=>{
       console.log(pathUrl,"kjghfbv")
       const pathUrlSplit=pathUrl.split(":")
       const parseTourId=pathUrlSplit[1]
+      
+      if(parseTourId=="null"){
+        history.push('/');
+      }
+      else{
         const fetchData = async () => {
           try {
             const localtourId={parseTourId:"tour"}
-            const apiUrl="https://objective-wright.69-49-231-148.plesk.page/viewer"
+            const apiUrl="http://localhost:9000/viewer"
             const formData=new FormData();
             formData.append("parseTourId",parseTourId);
             formData.append("tour","tour");
@@ -39,6 +46,7 @@ const  Viewer =()=>{
         };
     
         fetchData();
+      }
       }, []);
       const hotspotPosition=hotspots[0]
       console.log(hotspotPosition)
@@ -47,7 +55,7 @@ const  Viewer =()=>{
         const hotspotId=event.target.id
         console.log(hotspotId,"Hello")
         const hotspotIds={hotspotId,hello:"hello"}
-          const apiUrl="https://objective-wright.69-49-231-148.plesk.page/moveingScenes"
+          const apiUrl="http://localhost:9000/moveingScenes"
             const formData=new FormData();
             formData.append("hotspotId",hotspotId);
             formData.append("hello",hello);
@@ -83,4 +91,4 @@ const  Viewer =()=>{
     </div>
         )
 }
-export default Viewer
+export default withRouter(Viewer)

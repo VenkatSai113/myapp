@@ -37,7 +37,7 @@ const  AddingComments=(props)=>{
         return(
             <div className="d-flex flex-row w-100">
             <div className='comments-profiles'>
-            <img alt="" src="https://objective-wright.69-49-231-148.plesk.page/uploads/1689326326294_tree-736885_1280.jpg" className="comment-profile-image"/>
+            <img alt="" src="http://localhost:9000/uploads/1689326326294_tree-736885_1280.jpg" className="comment-profile-image"/>
             <p className="profile-name-comments">{desigener_name} <label className='comment-text ml-1'>{comment}</label><br></br><label className='comment-time-text'>{getTimeElapsed()} </label></p>
             <br></br>
             
