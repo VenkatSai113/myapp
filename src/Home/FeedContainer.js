@@ -24,8 +24,16 @@ const FeedContainer=(props)=>{
         const [selectedPostId,setSelectedPostId]=useState(1)
         const [likeCount,setLikeCount]=useState(likes)
         const [commentData,setCommentData]=useState([])
+        const [navBar,setNavbar]=useState(true)
           useEffect(()=>{
-          jwtToken=Cookies.get("jwt_token")
+          jwtToken=Cookies.get("jwt_token");
+          const urlPathName=window.location.pathname
+          const pathname=urlPathName.split(":")[0]
+          console.log(pathname,"urlPathName")
+          if(pathname=="/sharedPost"){
+            console.log("gjhvmh")
+            setNavbar(false)
+          }
         })
 
   const handleSlideChange = (index) => {
@@ -163,7 +171,7 @@ const FeedContainer=(props)=>{
        const virtualTour=()=>{
         const {history}=props
         console.log(`${ window.location.href}createdviewer:${tourId}`)
-        history.push(`createdviewer:${tourId}`)
+        history.push(`viewer:${tourId}`)
         // console.log(window.pathname)
        
         
@@ -219,7 +227,7 @@ const FeedContainer=(props)=>{
             < DescktopCommentsPopup />   
          </p>
          <Link to="/comments"><p className="like mobile-view-comment">< DescktopCommentsPopup/></p></Link> */}
-          <p className="more-icon1" onClick={getpostId}><MoreModel selectedPostId1={selectedPostId} caption={caption} /></p>
+          {navBar?<p className="more-icon1" onClick={getpostId}><MoreModel selectedPostId1={selectedPostId} caption={caption} postId={postId}/></p>:null}
          </div>
          <label className='likes-text'>{likeCount} likes</label>
          </div>

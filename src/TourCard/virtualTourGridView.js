@@ -28,7 +28,6 @@ class TourGridView extends Component{
                 "Content-Type":"Application/json",
                 "Authorization":`Bearer ${jwtToken}`
             },
-           
             mode: "cors",
             body:JSON.stringify(apiData)
         }
@@ -43,8 +42,6 @@ class TourGridView extends Component{
   }
   onSearchtours=(event)=>{
     this.setState({searchState:event.target.value})
-  
-
   }
   onClickDeleteTourDetails=async(tour_id)=>{
    console.log(tour_id)
@@ -63,25 +60,22 @@ class TourGridView extends Component{
         const response=await fetch(apiUrl,options)
         const data=await response.json()
         this.setState({stateinitialvirtualSceneDetails:data})
-       
-   
-
   }
 //   logout=()=>{
 //     Cookies.remove("jwt_token")
 //     const {history}=this.props
 //     history.replace("/login")
 // }
-  
     render(){
         const {stateinitialvirtualSceneDetails,searchState}=this.state
         const searchResult=stateinitialvirtualSceneDetails.filter(eachItem=>
-            eachItem.tour_name.includes(searchState))
+            eachItem.tour_name.toLowerCase().includes(searchState.toLowerCase()) ||
+            eachItem.tags.toLowerCase().includes(searchState.toLowerCase()) ||
+            eachItem.tour_description.toLowerCase().includes(searchState.toLowerCase()))
         return(
             <>
          <TopNavbar/>
             <div>
-                
                 <div className='d-flex flex-row'>
                     <div>
                        <Sidebar/>
@@ -106,11 +100,9 @@ class TourGridView extends Component{
                             {/* <Paginations/> */}
                         </div>
                         </div>
-                        
                 </div>
                 <BottomNavbar/>
             </div>
-         
             </>
         )
     }

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import {FiMoreVertical} from 'react-icons/fi'
 import './index.css'
-import { FacebookShareButton ,FacebookIcon, WhatsappShareButton,WhatsappIcon, TelegramShareButton, TelegramIcon} from 'react-share';
+import {IoCopyOutline,IoCopy} from "react-icons/io5"
+import {WhatsappShareButton,WhatsappIcon,TelegramShareButton,TelegramIcon} from 'react-share';
 const modelItems=[{
     itemName:"Unfollow",
     id:3,
@@ -28,13 +29,18 @@ const ModelItems=(props)=>{
 }
 
 function MoreModel(props) {
-  const {selectedPostId1,caption}=props
+  const {selectedPostId1,caption,postId}=props
   
   console.log(selectedPostId1,"qwaesrdtfhgjk")
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const [copyIcon,setCopyIcon]=useState(false)
+  const copyTourUrl=()=>{
+    navigator.clipboard.writeText(`${window.location.origin}/sharedPost:${postId}`)
+    setCopyIcon(true)
+  }
 const onclickPin=()=>{
   localStorage.setItem("pinPost",JSON.stringify(selectedPostId1))
 }
@@ -54,6 +60,7 @@ const onclickPin=()=>{
              <p className='model-report-text' onClick={onclickPin}>Pin to your Profile</p>
         </div>
             <div className='d-flex flex-row justify-content-around'>
+            {copyIcon? <p className='copy-icon' onClick={copyTourUrl}> <IoCopy/></p>:<p className='copy-icon' onClick={copyTourUrl}> <IoCopyOutline/></p>} 
             {/* <div>
       <FacebookShareButton
         url={`${window.location.origin}/sharedPost:${selectedPostId1}`}

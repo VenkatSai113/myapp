@@ -60,18 +60,16 @@ class OtpAuth extends Component{
         }
         const response=await fetch(url,options)
         const data=await response.json()
-      console.log(response,"datta")
        this.setState({submittMsg:data.error_msg})
        this.setState({isLoading:false})
         if(response.ok===true){
           this.onOtp(data.jwtToken)
-          console.log(data,"ioukjyhgfd")
         }
     }
     render(){
       const {submittMsg,isLoading}=this.state
         return(
-            <form >
+            <form>
               {isLoading?( <Box sx={{ display: 'flex' }} color="red" style={{ position: 'absolute', top: '50%', left: '45%',  zIndex: '999' }}  height={50} width={50}>
       <CircularProgress   />
     </Box>):""}

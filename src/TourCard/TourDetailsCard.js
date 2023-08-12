@@ -32,8 +32,6 @@ function TourCards(props) {
         <div className='d-flex flex-row justify-content-between'>
         <Link to={`/createdviewer:${tour_id}`} className='tour-name'> <Card.Title >{tour_name}</Card.Title></Link>
         <Example tour_id={tour_id} postId={postId} tour_description={tour_description}/>
-       
-       
         </div>
         <Card.Text>
         {tour_description}

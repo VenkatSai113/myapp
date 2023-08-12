@@ -57,7 +57,7 @@ const suggestionProfiles=[
 
 class Home extends Component{
     
-    state={stateFeeds:initialFeeds,feedDetails:[],loginUser:""}
+    state={stateFeeds:initialFeeds,feedDetails:[],loginUser:"",navBarAuth:true}
     componentDidMount=async()=>{
         const jwtToken=Cookies.get("jwt_token")
         const userJwtToken=Cookies.get("userJwtToken")
@@ -113,7 +113,7 @@ class Home extends Component{
           
         }
         else if(userPost==="sharedPost"){
-           
+           this.setState({navBarAuth:false})
             const designerPostsUrl1="http://localhost:9000/designerSelectedPost"
             const selectedPostId1=profilePost[1]
             const postInfo1={selectedPostId1,hello:"hello"}
@@ -153,33 +153,38 @@ class Home extends Component{
       
     }
     render(){
-        const {stateFeeds,feedDetails,loginUser}=this.state
+        const {stateFeeds,feedDetails,loginUser,navBarAuth}=this.state
       
         return(
             <div className="home-top-navbar-container">
                <TopNavbar/>
             <div>
             <div className="d-flex flex-row">
-                <Sidebar/>
+                {navBarAuth?<Sidebar/>:null}
+                
                 <div>
             <div className="d-flex flex-row">
             <div className="feed-container mt-3">
                 {feedDetails.map(eachFeed=>
                    <FeedContainer stateFeed={eachFeed} key={eachFeed.postId} loginUser={loginUser} /> )}
             </div>
+          
             <div className="suggition-container">
+            {navBarAuth?<>
                 <div className="suggestion-text-container">
                <p className="suggition-name">Suggestions For You</p>
                <p className="see-all">See All</p>
                </div>
                {suggestionProfiles.map(eachProfile=>
                  <SuggestionProfiles suggestionProfilesList={eachProfile} key={eachProfile.id}/>)}
+                 </>
+                 :null}
             </div>
             </div>
             </div>
             </div>
             </div>
-       <BottomNavbar/>
+            {navBarAuth?<BottomNavbar/>:null}
             </div>
         )
     }
