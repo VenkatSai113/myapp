@@ -67,6 +67,7 @@ class Home extends Component{
         const urlLength=splitCurrentUrl.length-1
         const profilePost=splitCurrentUrl[urlLength].split(":")
         const userPost=profilePost[0]
+        if(userPost!=="sharedPost"){
         const hello=async()=>{
             const logUrl="http://localhost:9000/logedInUser"
         const options={
@@ -88,6 +89,7 @@ class Home extends Component{
      
         }
         hello()
+    }
      
        
        

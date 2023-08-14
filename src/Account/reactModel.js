@@ -7,7 +7,9 @@ import {BiTimeFive} from 'react-icons/bi'
 import {Link,withRouter} from 'react-router-dom'
 import {BsBookmark} from 'react-icons/bs'
 import Cookies from 'js-cookie';
-import {Tb360View} from 'react-icons/tb'
+import {Tb360View} from 'react-icons/tb' 
+import {IoMdLogOut} from 'react-icons/io'
+
 const  NavbarItems1=(props)=>{
   const [smShow, setSmShow] = useState(false);
  const logout=()=>{
@@ -59,7 +61,7 @@ const  NavbarItems1=(props)=>{
                   
                 </Link>
                 <div className='sub-card-container'>
-                    <p className='sub-container-item' onClick={logout}>Log Out</p>
+                    <p className='sub-container-item' onClick={logout}>Log Out <IoMdLogOut className='icon-style ml-2'/></p>
                 </div>
             </>
         </Modal.Body>

@@ -58,7 +58,7 @@ function App() {
     <ProtectedRoute exact path="/projects" component={Projects}/> 
     <ProtectedRoute exact path="/hello" component={SimpleBottomNavigation}/> 
     <ProtectedRoute exact path="/tab" component={NewTab}/> 
-    <ProtectedRoute exact path="/profile" component={Profile}/> 
+    <Route exact path="/profile" component={Profile}/> 
     <ProtectedRoute exact path="/ongoingprojects" component={OngoingProjects}/> 
     <ProtectedRoute exact path="/upcomingProjects" component={UpComingProjectCard}/> 
     <ProtectedRoute exact path="/completedProjects" component={CompletedProjects}/> 

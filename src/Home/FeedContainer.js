@@ -170,8 +170,17 @@ const FeedContainer=(props)=>{
        }
        const virtualTour=()=>{
         const {history}=props
-        console.log(`${ window.location.href}createdviewer:${tourId}`)
-        history.push(`viewer:${tourId}`)
+        const pathname=window.location.pathname.split(":")[0]
+        console.log(pathname,"pathnamepathnamepathname")
+        if(pathname==="/sharedPost"){
+          history.push(`viewer:${tourId}`)
+        }
+        else{
+          history.push(`createdviewer:${tourId}`)
+        }
+        // console.log(pathname)
+        // console.log(`${ window.location.href}createdviewer:${tourId}`,"opikujhyfgds")
+        // history.push(`viewer:${tourId}`)
         // console.log(window.pathname)
        
         

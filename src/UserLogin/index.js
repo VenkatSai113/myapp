@@ -9,47 +9,60 @@ import { Redirect } from 'react-router-dom'
 import BarLoader from 'react-loader-spinner'
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-
+let appVerifier=""
 class UserOtpLogin extends Component{
-    state={phoneNumber:"",name:"",hello:"hello",submittMsg:[],validationStatus:"",isLoading:false}
+    state={phoneNumber:"",name:"",hello:"hello",submittMsg:[],validationStatus:"",isLoading:false,stateJwtToken:"",otp:"",otpComponent:false}
     onChangeMobileNumber=(event)=>{
         this.setState({phoneNumber:event.target.value})
+    }
+    onChangeOtp=(event)=>{
+      this.setState({otp:event.target.value})
     }
     onChangeUserName=(event)=>{
       this.setState({name:event.target.value})
       console.log(event.target.value)
   }
-    onOtp=(jwtToken)=>{
-      this.setState({isLoading:false})
+    onOtp=()=>{
+      this.setState({isLoading:true})
       const {phoneNumber,otp}=this.state
-      let appVerifier=new firebase.auth.RecaptchaVerifier('recaptcha',{'size':"invisible"});
+       appVerifier=new firebase.auth.RecaptchaVerifier('recaptcha',{'size':"invisible"});
      let phone=`+91${phoneNumber}`
      const auth = firebase.auth();
-     auth.signInWithPhoneNumber(phone, appVerifier)
-.then((confirmationResult) => {
- const code = prompt('Enter the verification code:');
- console.log(otp)
- confirmationResult.confirm(code)
-   .then((result) => {
-    const jwtTokenLogin=Cookies.set("userJwtToken",jwtToken,{expires:30})
-     console.log("successfully varified")
-     const {history}=this.props
-     const sharedPostId=localStorage.getItem("sharedPostId")
+      auth.signInWithPhoneNumber(phone, appVerifier)
+      this.setState({otpComponent:true})
+      this.setState({isLoading:false})
+    
+     }
+     varifyOtp=()=>{
+      const {stateJwtToken}=this.state
+      const {phoneNumber,otp}=this.state
+      const auth = firebase.auth();
+      let phone=`+91${phoneNumber}`
+      auth.signInWithPhoneNumber(phone, appVerifier)
+ .then((confirmationResult) => {
+  
+  confirmationResult.confirm(otp)
+    .then((result) => {
+     const jwtTokenLogin=Cookies.set("userJwtToken",stateJwtToken,{expires:30})
+      console.log("successfully varified")
+      const {history}=this.props
+      const sharedPostId=localStorage.getItem("sharedPostId")
+ 
+      history.replace(`/sharedPost:${sharedPostId}`)
+    })
+    .catch((error) => {
+      // Verification code is incorrect
+      this.setState({submittMsg:error.code})
+      console.log("Verification code is incorrect")
+    });
+ })
+ .catch((error) => {
+  // Error sending SMS verification code
+  console.log("Error sending SMS verification code")
+  console.log(error.message)
+  this.setState({submittMsg:error.message})
+ });
 
-     history.replace(`/sharedPost:${sharedPostId}`)
-   })
-   .catch((error) => {
-     // Verification code is incorrect
-     this.setState({submittMsg:error.code})
-     console.log("Verification code is incorrect")
-   });
-})
-.catch((error) => {
- // Error sending SMS verification code
- console.log("Error sending SMS verification code")
- console.log(error.message)
- this.setState({submittMsg:error.message})
-});
      }
     handleClick=async(e)=>{
       const {phoneNumber,name}=this.state
@@ -75,6 +88,7 @@ class UserOtpLogin extends Component{
             // this.setState({open:true})
             this.onOtp(data.jwtToken)
             this.setState({isLoading:false})
+            this.setState({stateJwtToken:data.jwtToken})
         }
     }
     else{
@@ -103,7 +117,7 @@ class UserOtpLogin extends Component{
       //   }
     }
     render(){
-      const {submittMsg,isLoading}=this.state
+      const {submittMsg,isLoading,otp,otpComponent}=this.state
         return(
             <form >
               {isLoading?( <Box sx={{ display: 'flex' }} color="red" style={{ position: 'absolute', top: '50%', left: '45%',  zIndex: '999' }}  height={50} width={50}>
@@ -113,12 +127,14 @@ class UserOtpLogin extends Component{
             <img className="logo-image" src="https://designalley.in/wp-content/uploads/2022/03/Logo.png" alt="piniteinfo Logo"/>
             <div className="login-card-container">
             <img className="logo-login-image" src="https://designalley.in/wp-content/uploads/2022/03/Logo.png" alt="piniteinfo Logo"/>
-            <input type="text" placeholder='Enter Your Name' className='username-input-filed ' onChange={this.onChangeUserName}/>
-               <input type="number" placeholder='Enter phone number' className='username-input-filed ' onChange={this.onChangeMobileNumber}/>
+            {otpComponent?<input type="text" placeholder='Enter OTP...' value={otp} className='username-input-filed ' onChange={this.onChangeOtp}/>:<><input type="text" placeholder='Enter Your Name' className='username-input-filed ' onChange={this.onChangeUserName}/>
+               <input type="number" placeholder='Enter phone number' className='username-input-filed ' onChange={this.onChangeMobileNumber}/></>}
                {/* {isPasswordTrue&&<p className='error-message'>*{errorMessage}</p>} */}
               <label></label>
               <div id="recaptcha"></div>
-               <button type="button" className='login-button1' onClick={this.handleClick}>Request OTP</button>
+              {otpComponent? <button type="button" className='login-button1' onClick={this.varifyOtp}>Varify OTP</button>: <button type="button" className='login-button1' onClick={this.handleClick}>Request OTP</button>}
+              
+              
                <label className='error-message12'>{submittMsg}</label>
                {/* <p className='forgot-password'><Link to="/forgotpassword">Forgot Password?</Link></p> */}
                <p className='dont-have-account'>Don't Have an Account?<span className='signup-text'><Link className="link" to="/userOtpAuth">Sign Up</Link></span></p>
