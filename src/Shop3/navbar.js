@@ -3,8 +3,21 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import { useEffect, useState } from 'react';
 
-function ShopNavebar() {
+const  ShopNavebar=(props)=> {
+  const {projectDetails}=props
+  console.log(projectDetails,"projectDetails")
+ const [projectnames,setProjectnames]=useState([])
+ useEffect(()=>{
+  setProjectnames(projectDetails)
+  console.log("projectDetailsprojectDetailsprojectDetails")
+ })
+ const selectProject=(event)=>{
+  let projectId=event.target.value
+  localStorage.setItem("storeProject",projectId);
+  console.log(event.target.value)
+ }
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
@@ -16,8 +29,12 @@ function ShopNavebar() {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1">Brands</Nav.Link>
-            <Nav.Link href="#action2">Categories</Nav.Link>
+            <select className='form-control me-2' onChange={selectProject}>
+              {projectnames.map(eachProject=>
+               <option id={eachProject.projectId} value={eachProject.projectId}>{eachProject.title}</option>)}
+            </select>
+            {/* <Nav.Link href="#action1">Brands</Nav.Link>
+            <Nav.Link href="#action2">Categories</Nav.Link> */}
             {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">

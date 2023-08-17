@@ -26,10 +26,10 @@ const initialreferenceImagesList=[{
 },]
 let jwtToken=""
 class SingleProductView extends Component{
-    state={referenceImagesList:initialreferenceImagesList,singleProductData:[],splitedImages:[],activeIndex:0}
+    state={referenceImagesList:initialreferenceImagesList,singleProductData:[],splitedImages:[],activeIndex:0,projectDetails:[],projectSpaces:[]}
 
     getProductsData= async()=>{
-        jwtToken=Cookies.get("jwt_token")
+       
         const productId=localStorage.getItem("productId")
         const productDetails={productId,hello:"hello"}
         const apiUrl="http://localhost:9000/productDetailview"
@@ -55,14 +55,62 @@ class SingleProductView extends Component{
         }
        
     }
+     projectApiCall=async()=>{
+        console.log("AWesrdfghvjbnm")
+       
+        const apiUrl="http://localhost:9000/projectsInStore"
+        const options={
+          method:"GET",
+          headers:{
+            "Content-Type":"Application/json",
+            "authorization":`Bearer ${jwtToken}`
+          },
+        }
+        const response=await fetch(apiUrl,options)
+        const data=await response.json()
+        this.setState({projectDetails:data})
+      
+  
+      }
+       spaceFun=async(projectId)=>{
+        
+        const spaceDetails={projectId,hello:"hello"}
+        const apiUrl="http://localhost:9000/spaceCards"
+        const options={
+            method:"POST",
+            headers:{
+                "Content-Type":"Application/json",
+                "Authorization":`Bearer ${jwtToken}`
+            },
+            body:JSON.stringify(spaceDetails)
+        }
+        const response =await fetch(apiUrl,options)
+        const data=await response.json()
+        if(response.ok===true){
+            this.setState({projectSpaces:data})
+            console.log(data,"projectIdvv")
+        }
+        // else{
+        //     this.setState({projectSpaces:[]})
+        //     console.log(data,"")
+        // }
+       
+
+   }
+   
     componentDidMount(){
+        jwtToken=Cookies.get("jwt_token")
+        const   parseProjectId=localStorage.getItem("storeProject")
+        const projectId=JSON.parse(parseProjectId)
         this.getProductsData()
+        this.projectApiCall()
+        this.spaceFun(projectId)
     }
      handleSlideChange = (index) => {
         this.setState({activeIndex:index});
       };
     render(){
-      const {singleProductData,splitedImages,activeIndex}=this.state
+      const {singleProductData,splitedImages,activeIndex,projectDetails,projectSpaces}=this.state
         return(
             <>
             <div className='bg-container-product-view'>
@@ -70,7 +118,7 @@ class SingleProductView extends Component{
             <div className='sidebar-container'>
             <Sidebar/>
             </div> 
-            <ShopNavebar/>         
+            <ShopNavebar projectDetails={projectDetails}/>         
             <div className='bg-container1 shadow'>
               
             <Container>
@@ -93,10 +141,11 @@ class SingleProductView extends Component{
                        <div className='descDiv'>
                         <h5>{singleProductData.title}</h5>
                         <h5>MRP : ₹{singleProductData.price}</h5>
+                        <ProjectPopup projectSpaces={projectSpaces}/>
+                       <Button varient="secondory" className="ml-4 mt-3 mb-5">Get Quote</Button>
+                       <Button varient="secondory" className="ml-4 mt-3 mb-5">Add to Wishlist</Button>
                        <ProductView singleProductData={singleProductData}/>
-                       {/* <ProjectPopup/> */}
-                       {/* <Button varient="secondory" className="ml-4">Get Quote</Button>
-                       <Button varient="secondory" className="ml-4">Add to Wishlist</Button> */}
+                      
                        </div>
                     </Col>
                 </Row>

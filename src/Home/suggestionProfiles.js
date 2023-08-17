@@ -2,17 +2,17 @@ import './index.css'
 
 const SuggestionProfiles=(props)=>{
     const {suggestionProfilesList}=props
-    const {profileImage,profileName,profileDescription,status}=suggestionProfilesList
+    const {logo,desigener_name,profileDescription,status}=suggestionProfilesList
     return(
         <div className="suggestion-profile-container">
               <div className="suggestion-profile">
-              <img alt="" src={profileImage} className="suggestion-profile-image"/>
+              <img alt="" src={`http://localhost:9000/${logo}`} className="suggestion-profile-image"/>
               <div className="profile-name-designation">
-                <label className="suggestion-profile-name">{profileName}</label>
-                <label className="suggestion-profile-desigenaton">{profileDescription}</label>
+                <label className="suggestion-profile-name">{desigener_name}</label>
+                <label className="suggestion-profile-desigenaton">interior Desigener</label>
               </div>
               </div>
-              <p className="follow-text">{status}</p>
+              <p className="follow-text">follow</p>
 
                </div>
     )

@@ -8,10 +8,10 @@ import { v4 as uuidv4 } from 'uuid';
 import {HiPlus} from "react-icons/hi"
 import Cookies from "js-cookie";
 import { options } from "aframe-react";
-
+import OngoingSpaceCard from './onGoingSpaceCards'
 
 let jwtToken=""
-class OngoingProjects extends Component{
+class OngoingSpaces extends Component{
      state={onGoingProjectCards:[]}
      componentDidMount=()=>{
         jwtToken=Cookies.get("jwt_token")
@@ -45,7 +45,7 @@ class OngoingProjects extends Component{
               
               
                <div className="projects-container">
-               <p className="project-heading">Ongoing Project</p>
+               <p className="project-heading">Ongoing Spaces</p>
                 <div className="input-div">
                 
                
@@ -53,11 +53,11 @@ class OngoingProjects extends Component{
                 </div>
                 <div className="project-cards-container">
                     {onGoingProjectCards.map(eachCard=>
-                        <OngoingProjectCard cardItem={eachCard} key={eachCard.id}/>)}
+                        <OngoingSpaceCard cardItem={eachCard} key={eachCard.id}/>)}
                 </div>
                </div>
             </div>
         )
     }
 }
-export default OngoingProjects
+export default OngoingSpaces

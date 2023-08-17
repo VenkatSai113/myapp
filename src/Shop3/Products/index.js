@@ -9,10 +9,30 @@ import Cookies from 'js-cookie'
 import EmptyProduct from './Group 1374.png'
 
 class ShopProducts extends Component{
-    state={productData:[]}
+    state={productData:[],projectDetails:[],}
+   
     componentDidMount=()=>{
+        let jwtToken=Cookies.get("jwt_token")
+        const projectApiCall=async()=>{
+            console.log("AWesrdfghvjbnm")
+           
+            const apiUrl="http://localhost:9000/projectsInStore"
+            const options={
+              method:"GET",
+              headers:{
+                "Content-Type":"Application/json",
+                "authorization":`Bearer ${jwtToken}`
+              },
+            }
+            const response=await fetch(apiUrl,options)
+            const data=await response.json()
+            this.setState({projectDetails:data})
+          
+      
+          }
+          projectApiCall()
         const products=async()=>{
-        const jwtToken=Cookies.get("jwt_token")
+       
         const materialName=localStorage.getItem("materialName")
         const productDetails={materialName,hello:"hello"}
         console.log(materialName)
@@ -35,16 +55,18 @@ class ShopProducts extends Component{
 
     }
     products()
+   
+
 
     }
     render(){
-        const {productData}=this.state
+        const {productData,projectDetails}=this.state
         return(
             <div>
             <div className='d-flex flex-row'>
             <Sidebar/>
             <div className='d-flex flex-column shop3-container'>
-            <ShopNavebar/>
+            <ShopNavebar projectDetails={projectDetails}/>
             {productData.length===0?<img src={EmptyProduct} style={{height:"400px",width:"400px",margin:"auto"}}/>:<div className='product-cards'>
                 {productData.map(eachImage=>
                     <SelectedProducts products={eachImage}/> )}

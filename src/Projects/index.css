@@ -126,6 +126,7 @@ body{
     font-weight:normal;
     text-align: left;
     color:black;
+    margin-left: 10px;
   }
   .description{
     font-family:roboto;

@@ -226,7 +226,7 @@ const FeedContainer=(props)=>{
          <p className="like"><BsBookmark/></p>
          <p className="like"><BsFillShareFill/></p>
          </div> */}
-         <div>
+         <div  className="designer-like-column-div">
          <div className="like-symbol">
          {loginUser.designer_id===userId?<p className="like1" onClick={onClickSavedPost}><BsFillBookmarkFill/></p>:<p  onClick={onSavedPostDelete} className="like1"><BsBookmark/></p>}
          {/* {loginUser.designer_id===null?<p  onClick={onSavedPostDelete} className="like1"><BsBookmark/></p>:null} */}
@@ -242,14 +242,11 @@ const FeedContainer=(props)=>{
          </div>
      
         </div>
-        
         <div className="on-comment">
-         
+        <label className="comment-sapn">{caption}<br></br>{tags} #{designStyle} #{category} #{location} #{occupancy} #{propertySize} #{duration}</label> 
         <p className="like desktop-comment" onClick={commentPostId}>
             < DescktopCommentsPopup deignerName={deignerName} thumbnail={thumbnail} commentData={commentData}/>   
          </p>
-        <label className="comment-sapn">{caption}<br></br>{tags} #{designStyle} #{category} #{location} #{occupancy} #{propertySize} #{duration}</label> 
-        
         
         </div>
      </div>

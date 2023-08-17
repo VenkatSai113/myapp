@@ -9,7 +9,7 @@ import BottomNavbar from '../Home/bottomNavbar'
 import Button from 'react-bootstrap/Button';
 import SimpleSlider from './shopSlider'
 import { MdVerifiedUser } from 'react-icons/md';
-
+import Cookies from 'js-cookie';
 
 const meterialItems=[{
     materialImage:"https://5.imimg.com/data5/SELLER/Default/2023/2/UV/IJ/ZB/109711794/playwood-500x500.jpeg",
@@ -98,13 +98,36 @@ const meterialItems=[{
  },
 ] 
 class Shop3 extends Component{
+   state={projectDetails:[]}
+   componentDidMount=()=>{
+      const projectApiCall=async()=>{
+         console.log("AWesrdfghvjbnm")
+         const jwtToken=Cookies.get("jwt_token");
+         const apiUrl="http://localhost:9000/projectsInStore"
+         const options={
+           method:"GET",
+           headers:{
+             "Content-Type":"Application/json",
+             "authorization":`Bearer ${jwtToken}`
+           },
+         }
+         const response=await fetch(apiUrl,options)
+         const data=await response.json()
+         this.setState({projectDetails:data})
+       
+   
+       }
+       projectApiCall()
+   }
     render(){
+      const {projectDetails}=this.state
         return(
             <div>
             <div className='d-flex flex-row'>
             <Sidebar/>
             <div className='d-flex flex-column shop3-container'>
-            <ShopNavebar/>
+               
+            <ShopNavebar projectDetails={projectDetails} />
             <ShopCarousel/>
             <div className="shop-content-div">
                 <h1 className='shop-material-text'>Architecture & Interior design ready material for your 3D <br></br>models.</h1>

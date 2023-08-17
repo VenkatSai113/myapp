@@ -34,6 +34,7 @@ import VirtualTourDetailView from './virtualTourDetailView/index'
 import IndividualDesigener from './UserOtpAuth/index'
 import UserOtpLogin from './UserLogin/index'
 import ProtecteRoute from './ProtectRoute';
+import OngoingSpaces from './Projects/ongoingSpaces';
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
     <ProtectedRoute exact path="/upcomingProjects" component={UpComingProjectCard}/> 
     <ProtectedRoute exact path="/completedProjects" component={CompletedProjects}/> 
     <ProtectedRoute exact path="/spaces" component={Spaces}/>  
+    <ProtectedRoute exact path="/ongoingSpaceCard" component={Spaces}/>  
     <ProtectedRoute exact path="/explore" component={Explore}/> 
     <ProtectedRoute exact path="/projectList" component={ EstimateList}/>   
     <ProtectedRoute exact path="/projectTrack" component={ TrackingProject}/>   

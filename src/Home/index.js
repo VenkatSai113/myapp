@@ -10,54 +10,54 @@ import Cookies from "js-cookie";
 
 const initialFeeds=[]
 
-const suggestionProfiles=[
-    {
-        profileImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhl1zIWjaCArZzMzooDCgEVh97WhK_dsFDXJ4dem7dQ&s",
-        profileName:"Venkat_456",
-        profileDescription:"interior Desigener",
-        status:"follow",
-        id:uuidv4()
-    },
-    {
-        profileImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhl1zIWjaCArZzMzooDCgEVh97WhK_dsFDXJ4dem7dQ&s",
-        profileName:"Venkat_456",
-        profileDescription:"interior Desigener",
-        status:"follow",
-        id:uuidv4()
-    },
-    {
-        profileImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhl1zIWjaCArZzMzooDCgEVh97WhK_dsFDXJ4dem7dQ&s",
-        profileName:"Venkat_456",
-        profileDescription:"interior Desigener",
-        status:"follow",
-        id:uuidv4()
-    },
-    {
-        profileImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhl1zIWjaCArZzMzooDCgEVh97WhK_dsFDXJ4dem7dQ&s",
-        profileName:"Venkat_456",
-        profileDescription:"interior Desigener",
-        status:"follow",
-        id:uuidv4()
-    },
-    {
-        profileImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhl1zIWjaCArZzMzooDCgEVh97WhK_dsFDXJ4dem7dQ&s",
-        profileName:"Venkat_456",
-        profileDescription:"interior Desigener",
-        status:"follow",
-        id:uuidv4()
-    },
-    {
-        profileImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhl1zIWjaCArZzMzooDCgEVh97WhK_dsFDXJ4dem7dQ&s",
-        profileName:"Venkat_456",
-        profileDescription:"interior Desigener",
-        status:"follow",
-        id:uuidv4()
-    },
-]
+// const suggestionProfiles=[
+//     {
+//         profileImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhl1zIWjaCArZzMzooDCgEVh97WhK_dsFDXJ4dem7dQ&s",
+//         profileName:"Venkat_456",
+//         profileDescription:"interior Desigener",
+//         status:"follow",
+//         id:uuidv4()
+//     },
+//     {
+//         profileImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhl1zIWjaCArZzMzooDCgEVh97WhK_dsFDXJ4dem7dQ&s",
+//         profileName:"Venkat_456",
+//         profileDescription:"interior Desigener",
+//         status:"follow",
+//         id:uuidv4()
+//     },
+//     {
+//         profileImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhl1zIWjaCArZzMzooDCgEVh97WhK_dsFDXJ4dem7dQ&s",
+//         profileName:"Venkat_456",
+//         profileDescription:"interior Desigener",
+//         status:"follow",
+//         id:uuidv4()
+//     },
+//     {
+//         profileImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhl1zIWjaCArZzMzooDCgEVh97WhK_dsFDXJ4dem7dQ&s",
+//         profileName:"Venkat_456",
+//         profileDescription:"interior Desigener",
+//         status:"follow",
+//         id:uuidv4()
+//     },
+//     {
+//         profileImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhl1zIWjaCArZzMzooDCgEVh97WhK_dsFDXJ4dem7dQ&s",
+//         profileName:"Venkat_456",
+//         profileDescription:"interior Desigener",
+//         status:"follow",
+//         id:uuidv4()
+//     },
+//     {
+//         profileImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBhl1zIWjaCArZzMzooDCgEVh97WhK_dsFDXJ4dem7dQ&s",
+//         profileName:"Venkat_456",
+//         profileDescription:"interior Desigener",
+//         status:"follow",
+//         id:uuidv4()
+//     },
+// ]
 
 class Home extends Component{
     
-    state={stateFeeds:initialFeeds,feedDetails:[],loginUser:"",navBarAuth:true}
+    state={stateFeeds:initialFeeds,feedDetails:[],loginUser:"",navBarAuth:true,suggestionProfiles:[]}
     componentDidMount=async()=>{
         const jwtToken=Cookies.get("jwt_token")
         const userJwtToken=Cookies.get("userJwtToken")
@@ -152,10 +152,23 @@ class Home extends Component{
         this.setState({feedDetails:data})
         console.log(data)
     }
-      
+    const suggestionUrl="http://localhost:9000/relatedUsers"
+    const options={
+        method:"GET",
+        headers:{
+            "Content-Type":"Application/json",
+            "Authorization":`Bearer ${jwtToken}`
+        }
+       
     }
+    const response=await fetch(suggestionUrl,options);
+    const data=await response.json();
+    this.setState({suggestionProfiles:data})
+    console.log(data)
+    }
+  
     render(){
-        const {stateFeeds,feedDetails,loginUser,navBarAuth}=this.state
+        const {stateFeeds,feedDetails,loginUser,navBarAuth,suggestionProfiles}=this.state
       
         return(
             <div className="home-top-navbar-container">

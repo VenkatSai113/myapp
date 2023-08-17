@@ -6,6 +6,7 @@ import TopNavbar from "../Home/topNavbar";
 import BottomNavbar from "../Home/bottomNavbar";
 import { v4 as uuidv4 } from 'uuid';
 import {HiPlus} from "react-icons/hi"
+import Cookies from "js-cookie";
 
 const initialCardItems=[{
     imageUrl:"https://media.designcafe.com/wp-content/uploads/2023/01/05102507/wfh-friendly-living-room-for-working-professionals.jpg"
@@ -33,58 +34,43 @@ const initialCardItems=[{
 },
 
 ]
+let jwtToken=""
 class Projects extends Component{
 
-    state={projectItems:initialCardItems,onSearch:"",name:"",description:"", }
-    onChangeSearch=(event)=>{
-        this.setState({onSearch:event.target.value})
+    state={projectItems:initialCardItems,onSearch:"",projectName:"",description:"", }
+    componentDidMount=()=>{
+      jwtToken=Cookies.get("jwt_token")
     }
     onChangeprojectname=(event)=>{
-        const {name}=this.state
-        this.setState({name:event.target.value})
-        console.log(name)
+        const {projectName}=this.state
+        this.setState({projectName:event.target.value})
+        console.log(projectName)
     }
-
-    onChangeprojectDesc=(event)=>{
-        const {description}=this.state
-        this.setState({description:event.target.value})
-        console.log(description)
-    }
-
-    onSubmit=(event)=>{
+    onSubmit=async(event)=>{
         event.preventDefault()
-        const {name,description}=this.state
-        if(name===""){
+        const {projectName,description}=this.state
+        if(projectName===""){
             alert("Please Enter Projectname")
           }
           else{
-        const newProject={
-            id:uuidv4(),
-            imageUrl:"https://media.designcafe.com/wp-content/uploads/2023/01/05102507/wfh-friendly-living-room-for-working-professionals.jpg",
-            name,
-            description,
-            status:"not completed"
+            const apiUrl="http://localhost:9000/createProject"
+            const projectData={projectName,hello:"hello"}
+            const options={
+              method:"POST",
+              headers:{
+                "Content-Type":"Application/json",
+                "Authorization":`Bearer ${jwtToken}`
+              },
+              body:JSON.stringify(projectData)
+            }
+            const response=await fetch(apiUrl,options)
+            const data=await response.json()
+            this.setState({projectName:""})
+            console.log(data)
         }
-        // let hello=name==="" &&description===""
-       
-        this.setState(prevState => ({
-            projectItems: [...prevState.projectItems, newProject,],
-            name:" ",
-            description:" ",
-          }))
-        }
-    }
-    onblurProjectname=(event)=>{
-        const {name}=this.state
-       if(name===""){
-        
-       }
     }
     render(){
-        const {projectItems,onSearch}=this.state
-        const searchResult=projectItems.filter(eachSearch=>
-            eachSearch.name.includes(onSearch))
-       
+        const {projectItems,onSearch,projectName}=this.state
         return(
             <div className="projects-bg-container">
                 <BottomNavbar/>
@@ -92,17 +78,9 @@ class Projects extends Component{
                <div>
                 <Sidebar/>
                </div>
-               
                <div className="projects-container">
                 <div className="input-div">
                 <p className="project-heading">Projects</p>
-                {/* <select className="username-select-filed ">
-                    <option value="All">All</option>
-                    <option value="completed">Completed</option>
-                    <option value="upcoming">UpComing</option>
-                    <option value="ongoing">Ongoing</option>
-                </select> */}
-                {/* <input className="username-input-filed" onChange={this.onChangeSearch} placeholder="Search..." type="text" /> */}
                 <button type="button" className="add-project-btn" data-toggle="modal" data-target="#exampleModalCenter"><HiPlus/> Create New Project</button>
                 <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div className="modal-dialog modal-dialog-centered" role="document">
@@ -114,14 +92,7 @@ class Projects extends Component{
         </button>
       </div>
       <div className="modal-body">
-        <input type="text" className='form-control ' onChange={this.onChangeprojectname} onBlur={this.onblurProjectname} placeholder='Project Name'/> 
-        {/* <input type="text" className='form-control mt-4'  onChange={this.onChangeprojectDesc} placeholder='Project Description'/> 
-        <label>Status</label>
-        <select className="form-control">
-            <option value="UpComing">upComing</option>
-            <option value="OnGoing">OnGoing</option>
-            <option value="Completed">Completed</option>
-        </select> */}
+        <input type="text" className='form-control ' value={projectName} onChange={this.onChangeprojectname} placeholder='Project Name'/> 
       </div>
       <div className="modal-footer">
         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -132,7 +103,7 @@ class Projects extends Component{
 </div>
                 </div>
                 <div className="project-cards-container">
-                    {searchResult.map(eachCard=>
+                    {projectItems.map(eachCard=>
                         <ProjectCard cardItem={eachCard} key={eachCard.id}/>)}
                 </div>
                </div>

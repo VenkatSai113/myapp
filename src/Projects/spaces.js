@@ -14,101 +14,85 @@ import trackerImage from './Group Tracking.png'
 import estimateImage from './Group estimate (1).png'
 import {Link} from 'react-router-dom'
 import {BsPlusCircle} from 'react-icons/bs'
-const initialCardItems=[{
-    imageUrl:"https://media.designcafe.com/wp-content/uploads/2023/01/05102507/wfh-friendly-living-room-for-working-professionals.jpg"
-    ,name:"Ongoing Projects",
-    brand:"Spaces",
-    status:"UpComing"
-    ,id:uuidv4()
-},
-{
-    imageUrl:"http://cdn.home-designing.com/wp-content/uploads/2018/01/flying-pendant-lights-colourful-stools-kitsch-living-room.jpg"
-    ,name:"Upcoming Projects",
-    brand:"Spaces",
-    status:"OnGoing"
-    ,id:uuidv4()
-},
-{
-    imageUrl:"http://cdn.home-designing.com/wp-content/uploads/2018/01/orange-cushions-grey-curtains-dark-living-room.jpg"
-    ,name:"Completed Projects",
-    brand:"Spaces",
-    status:"UpComing"
-    ,id:uuidv4()
-},
-{
-    imageUrl:"https://media.designcafe.com/wp-content/uploads/2023/01/05102507/wfh-friendly-living-room-for-working-professionals.jpg"
-    ,name:"Ongoing Projects",
-    brand:"Spaces",
-    status:"UpComing"
-    ,id:uuidv4()
-},
-{
-    imageUrl:"http://cdn.home-designing.com/wp-content/uploads/2018/01/flying-pendant-lights-colourful-stools-kitsch-living-room.jpg"
-    ,name:"Upcoming Projects",
-    brand:"Spaces",
-    status:"OnGoing"
-    ,id:uuidv4()
-},
-{
-    imageUrl:"http://cdn.home-designing.com/wp-content/uploads/2018/01/orange-cushions-grey-curtains-dark-living-room.jpg"
-    ,name:"Completed Projects",
-    brand:"Spaces",
-    status:"UpComing"
-    ,id:uuidv4()
-},
+import axios from "axios";
+import Cookies from "js-cookie";
 
-]
+
 class Spaces extends Component{
 
-    state={projectItems:initialCardItems,onSearch:"",name:"",description:"", }
-    onChangeSearch=(event)=>{
-        this.setState({onSearch:event.target.value})
+    state={projectItems:[],onSearch:"",spacename:"",spaceImage:"",isSceneLoading:false,projectId:"" }
+    componentDidMount=()=>{
+        const jwtToken=Cookies.get("jwt_token")
+        const parseProjectId=localStorage.getItem("projectId")
+        const projectId=JSON.parse(parseProjectId)
+        const spaceDetails={projectId,hello:"hello"}
+        console.log(projectId)
+        this.setState({projectId})
+        const spaceFun=async()=>{
+            const apiUrl="http://localhost:9000/spaceCards"
+            const options={
+                method:"POST",
+                headers:{
+                    "Content-Type":"Application/json",
+                    "Authorization":`Bearer ${jwtToken}`
+                },
+                body:JSON.stringify(spaceDetails)
+            }
+            const response =await fetch(apiUrl,options)
+            const data=await response.json()
+            if(response.ok===true){
+                this.setState({projectItems:data})
+                console.log(data)
+            }
+            else{
+                this.setState({projectItems:[]})
+                console.log(data)
+            }
+           
+
+        }
+       spaceFun()
     }
+    
     onChangeprojectname=(event)=>{
-        const {name}=this.state
-        this.setState({name:event.target.value})
-        console.log(name)
+        const {spacename}=this.state
+        this.setState({spacename:event.target.value})
+        console.log(spacename)
     }
-
-    onChangeprojectDesc=(event)=>{
-        const {description}=this.state
-        this.setState({description:event.target.value})
-        console.log(description)
+    uploadSpaceImage=(event)=>{
+        this.setState({spaceImage:event.target.files[0]})
     }
-
     onSubmit=(event)=>{
         event.preventDefault()
-        const {name,description}=this.state
-        if(name===""){
-            alert("Please Enter Projectname")
+        const {spacename}=this.state
+        if(spacename===""){
+            alert("Please Enter Spacename")
           }
           else{
-        const newProject={
-            id:uuidv4(),
-            imageUrl:"https://media.designcafe.com/wp-content/uploads/2023/01/05102507/wfh-friendly-living-room-for-working-professionals.jpg",
-            name,
-            description,
-            status:"not completed"
-        }
-        // let hello=name==="" &&description===""
-       
-        this.setState(prevState => ({
-            projectItems: [...prevState.projectItems, newProject,],
-            name:" ",
-            description:" ",
-          }))
-        }
+            const {spaceImage,spacename,projectId}=this.state
+            const spaceDetails={spaceImage,spacename}
+                this.setState({isSceneLoading:true})
+               const apiUrl="http://localhost:9000/createSpaces"
+               const formData=new FormData();
+                formData.append("spacename",spacename)
+                formData.append("projectId",projectId)
+                formData.append("spaceImage",spaceImage)
+                axios.post(apiUrl,formData).then
+                (response=>{
+                    console.log(response.data)
+                    this.setState({projectItems:response.data})
+                  
+                 }
+                    ).catch(error=>
+                        console.log(error)
+                    )
+          }
     }
-    onblurProjectname=(event)=>{
-        const {name}=this.state
-       if(name===""){
-        
-       }
-    }
+
     render(){
-        const {projectItems,onSearch}=this.state
-        const searchResult=projectItems.filter(eachSearch=>
-            eachSearch.name.includes(onSearch))
+        const {projectItems,onSearch,spacename}=this.state
+        // const searchResult=projectItems.filter(eachSearch=>
+        //     eachSearch.spacename.includes(onSearch))
        
         return(
             <div className="projects-bg-container">
@@ -133,6 +117,7 @@ class Spaces extends Component{
       </div>
       <div className="modal-body">
         <input type="text" className='form-control ' onChange={this.onChangeprojectname} onBlur={this.onblurProjectname} placeholder='Project Name'/> 
+        <input type="file" className='form-control mt-2' onChange={this.uploadSpaceImage}/> 
         {/* <input type="text" className='form-control mt-4'  onChange={this.onChangeprojectDesc} placeholder='Project Description'/> 
         <label>Status</label>
         <select className="form-control">
@@ -174,7 +159,9 @@ class Spaces extends Component{
                 </div>
                 <div className="space-cards-container mw-90">
                     {/* <TitlebarBelowMasonryImageList/> */}
-                    {searchResult.map(eachCard=>
+                   
+                    {projectItems.map(eachCard=>
+                    
                         <SpacesCard cardItem={eachCard} key={eachCard.id}/>)}
                 </div>
                </div>
