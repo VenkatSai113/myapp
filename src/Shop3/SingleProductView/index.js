@@ -5,7 +5,7 @@ import ProductView from './accordain'
 import Sidebar from '../../Sidebar/index'
 import ShopNavebar from '../navbar'
 import BottomNavbar from '../../Home/bottomNavbar'
-import Button from 'react-bootstrap/button'
+import Button from 'react-bootstrap/Button';
 import ProjectPopup from './projectPopup'
 import Cookies from 'js-cookie'
 import SwipeableViews from 'react-swipeable-views'
@@ -26,7 +26,7 @@ const initialreferenceImagesList=[{
 },]
 let jwtToken=""
 class SingleProductView extends Component{
-    state={referenceImagesList:initialreferenceImagesList,singleProductData:[],splitedImages:[],activeIndex:0,projectDetails:[],projectSpaces:[]}
+    state={referenceImagesList:initialreferenceImagesList,singleProductData:[],splitedImages:[],activeIndex:0,projectSpaces:[]}
 
     getProductsData= async()=>{
        
@@ -55,23 +55,23 @@ class SingleProductView extends Component{
         }
        
     }
-     projectApiCall=async()=>{
-        console.log("AWesrdfghvjbnm")
+    //  projectApiCall=async()=>{
+    //     console.log("AWesrdfghvjbnm")
        
-        const apiUrl="http://localhost:9000/projectsInStore"
-        const options={
-          method:"GET",
-          headers:{
-            "Content-Type":"Application/json",
-            "authorization":`Bearer ${jwtToken}`
-          },
-        }
-        const response=await fetch(apiUrl,options)
-        const data=await response.json()
-        this.setState({projectDetails:data})
+    //     const apiUrl="http://localhost:9000/projectsInStore"
+    //     const options={
+    //       method:"GET",
+    //       headers:{
+    //         "Content-Type":"Application/json",
+    //         "authorization":`Bearer ${jwtToken}`
+    //       },
+    //     }
+    //     const response=await fetch(apiUrl,options)
+    //     const data=await response.json()
+    //     this.setState({projectDetails:data})
       
   
-      }
+    //   }
        spaceFun=async(projectId)=>{
         
         const spaceDetails={projectId,hello:"hello"}
@@ -90,27 +90,28 @@ class SingleProductView extends Component{
             this.setState({projectSpaces:data})
             console.log(data,"projectIdvv")
         }
-        // else{
-        //     this.setState({projectSpaces:[]})
-        //     console.log(data,"")
-        // }
+        else{
+            this.setState({projectSpaces:[]})
+            console.log(data,"")
+        }
        
 
    }
    
     componentDidMount(){
         jwtToken=Cookies.get("jwt_token")
+        localStorage.setItem("spaceIdArray","");
         const   parseProjectId=localStorage.getItem("storeProject")
         const projectId=JSON.parse(parseProjectId)
         this.getProductsData()
-        this.projectApiCall()
+        // this.projectApiCall()
         this.spaceFun(projectId)
     }
      handleSlideChange = (index) => {
         this.setState({activeIndex:index});
       };
     render(){
-      const {singleProductData,splitedImages,activeIndex,projectDetails,projectSpaces}=this.state
+      const {singleProductData,splitedImages,activeIndex,projectSpaces}=this.state
         return(
             <>
             <div className='bg-container-product-view'>
@@ -118,7 +119,7 @@ class SingleProductView extends Component{
             <div className='sidebar-container'>
             <Sidebar/>
             </div> 
-            <ShopNavebar projectDetails={projectDetails}/>         
+            {/* <ShopNavebar projectDetails={projectDetails}/>          */}
             <div className='bg-container1 shadow'>
               
             <Container>
@@ -140,10 +141,12 @@ class SingleProductView extends Component{
                     <Col md={6}>
                        <div className='descDiv'>
                         <h5>{singleProductData.title}</h5>
+                        {singleProductData.quantity==0? <h5 style={{color:"red"}}>Not Available</h5>:null}
+                       
                         <h5>MRP : ₹{singleProductData.price}</h5>
-                        <ProjectPopup projectSpaces={projectSpaces}/>
-                       <Button varient="secondory" className="ml-4 mt-3 mb-5">Get Quote</Button>
-                       <Button varient="secondory" className="ml-4 mt-3 mb-5">Add to Wishlist</Button>
+                        <ProjectPopup projectSpaces={projectSpaces} singleProductData={singleProductData}/>
+                       <Button variant="secondary" className="ml-4 mt-3 mb-5">Get Quote</Button>
+                       <Button variant="secondary" className="ml-4 mt-3 mb-5">Add to Wishlist</Button>
                        <ProductView singleProductData={singleProductData}/>
                       
                        </div>

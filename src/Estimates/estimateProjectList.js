@@ -7,6 +7,8 @@ import IconButton from '@mui/material/IconButton';
 import {FaAngleRight, FaCookie} from 'react-icons/fa'
 import {Link} from "react-router-dom"
 import Cookies from 'js-cookie'
+import {withRouter} from 'react-router-dom'
+import ProjectList from './projectListItem'
 const GutterlessList=()=> {
   const [projectState,setProjectState]=React.useState([])
   React.useEffect(()=>{
@@ -28,26 +30,13 @@ const GutterlessList=()=> {
     projectListFun()
    
   },[1])
+  
   return (
    
     <List sx={{ width: '90%',  bgcolor: 'background.paper' }} className='ml-auto mr-auto'>
-      {projectState.map((value) => (
-         <Link to="/estimatepdflist" className="link-project">
-        <ListItem
-          key={value}
-          disableGutters
-          secondaryAction={
-            <IconButton aria-label="comment">
-              <FaAngleRight />
-            </IconButton>
-          }
-        >
-          <ListItemText primary={value.title} />
-        </ListItem>
-        <hr></hr>
-        </Link>
-      ))}
+      {projectState.map((value) => 
+      <ProjectList listItem={value} key={value.projectId}/>)}
     </List>
   );
 }
-export default GutterlessList
+export default withRouter(GutterlessList)

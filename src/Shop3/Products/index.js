@@ -13,24 +13,24 @@ class ShopProducts extends Component{
    
     componentDidMount=()=>{
         let jwtToken=Cookies.get("jwt_token")
-        const projectApiCall=async()=>{
-            console.log("AWesrdfghvjbnm")
+        // const projectApiCall=async()=>{
+        //     console.log("AWesrdfghvjbnm")
            
-            const apiUrl="http://localhost:9000/projectsInStore"
-            const options={
-              method:"GET",
-              headers:{
-                "Content-Type":"Application/json",
-                "authorization":`Bearer ${jwtToken}`
-              },
-            }
-            const response=await fetch(apiUrl,options)
-            const data=await response.json()
-            this.setState({projectDetails:data})
+        //     const apiUrl="http://localhost:9000/projectsInStore"
+        //     const options={
+        //       method:"GET",
+        //       headers:{
+        //         "Content-Type":"Application/json",
+        //         "authorization":`Bearer ${jwtToken}`
+        //       },
+        //     }
+        //     const response=await fetch(apiUrl,options)
+        //     const data=await response.json()
+        //     this.setState({projectDetails:data})
           
       
-          }
-          projectApiCall()
+        //   }
+        //   projectApiCall()
         const products=async()=>{
        
         const materialName=localStorage.getItem("materialName")
@@ -66,7 +66,7 @@ class ShopProducts extends Component{
             <div className='d-flex flex-row'>
             <Sidebar/>
             <div className='d-flex flex-column shop3-container'>
-            <ShopNavebar projectDetails={projectDetails}/>
+            {/* <ShopNavebar projectDetails={projectDetails}/> */}
             {productData.length===0?<img src={EmptyProduct} style={{height:"400px",width:"400px",margin:"auto"}}/>:<div className='product-cards'>
                 {productData.map(eachImage=>
                     <SelectedProducts products={eachImage}/> )}

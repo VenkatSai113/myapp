@@ -137,7 +137,7 @@ class UserOtpLogin extends Component{
               
                <label className='error-message12'>{submittMsg}</label>
                {/* <p className='forgot-password'><Link to="/forgotpassword">Forgot Password?</Link></p> */}
-               <p className='dont-have-account'>Don't Have an Account?<span className='signup-text'><Link className="link" to="/userOtpAuth">Sign Up</Link></span></p>
+               {/* <p className='dont-have-account'>Don't Have an Account?<span className='signup-text'><Link className="link" to="/userOtpAuth">Sign Up</Link></span></p> */}
             </div>
             </div>
             </form>

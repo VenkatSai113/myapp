@@ -70,7 +70,7 @@ class VirtualTourDetailView extends Component{
             <div className='sidebar-container'>
             <Sidebar/>
             </div> 
-            <ShopNavebar/>         
+            {/* <ShopNavebar/>          */}
             <div className='bg-container1 shadow'>
               
             <Container>

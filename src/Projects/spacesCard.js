@@ -4,10 +4,10 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 const SpacesCard=(props)=>{
     const {cardItem}=props
-    const {spaceImage,spaceName,brand,id,click}=cardItem
+    const {spaceImage,spaceName,spaceId,brand,id,click}=cardItem
     const percentage = 73
     return(
-        <Link to={`/${click}`} className="link-project">
+        <Link to={`/ongoingspaceproducts:${spaceId}`} className="link-project">
         <div className="project-card-container">
                         <img alt="project" src={spaceImage} className="project-image-style"/>
                         <div className='project-background'>

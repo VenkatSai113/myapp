@@ -142,7 +142,7 @@ class Spaces extends Component{
                
                 </div>
                 <div>
-               <Link to="/projectList"> <img src={estimateImage}/></Link>
+               <Link to="/estimateSpacesList"> <img src={estimateImage}/></Link>
                 </div>
                 <div>
                 <img src={paymentImage}/>

@@ -1,13 +1,12 @@
 import { Component } from "react";
-import './index.css'
+// import './index.css'
 import Sidebar from '../Sidebar'
-import OngoingProjectCard from "./ongoingprojectCards";
+// import OngoingProjectCard from "./ongoingprojectCards";
 import TopNavbar from "../Home/topNavbar";
 import BottomNavbar from "../Home/bottomNavbar";
 import { v4 as uuidv4 } from 'uuid';
 import {HiPlus} from "react-icons/hi"
 import GutterlessList from './estimateProjectList'
-import EstimatePdfCard from './estimateCardPdfList'
 const initialCardItems=[{
     imageUrl:"https://media.designcafe.com/wp-content/uploads/2023/01/05102507/wfh-friendly-living-room-for-working-professionals.jpg"
     ,name:"Ongoing Projects",
@@ -58,7 +57,7 @@ const initialCardItems=[{
 },
 
 ]
-class EstimatePdfList extends Component{
+class ProjectEstimateList extends Component{
 
     state={projectItems:initialCardItems,onSearch:"",name:"",description:"", }
     onChangeSearch=(event)=>{
@@ -119,21 +118,20 @@ class EstimatePdfList extends Component{
               
               
                <div className="projects-container">
-               <p className="project-heading">Estimate List</p>
+               <p className="project-heading">Project List</p>
                 <div className="input-div">
                 
                
               
                 </div>
                 <div className="project-cards-container">
-                    <EstimatePdfCard/>
+                    <GutterlessList/>
                     {/* {searchResult.map(eachCard=>
                         <OngoingProjectCard cardItem={eachCard} key={eachCard.id}/>)} */}
                 </div>
-                <button className="btn btn-primary ml-auto mr-auto">Submit</button>
                </div>
             </div>
         )
     }
 }
-export default EstimatePdfList
+export default ProjectEstimateList

@@ -34,8 +34,11 @@ import VirtualTourDetailView from './virtualTourDetailView/index'
 import IndividualDesigener from './UserOtpAuth/index'
 import UserOtpLogin from './UserLogin/index'
 import ProtecteRoute from './ProtectRoute';
-import OngoingSpaces from './Projects/ongoingSpaces';
-
+import OngoingSpaces from './Projects/';
+import OngoingSpaceProducts from './Projects/onGoingSpaceProducts';
+import EstimateSpacesList from './Projects/estimateSpacesList'
+import EditProfile from './EditProfile'
+import ProjectEstimateList from './Estimates/projectEstimate'
 function App() {
   return (
     <>
@@ -58,13 +61,17 @@ function App() {
     <ProtectedRoute exact path="/createpost" component={CreatePost}/>
     <ProtectedRoute exact path="/projects" component={Projects}/> 
     <ProtectedRoute exact path="/hello" component={SimpleBottomNavigation}/> 
+    <ProtectedRoute exact path="/estimates" component={ProjectEstimateList}/> 
     <ProtectedRoute exact path="/tab" component={NewTab}/> 
     <Route exact path="/profile" component={Profile}/> 
     <ProtectedRoute exact path="/ongoingprojects" component={OngoingProjects}/> 
     <ProtectedRoute exact path="/upcomingProjects" component={UpComingProjectCard}/> 
     <ProtectedRoute exact path="/completedProjects" component={CompletedProjects}/> 
+    <ProtectedRoute exact path="/estimateSpacesList" component={EstimateSpacesList}/> 
+    <ProtectedRoute exact path="/ongoingspaceproducts:spaceId" component={OngoingSpaceProducts}/> 
     <ProtectedRoute exact path="/spaces" component={Spaces}/>  
     <ProtectedRoute exact path="/ongoingSpaceCard" component={Spaces}/>  
+    <ProtectedRoute exact path="/editProfile" component={EditProfile}/>  
     <ProtectedRoute exact path="/explore" component={Explore}/> 
     <ProtectedRoute exact path="/projectList" component={ EstimateList}/>   
     <ProtectedRoute exact path="/projectTrack" component={ TrackingProject}/>   
@@ -76,7 +83,6 @@ function App() {
     <Route  exact path="/UserOtpAuth" component={IndividualDesigener}/>   
     <ProtectedRoute  exact path="/VirtualtourdetailView:tour_id" component={VirtualTourDetailView}/>                    
     <Route exact path="/signup" component={SignUp}/> 
- 
     <Route exact path="/not-found" component={NotFound}/>       
     <Redirect to="/not-found"/>
    </Switch>

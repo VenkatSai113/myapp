@@ -10,6 +10,7 @@ import {BiTimeFive} from 'react-icons/bi'
 import {Tb360View} from "react-icons/tb"
 import Cookies from 'js-cookie';
 import {IoMdLogOut} from 'react-icons/io'
+import {HiOutlineNewspaper} from 'react-icons/hi'
 const sidebarItems=[
     {
     name:"Home",
@@ -48,9 +49,16 @@ const sidebarItems=[
     id:4,
     path:"/projects"
 },
+{
+    name:"Estimates",
+    icon:<HiOutlineNewspaper  className='icon'/>,
+    id:30,
+    path:"/estimates"
+},
+
 
 {
-    name:"Shop",
+    name:"Store",
     icon:<AiOutlineShop  className='icon'/>,
     id:3,
     path:"/shop"
