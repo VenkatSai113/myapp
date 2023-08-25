@@ -5,7 +5,7 @@ import ProductView from './accordain'
 import Sidebar from '../Sidebar/index'
 import ShopNavebar from '../Shop3/navbar'
 import BottomNavbar from '../Home/bottomNavbar'
-import Button from 'react-bootstrap/button'
+
 import ProjectPopup from './projectPopup'
 import Cookies from 'js-cookie'
 import SwipeableViews from 'react-swipeable-views'

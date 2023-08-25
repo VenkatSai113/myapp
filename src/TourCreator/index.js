@@ -53,7 +53,7 @@ class TourCreator extends Component{
                 const {history}=this.props
                 this.setState({isLoading:false})
                 // history.push("/virtualTours")
-                window.open("http://localhost:3000/virtualTours", '_blank');
+                window.open("http://localhost:3000/virtualTours");
             localStorage.setItem("tourId",response.data.tourId)
             
         })
@@ -119,12 +119,14 @@ class TourCreator extends Component{
                     {/* <input type="text" className="form-control mt-3" placeholder="Enter scene name" value={scenename} name="scenename" onChange={this.onhandleChange}/> */}
                     <label htmlFor="DesignStyle" style={{textAlign:"left",fontFamily:"roboto",fontWeight:"bold",fontSize:"14px"}} value={designStyle} name="designStyle" >Design Style</label>
                     <select className="form-control"  onChange={this.onhandleChange} value={designStyle} name="designStyle">
+                        <option>select</option>
                         <option name="Classic">Classic</option>
                         <option name="Modren">Modren</option>
                         <option name="Trending">Trending</option>
                     </select>
                     <label htmlFor="propertyType" style={{textAlign:"left",fontFamily:"roboto",fontWeight:"bold",fontSize:"14px"}} >Property Type</label>
                     <select className="form-control" onChange={this.onhandleChange} value={propertyType} name="propertyType">
+                        <option>select</option>
                         <option name="Residential">Residential</option>
                         <option name="commercial">commercial</option>
                     </select>
@@ -138,6 +140,7 @@ class TourCreator extends Component{
                     <input id="timeDuration" type="text" className="form-control" placeholder="Enter Time Durationion." value={timeDuration} name="timeDuration" onChange={this.onhandleChange} />
                     <label htmlFor="privacy" style={{textAlign:"left",fontFamily:"roboto",fontWeight:"bold",fontSize:"14px"}}>Privacy</label>
                     <select id="privacy" className="form-control" value={privacy} name="privacy" onChange={this.onhandleChange}>
+                        <option>select</option>
                         <option name="Public">Public</option>
                         <option name="Private">Private</option>
                     </select>

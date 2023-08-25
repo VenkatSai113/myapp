@@ -150,7 +150,7 @@ class Home extends Component{
         const response=await fetch(feedUrl,options);
         const data=await response.json();
         this.setState({feedDetails:data})
-        console.log(data)
+        console.log(data,"feedData")
     }
     const suggestionUrl="http://localhost:9000/relatedUsers"
     const options={
