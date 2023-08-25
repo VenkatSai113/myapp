@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Button from 'react-bootstrap/button'
+// import Button from 'react-bootstrap/button'
 import './index.css'
 import Modal from 'react-bootstrap/Modal';
 import { useEffect } from 'react';
@@ -117,7 +117,7 @@ const  ProjectPopup1=(props)=> {
              <SpaceBoxes spaces={eachSpace}/>
              )}
           </div>
-          <button className='btn btn-primary' onClick={onSubmitProducts}>Submit</button>
+          <button  onClick={onSubmitProducts}>Submit</button>
           {/* <img src="https://images.timesproperty.com/blog/2071/unnamed_84.jpg" alt="add-project-single-product-view" className="add-project-single-product-view"/>
           <h3 className="welcome-text mt-3">Welcome To Design Alley</h3>
           <label className="mobile-num-text">Enter your Mobile Number</label>

@@ -5,7 +5,7 @@ import ProductView from './accordain'
 import Sidebar from '../../Sidebar/index'
 import ShopNavebar from '../navbar'
 import BottomNavbar from '../../Home/bottomNavbar'
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import ProjectPopup from './projectPopup'
 import Cookies from 'js-cookie'
 import SwipeableViews from 'react-swipeable-views'
@@ -145,8 +145,8 @@ class SingleProductView extends Component{
                        
                         <h5>MRP : ₹{singleProductData.price}</h5>
                         <ProjectPopup projectSpaces={projectSpaces} singleProductData={singleProductData}/>
-                       <Button variant="secondary" className="ml-4 mt-3 mb-5">Get Quote</Button>
-                       <Button variant="secondary" className="ml-4 mt-3 mb-5">Add to Wishlist</Button>
+                       {/* <Button variant="secondary" className="ml-4 mt-3 mb-5">Get Quote</Button>
+                       <Button variant="secondary" className="ml-4 mt-3 mb-5">Add to Wishlist</Button> */}
                        <ProductView singleProductData={singleProductData}/>
                       
                        </div>
