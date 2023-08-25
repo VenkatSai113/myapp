@@ -3,7 +3,7 @@ import {Component} from 'react'
 import Sidebar from '../Sidebar'
 import './index.css'
 import { Container,Row,Col} from 'react-bootstrap'
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 import UploadProfileImg from './uploadProfile'
 import ProfileTopNavbar from './profileTopNav'
 
@@ -34,13 +34,13 @@ class Account extends Component{
                                 <input id="userName" type="number" className='form-control'/>
                                 <label htmlFor='userName' className='projectName'>Address</label>
                                 <textarea id="userName" type="text" className='form-control'></textarea>
-                                <Button variant="primary" className='mt-4'>Save Changes</Button>
+                                <button className='mt-4'>Save Changes</button>
                                 <div className='change-password-div'>
                                     <p className='password-text'>password</p>
                                     <div className='d-flex flex-row'>         
                                     <p className='change-password-text'>You can Reset your<br></br> password By clicking here</p>
                                     <div>
-                                    <Button variant="secondary">Change</Button>
+                                    <button variant="secondary">Change</button>
                                     </div>
                                     </div>
                                 </div>
