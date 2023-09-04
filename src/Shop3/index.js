@@ -103,7 +103,7 @@ class Shop3 extends Component{
       const projectApiCall=async()=>{
          console.log("AWesrdfghvjbnm")
          const jwtToken=Cookies.get("jwt_token");
-         const apiUrl="http://localhost:9000/projectsInStore"
+         const apiUrl="http://13.233.231.34:9000/projectsInStore"
          const options={
            method:"GET",
            headers:{

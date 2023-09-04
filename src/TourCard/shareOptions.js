@@ -14,7 +14,7 @@ function Example(props) {
     navigator.clipboard.writeText(`${window.location.origin}/sharedPost:${postId}`)
     setCopyIcon(true)
   }
-  let imageUrl='http://localhost:9000/virtualThumbnails/1691574163284_Royal-Suite-.jpg'
+  let imageUrl='http://13.233.231.34:9000/virtualThumbnails/1691574163284_Royal-Suite-.jpg'
   return (
     <>
     

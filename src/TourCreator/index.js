@@ -37,7 +37,7 @@ class TourCreator extends Component{
         }else{
             this.setState({isLoading:true})
         localStorage.setItem("tourTitle",tourTitle)
-        const apiurl="http://localhost:9000/virtualtours"
+        const apiurl="http://13.233.231.34:9000/virtualtours"
         console.log(tourTitle)
         const formData=new FormData();
         formData.append("tourTitle",tourTitle);
@@ -53,14 +53,14 @@ class TourCreator extends Component{
                 const {history}=this.props
                 this.setState({isLoading:false})
                 // history.push("/virtualTours")
-                window.open("http://localhost:3000/virtualTours");
+                window.open("http://13.233.231.34:3000/virtualTours");
             localStorage.setItem("tourId",response.data.tourId)
             
         })
         .catch(error=>{
             console.log(error)
         })
-        const apiUrl = "http://localhost:9000/virtualTourCreater";
+        const apiUrl = "http://13.233.231.34:9000/virtualTourCreater";
        const tourId= localStorage.getItem("tourId")
        const parseTourId=parseInt(tourId)
        const presentTourd=parseTourId+1

@@ -16,7 +16,7 @@ class TestCreatePost extends Component{
     }
      onCreatePost = async () => {
         const {feedImages}=this.state
-        const apiUrl = "http://localhost:9000/postImage";
+        const apiUrl = "http://13.233.231.34:9000/postImage";
         const formData = new FormData();
         formData.append("feedImages", feedImages);
         const config={

@@ -61,7 +61,7 @@ class Aframes extends Component{
         this.setState({isSceneLoading:true})
         let tourId=localStorage.getItem("tourId")
         tourId=JSON.parse(tourId)
-       const apiUrl="http://localhost:9000/scenes"
+       const apiUrl="http://13.233.231.34:9000/scenes"
        const formData=new FormData();
         formData.append("sceneName",sceneName)
         formData.append("sceneImage",sceneImage)
@@ -88,7 +88,7 @@ class Aframes extends Component{
         eachItem.scene_id===id)
       this.setState({singleScene:singleScene})
       const hotspotsPerScene={id,hello:"hello"}
-      const apiUrl="http://localhost:9000/sceneHotspots";
+      const apiUrl="http://13.233.231.34:9000/sceneHotspots";
       const options={
         method:"POST",
         headers:{
@@ -106,7 +106,7 @@ class Aframes extends Component{
      
       const mapImageFunction=async()=>{
         this.setState({isSceneLoading:true})
-        const mapapiUrl="http://localhost:9000/getmapImage";
+        const mapapiUrl="http://13.233.231.34:9000/getmapImage";
         const activateSceneId={id,hello:"hello"}
         const mapOptions={
             method:"POST",
@@ -142,7 +142,7 @@ class Aframes extends Component{
             const {singleScene}=this.state
             const sceneId=singleScene[0].scene_id
             const scenehotspot={sceneId,parsehotspots,hotspotName}
-            const apiUrl="http://localhost:9000/hotspots"
+            const apiUrl="http://13.233.231.34:9000/hotspots"
             const options={
                 method:'POST',
                 headers:{
@@ -182,7 +182,7 @@ class Aframes extends Component{
         this.setState({isSceneLoading:true})
         const {activeSceneId}=this.state
         const mapFile=event.target.files[0]
-        const apiUrl="http://localhost:9000/mapImage"
+        const apiUrl="http://13.233.231.34:9000/mapImage"
         const config={
             headers:{
                 "Content-Type":"Application/json",
@@ -213,7 +213,7 @@ class Aframes extends Component{
     onClickpreview=()=>{
         const tourId=localStorage.getItem("tourId")
         const parseTourId=JSON.parse(tourId)
-        window.open(`http://localhost:3000/viewer:${parseTourId}`)
+        window.open(`http://13.233.231.34:3000/viewer:${parseTourId}`)
     }
     render(){
         const {scenes,uploadMapRender,open,singleScene,hotspotData,activeSceneId,stateMap,sceneName,isSceneLoading}=this.state

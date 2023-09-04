@@ -66,7 +66,7 @@ requiredHandle=(event)=>{
         if(PhoneNumber!==""){
           
             this.setState({isLoading:true})
-            const signupUrl="http://localhost:9000/userRegister"
+            const signupUrl="http://13.233.231.34:9000/userRegister"
             let signupDetails={name,PhoneNumber}
          
             const options={

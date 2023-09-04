@@ -13,7 +13,7 @@ const ProfilePosts=(props)=>{
    }
     return(
         <>
-        {splitDisplayedImage=="mp4"?<Link to={`/profilePosts:${postId}`}><video  src={`http://localhost:9000/${displayedImage}`} onClick={onPostClick} autoPlay loop muted  className="profile-post-gridView"/></Link>:<Link to={`/profilePosts:${postId}`}><img src={`http://localhost:9000/${displayedImage}`} onClick={onPostClick} className="profile-post-gridView"/></Link>}
+        {splitDisplayedImage=="mp4"?<Link to={`/profilePosts:${postId}`}><video  src={`http://13.233.231.34:9000/${displayedImage}`} onClick={onPostClick} autoPlay loop muted  className="profile-post-gridView"/></Link>:<Link to={`/profilePosts:${postId}`}><img src={`http://13.233.231.34:9000/${displayedImage}`} onClick={onPostClick} className="profile-post-gridView"/></Link>}
         
         
         </>

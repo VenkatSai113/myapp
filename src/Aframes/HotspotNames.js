@@ -32,7 +32,7 @@ const HotspotNames=(props)=>{
         let actionHotspot=hotspot_id
         let targetedSceneId=targetScene
         const linkedspots={parseActiveSceneId,parseActiveTourId,actionHotspot,targetedSceneId}
-        const apiUrl="http://localhost:9000/linkedSpots"
+        const apiUrl="http://13.233.231.34:9000/linkedSpots"
         const options={
             method:"POST",
             headers:{
@@ -55,7 +55,7 @@ const HotspotNames=(props)=>{
         let id=activeSceneId
         let hotspotId=hotspot_id
         const jwtToken=Cookies.get("jwt_token")
-       const apiUrl="http://localhost:9000/deleteHotspot"
+       const apiUrl="http://13.233.231.34:9000/deleteHotspot"
        const deleteHotspotInfo={hotspotId,id}
        const options={
         method:"POST",

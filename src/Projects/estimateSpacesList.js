@@ -24,7 +24,7 @@ const EstimateSpacesList=()=> {
             const parseProjectId=localStorage.getItem("projectId")
             const projectId=JSON.parse(parseProjectId)
             const projectDetails={projectId,hello:"hello"}
-            const apiUrl="http://localhost:9000/estimateProducts"
+            const apiUrl="http://13.233.231.34:9000/estimateProducts"
             const options={
                 method:"POST",
                 headers:{
@@ -41,7 +41,7 @@ const EstimateSpacesList=()=> {
         spaceProducts()
         const getDesignerDetails=async()=>{
           
-            const apiUrl="http://localhost:9000/estimateDesignerDetails"
+            const apiUrl="http://13.233.231.34:9000/estimateDesignerDetails"
             const options={
                 method:"GET",
                 headers:{
@@ -75,7 +75,7 @@ const EstimateSpacesList=()=> {
                <p className="project-heading">Estimate List</p>
                <div className="d-flex flex-row justify-content-between w-75">
                <div>
-               <img  className="profile-image" src={`http://localhost:9000/${profileData.logo}`}/>
+               <img  className="profile-image" src={`http://13.233.231.34:9000/${profileData.logo}`}/>
                {/* <div class="center">
   <div class="form-input">
     <div class="preview">

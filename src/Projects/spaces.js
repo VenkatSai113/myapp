@@ -29,7 +29,7 @@ class Spaces extends Component{
         console.log(projectId)
         this.setState({projectId})
         const spaceFun=async()=>{
-            const apiUrl="http://localhost:9000/spaceCards"
+            const apiUrl="http://13.233.231.34:9000/spaceCards"
             const options={
                 method:"POST",
                 headers:{
@@ -72,7 +72,7 @@ class Spaces extends Component{
             const {spaceImage,spacename,projectId}=this.state
             const spaceDetails={spaceImage,spacename}
                 this.setState({isSceneLoading:true})
-               const apiUrl="http://localhost:9000/createSpaces"
+               const apiUrl="http://13.233.231.34:9000/createSpaces"
                const formData=new FormData();
                 formData.append("spacename",spacename)
                 formData.append("projectId",projectId)

@@ -12,7 +12,7 @@ class EditProfile extends Component{
     componentDidMount=()=>{
         const editProfile=async()=>{
             let jwtToken=Cookies.get("jwt_token")
-            const url="http://localhost:9000/profileData";
+            const url="http://13.233.231.34:9000/profileData";
             const options={
                 headers:{
                     "authorization":`Bearer ${jwtToken}`
@@ -68,7 +68,7 @@ class EditProfile extends Component{
         formData.append("address",address);
         formData.append("location",location);
         formData.append("profileImages",imageFile);
-        const url="http://localhost:9000/editDesignerProfile"
+        const url="http://13.233.231.34:9000/editDesignerProfile"
         const config={
             headers:{
                 "Content-Type":"Application/json",
@@ -95,7 +95,7 @@ class EditProfile extends Component{
                 <div className='forgot-password-container'>
                     <h3 className='edit-profile'>Edit Profile</h3>
             {<input  type="file"  onChange={this.onProfileChange} className="custom1-file-input"/>}
-            {onUpload? <img src={profileImage} className='edit-profile-image' alt="" />:  <img src={`http://localhost:9000/${profileImage}`}className='edit-profile-image' alt="" />}
+            {onUpload? <img src={profileImage} className='edit-profile-image' alt="" />:  <img src={`http://13.233.231.34:9000/${profileImage}`}className='edit-profile-image' alt="" />}
                    
                   
                   <input type="text" className='username-input-filed' name="username" value={username} onChange={this.onChangeHandle} placeholder='User Name /Company name'/>

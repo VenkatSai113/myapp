@@ -20,7 +20,7 @@ class Profile extends Component{
     componentDidMount=async()=>{
         
          jwtToken=Cookies.get("jwt_token")
-        const url="http://localhost:9000/profileData";
+        const url="http://13.233.231.34:9000/profileData";
         const options={
             headers:{
                 "authorization":`Bearer ${jwtToken}`
@@ -36,7 +36,7 @@ class Profile extends Component{
             console.log(fetchedData)
 
         }
-        const postApiUrl="http://localhost:9000/profileAllposts"
+        const postApiUrl="http://13.233.231.34:9000/profileAllposts"
         const postOptions={
             headers:{
                 "Content-Type":"Application/json",
@@ -89,7 +89,7 @@ class Profile extends Component{
         console.log(virtualData)
         this.setState({profilePosts:virtualData});
 
-        // const postApiUrl="http://localhost:9000/360ImagesOnProfile"
+        // const postApiUrl="http://13.233.231.34:9000/360ImagesOnProfile"
         // const postOptions={
         //     headers:{
         //         "Content-Type":"Application/json",
@@ -118,7 +118,7 @@ class Profile extends Component{
             <div className="saved-feed-container ">
                 <div className="saved-profile-div">
                     <div>
-                    <img src={`http://localhost:9000/${logo}`} alt="profile" className="profile-image-profilepic"/>
+                    <img src={`http://13.233.231.34:9000/${logo}`} alt="profile" className="profile-image-profilepic"/>
                     <p  className="saved-profile-name">{desigener_name}</p>
                     </div>
                     <div>

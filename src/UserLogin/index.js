@@ -69,7 +69,7 @@ class UserOtpLogin extends Component{
       if(phoneNumber!==""){
           
         this.setState({isLoading:true})
-        const signupUrl="http://localhost:9000/userRegister"
+        const signupUrl="http://13.233.231.34:9000/userRegister"
         let signupDetails={name,phoneNumber}
      
         const options={
@@ -97,7 +97,7 @@ class UserOtpLogin extends Component{
       // this.setState({isLoading:true})
       //   const {phoneNumber,hello}=this.state
       //   const extra= {phoneNumber,hello}
-      //   const url="http://localhost:9000/userLoginCheck/"
+      //   const url="http://13.233.231.34:9000/userLoginCheck/"
       //   const options={
       //     method:"POST",
       //     headers:{

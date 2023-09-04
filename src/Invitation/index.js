@@ -26,7 +26,7 @@ class InviteDesigner extends Component{
     const {mobileNumber,invitationMsg}=this.state
     const invitationDetails={mobileNumber,invitationMsg}
     console.log(invitationDetails)
-    const url="http://localhost:9000/invitationApi"
+    const url="http://13.233.231.34:9000/invitationApi"
     const options={
       method:"POST",
       headers:{
@@ -89,7 +89,7 @@ class InviteDesigner extends Component{
                       <FacebookIcon size={35}  logoFillColor="white" round={true}>
                       </FacebookIcon>
                     </FacebookShareButton> */}
-                    <WhatsappShareButton url="http://localhost:3000/signup" title="I'm inviting you to register with Design Alley! Here is the link">
+                    <WhatsappShareButton url="http://13.233.231.34:3000/signup" title="I'm inviting you to register with Design Alley! Here is the link">
                       <WhatsappIcon className="ml-3" size={35} logoFillColor="white" round={true}>
                       </WhatsappIcon>
                     </WhatsappShareButton>
