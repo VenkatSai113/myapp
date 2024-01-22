@@ -25,51 +25,51 @@ const sidebarItems=[
     id:26,
     path:"/invitation"
 },
-// {
-//     name:"Create Post",
-//     icon:<AiOutlinePlus  className='icon'/>,
-//     id:6,
-//     path:"/createPost"
-// },
-// {
-//     name:"Explore",
-//     icon:<AiOutlineSearch  className='icon'/>,
-//     id:2,
-//     path:"/explore"
-// },
-// {
-//     name:"Trending",
-//     icon:<BiTrendingUp  className='icon'/>,
-//     id:7,
-//     path:"/trending"
-// },
-// {
-//     name:"Projects",
-//     icon:<AiFillProject  className='icon'/>,
-//     id:4,
-//     path:"/projects"
-// },
-// {
-//     name:"Estimates",
-//     icon:<HiOutlineNewspaper  className='icon'/>,
-//     id:30,
-//     path:"/estimates"
-// },
+{
+    name:"Create Post",
+    icon:<AiOutlinePlus  className='icon'/>,
+    id:6,
+    path:"/createPost"
+},
+{
+    name:"Explore",
+    icon:<AiOutlineSearch  className='icon'/>,
+    id:2,
+    path:"/explore"
+},
+{
+    name:"Trending",
+    icon:<BiTrendingUp  className='icon'/>,
+    id:7,
+    path:"/trending"
+},
+{
+    name:"Projects",
+    icon:<AiFillProject  className='icon'/>,
+    id:4,
+    path:"/projects"
+},
+{
+    name:"Estimates",
+    icon:<HiOutlineNewspaper  className='icon'/>,
+    id:30,
+    path:"/estimates"
+},
 
 
-// {
-//     name:"Store",
-//     icon:<AiOutlineShop  className='icon'/>,
-//     id:3,
-//     path:"/shop"
-// },
+{
+    name:"Store",
+    icon:<AiOutlineShop  className='icon'/>,
+    id:3,
+    path:"/shop"
+},
 
-// {
-//     name:"Chat",
-//     icon:<BsChatRight  className='icon-chat'/>,
-//     id:5,
-//     path:"/chat"
-// },
+{
+    name:"Chat",
+    icon:<BsChatRight  className='icon-chat'/>,
+    id:5,
+    path:"/chat"
+},
 ,
 {
     name:"Virtual Tours",
@@ -77,12 +77,12 @@ const sidebarItems=[
     id:20,
     path:"/savedTours"
 },
-// {
-//     name:"Profile",
-//     icon:<CgProfile  className='icon'/>,
-//     id:8,
-//     path:"/Profile"
-// },
+{
+    name:"Profile",
+    icon:<CgProfile  className='icon'/>,
+    id:8,
+    path:"/Profile"
+},
 
 ]
 
