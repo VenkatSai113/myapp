@@ -21,7 +21,7 @@ class TourGridView extends Component{
         const apiData={parseTourId,hello:"hello"}
         const {stateJwtToken}=this.state
         console.log(apiData)
-        const apiUrl="http://13.233.231.34:9000/tourData1"
+        const apiUrl="https://venkatsai.onrender.com/tourData1"
         const options={
             method:"POST",
             headers:{
@@ -47,7 +47,7 @@ class TourGridView extends Component{
    console.log(tour_id)
     const apiData2={tour_id,hello:"hello"}
     console.log(jwtToken)
-        const apiUrl="http://13.233.231.34:9000/deleteTour"
+        const apiUrl="https://venkatsai.onrender.com/deleteTour"
         const options={
             method:"POST",
             headers:{

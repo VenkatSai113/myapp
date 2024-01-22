@@ -12,7 +12,7 @@ const GutterlessList=()=> {
   React.useEffect(()=>{
     const projectListFun=async()=>{
       const jwtToken=Cookies.get("jwt_token")
-      const apiUrl="http://13.233.231.34:9000/estimateProjectList"
+      const apiUrl="https://venkatsai.onrender.com/estimateProjectList"
       const options={
         method:"GET",
         headers:{

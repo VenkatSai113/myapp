@@ -36,7 +36,7 @@ class VirtualTourDetailView extends Component{
         jwtToken=Cookies.get("jwt_token")
         const productId=localStorage.getItem("productId")
         const productDetails={currentTourId,hello:"hello"}
-        const apiUrl="http://13.233.231.34:9000/virtualTourDetailview"
+        const apiUrl="https://venkatsai.onrender.com/virtualTourDetailview"
         const options={
             method:"POST",
             headers:{
@@ -80,13 +80,13 @@ class VirtualTourDetailView extends Component{
                         {splitedImages.map(eachImage=>
                         <>
                           <div className='post-count-div'> <p className='post-count'>{`${activeIndex+1}/${splitedImages.length}`}</p></div>
-                           <img alt="products" src={`http://13.233.231.34:9000/${eachImage}`} className='img-fluid productSize'/></> )}
+                           <img alt="products" src={`https://venkatsai.onrender.com/${eachImage}`} className='img-fluid productSize'/></> )}
                           
                            </SwipeableViews>
                         
                         <div className='referImgDiv'>
                         {splitedImages.map(eachImage=>
-                           <img alt="smallimg" src={`http://13.233.231.34:9000/${eachImage}`} className="referedImg"/>)}
+                           <img alt="smallimg" src={`https://venkatsai.onrender.com/${eachImage}`} className="referedImg"/>)}
                         </div>
                     </Col>
                     <Col md={6}>

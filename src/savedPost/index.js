@@ -75,7 +75,7 @@ class SavedPosts extends Component{
     state={projectItems:initialCardItems,onSearch:"",name:"",description:"",savedFeed:[] }
     componentDidMount=async()=>{
         jwtToken=Cookies.get("jwt_token")
-        const feedUrl="http://13.233.231.34:9000/getSavedPost"
+        const feedUrl="https://venkatsai.onrender.com/getSavedPost"
         const options={
             method:"GET",
             headers:{

@@ -20,7 +20,7 @@ class OngoingSpaceProducts extends Component{
             const parseSpaceId=window.location.pathname.split(":")[1]
             const spaceId=parseInt(parseSpaceId)
             const spaceDetails={spaceId,hello:"hello"}
-            const apiUrl="http://13.233.231.34:9000/spaceProducts"
+            const apiUrl="https://venkatsai.onrender.com/spaceProducts"
             const options={
                 method:"POST",
                 headers:{

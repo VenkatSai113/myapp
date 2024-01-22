@@ -38,7 +38,7 @@ class CreatePost extends Component{
         const {property}=this.state
         const searchData={searchResult,property}
         const {profileResult}=this.state
-        const searchApi="http://13.233.231.34:9000/selectedUsers";
+        const searchApi="https://venkatsai.onrender.com/selectedUsers";
         const options={
             method:"POST",
             headers:{
@@ -62,7 +62,7 @@ class CreatePost extends Component{
        this.setState({uploadingFeed:event.target.files})
     }
     componentDidMount=async()=>{
-        const apiUrl="http://13.233.231.34:9000/relatedUsers";
+        const apiUrl="https://venkatsai.onrender.com/relatedUsers";
         const options={
              methos:"GET"
         }
@@ -81,7 +81,7 @@ class CreatePost extends Component{
         const designPost={description,property,uploadingFeed,subType,Occupancy,Category,DesignStyle,Locality,city,privacy}
       
         const jwtToken=Cookies.get("jwt_token");
-        const url= "http://13.233.231.34:9000/post"
+        const url= "https://venkatsai.onrender.com/post"
         const formData=new FormData()
         formData.append("description",description);
         formData.append("property",property);

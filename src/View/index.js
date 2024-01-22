@@ -29,7 +29,7 @@ const  Viewer =()=>{
         const fetchData = async () => {
           try {
             const localtourId={parseTourId:"tour"}
-            const apiUrl="http://13.233.231.34:9000/viewer"
+            const apiUrl="https://venkatsai.onrender.com/viewer"
             const formData=new FormData();
             formData.append("parseTourId",parseTourId);
             formData.append("tour","tour");
@@ -55,7 +55,7 @@ const  Viewer =()=>{
         const hotspotId=event.target.id
         console.log(hotspotId,"Hello")
         const hotspotIds={hotspotId,hello:"hello"}
-          const apiUrl="http://13.233.231.34:9000/moveingScenes"
+          const apiUrl="https://venkatsai.onrender.com/moveingScenes"
             const formData=new FormData();
             formData.append("hotspotId",hotspotId);
             formData.append("hello",hello);

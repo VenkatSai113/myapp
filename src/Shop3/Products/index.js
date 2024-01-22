@@ -16,7 +16,7 @@ class ShopProducts extends Component{
         // const projectApiCall=async()=>{
         //     console.log("AWesrdfghvjbnm")
            
-        //     const apiUrl="http://13.233.231.34:9000/projectsInStore"
+        //     const apiUrl="https://venkatsai.onrender.com/projectsInStore"
         //     const options={
         //       method:"GET",
         //       headers:{
@@ -36,7 +36,7 @@ class ShopProducts extends Component{
         const materialName=localStorage.getItem("materialName")
         const productDetails={materialName,hello:"hello"}
         console.log(materialName)
-        const apiUrl="http://13.233.231.34:9000/storeProducts"
+        const apiUrl="https://venkatsai.onrender.com/storeProducts"
         const options={
             method:"POST",
             headers:{

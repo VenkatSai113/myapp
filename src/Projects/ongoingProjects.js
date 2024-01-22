@@ -16,7 +16,7 @@ class OngoingProjects extends Component{
      componentDidMount=()=>{
         jwtToken=Cookies.get("jwt_token")
         const fetchProjects=async()=>{
-            const apiUrl="http://13.233.231.34:9000/ongoingProjects"
+            const apiUrl="https://venkatsai.onrender.com/ongoingProjects"
             const options={
                 method:"GET",
                 headers:{

@@ -37,7 +37,7 @@ class TourCreator extends Component{
         }else{
             this.setState({isLoading:true})
         localStorage.setItem("tourTitle",tourTitle)
-        const apiurl="http://13.233.231.34:9000/virtualtours"
+        const apiurl="https://venkatsai.onrender.com/virtualtours"
         console.log(tourTitle)
         const formData=new FormData();
         formData.append("tourTitle",tourTitle);
@@ -60,7 +60,7 @@ class TourCreator extends Component{
         .catch(error=>{
             console.log(error)
         })
-        const apiUrl = "http://13.233.231.34:9000/virtualTourCreater";
+        const apiUrl = "https://venkatsai.onrender.com/virtualTourCreater";
        const tourId= localStorage.getItem("tourId")
        const parseTourId=parseInt(tourId)
        const presentTourd=parseTourId+1

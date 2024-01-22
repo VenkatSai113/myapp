@@ -69,7 +69,7 @@ class Home extends Component{
         const userPost=profilePost[0]
         if(userPost!=="sharedPost"){
         const hello=async()=>{
-            const logUrl="http://13.233.231.34:9000/logedInUser"
+            const logUrl="https://venkatsai.onrender.com/logedInUser"
         const options={
             method:"GET",
             headers:{
@@ -94,7 +94,7 @@ class Home extends Component{
        
        
         if(userPost==="profilePosts"){
-            const designerPostsUrl="http://13.233.231.34:9000/designerPost"
+            const designerPostsUrl="https://venkatsai.onrender.com/designerPost"
             const selectedPostId=profilePost[1]
             const postInfo={selectedPostId,hello:"hello"}
 
@@ -116,7 +116,7 @@ class Home extends Component{
         }
         else if(userPost==="sharedPost"){
            this.setState({navBarAuth:false})
-            const designerPostsUrl1="http://13.233.231.34:9000/designerSelectedPost"
+            const designerPostsUrl1="https://venkatsai.onrender.com/designerSelectedPost"
             const selectedPostId1=profilePost[1]
             const postInfo1={selectedPostId1,hello:"hello"}
 
@@ -138,7 +138,7 @@ class Home extends Component{
           
         }
         else{
-        const feedUrl="http://13.233.231.34:9000/feedData"
+        const feedUrl="https://venkatsai.onrender.com/feedData"
         const options={
             method:"GET",
             headers:{
@@ -152,7 +152,7 @@ class Home extends Component{
         this.setState({feedDetails:data})
         console.log(data,"feedData")
     }
-    const suggestionUrl="http://13.233.231.34:9000/relatedUsers"
+    const suggestionUrl="https://venkatsai.onrender.com/relatedUsers"
     const options={
         method:"GET",
         headers:{

@@ -26,7 +26,7 @@ class InviteDesigner extends Component{
     const {mobileNumber,invitationMsg}=this.state
     const invitationDetails={mobileNumber,invitationMsg}
     console.log(invitationDetails)
-    const url="http://13.233.231.34:9000/invitationApi"
+    const url="https://venkatsai.onrender.com/invitationApi"
     const options={
       method:"POST",
       headers:{

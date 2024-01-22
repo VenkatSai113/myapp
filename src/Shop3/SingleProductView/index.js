@@ -32,7 +32,7 @@ class SingleProductView extends Component{
        
         const productId=localStorage.getItem("productId")
         const productDetails={productId,hello:"hello"}
-        const apiUrl="http://13.233.231.34:9000/productDetailview"
+        const apiUrl="https://venkatsai.onrender.com/productDetailview"
         const options={
             method:"POST",
             headers:{
@@ -58,7 +58,7 @@ class SingleProductView extends Component{
     //  projectApiCall=async()=>{
     //     console.log("AWesrdfghvjbnm")
        
-    //     const apiUrl="http://13.233.231.34:9000/projectsInStore"
+    //     const apiUrl="https://venkatsai.onrender.com/projectsInStore"
     //     const options={
     //       method:"GET",
     //       headers:{
@@ -75,7 +75,7 @@ class SingleProductView extends Component{
        spaceFun=async(projectId)=>{
         
         const spaceDetails={projectId,hello:"hello"}
-        const apiUrl="http://13.233.231.34:9000/spaceCards"
+        const apiUrl="https://venkatsai.onrender.com/spaceCards"
         const options={
             method:"POST",
             headers:{
@@ -129,13 +129,13 @@ class SingleProductView extends Component{
                         {splitedImages.map(eachImage=>
                         <>
                           <div className='post-count-div'> <p className='post-count'>{`${activeIndex+1}/${splitedImages.length}`}</p></div>
-                           <img alt="products" src={`http://13.233.231.34:9000/${eachImage}`} className='img-fluid productSize'/></> )}
+                           <img alt="products" src={`https://venkatsai.onrender.com/${eachImage}`} className='img-fluid productSize'/></> )}
                           
                            </SwipeableViews>
                         
                         <div className='referImgDiv'>
                         {splitedImages.map(eachImage=>
-                           <img alt="smallimg" src={`http://13.233.231.34:9000/${eachImage}`} className="referedImg"/>)}
+                           <img alt="smallimg" src={`https://venkatsai.onrender.com/${eachImage}`} className="referedImg"/>)}
                         </div>
                     </Col>
                     <Col md={6}>

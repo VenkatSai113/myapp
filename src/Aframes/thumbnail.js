@@ -29,7 +29,7 @@ const Thumbnail=(props)=>{
      console.log(id,"idd")
       if (window.confirm(text) === true) {
          
-      const apiUrl="http://13.233.231.34:9000/deleteScene";
+      const apiUrl="https://venkatsai.onrender.com/deleteScene";
       const options={
           method:"DELETE",
           headers:{

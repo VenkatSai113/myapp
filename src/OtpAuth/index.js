@@ -73,7 +73,7 @@ class OtpAuth extends Component{
       this.setState({isLoading:true})
         const {phoneNumber,hello}=this.state
         const extra= {phoneNumber,hello}
-        const url="http://13.233.231.34:9000/checkingPhonenumbers/"
+        const url="https://venkatsai.onrender.com/checkingPhonenumbers/"
         const options={
           method:"POST",
           headers:{

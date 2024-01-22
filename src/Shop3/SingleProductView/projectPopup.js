@@ -77,7 +77,7 @@ const  ProjectPopup1=(props)=> {
     const spacesId=localStorage.getItem("spaceIdArray")
     // const spacesId=JSON.parse(parseSpacesId)
     const spaceProducts={productId,productType,productSize,spacesId,quentity,availableQty}
-    const apiUrl="http://13.233.231.34:9000/projectSpaceProducts"
+    const apiUrl="https://venkatsai.onrender.com/projectSpaceProducts"
     const options={
       method:"POST",
       headers:{

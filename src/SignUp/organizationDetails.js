@@ -153,7 +153,7 @@ class OrganizationDetails extends Component{
             formData.append("ifscCode",ifscCode);
             formData.append("PhoneNumber",PhoneNumber);
             formData.append("logoFile",logoFile);
-            const url="http://13.233.231.34:9000//designer/signup/"
+            const url="https://venkatsai.onrender.com//designer/signup/"
             axios.post(url,formData).then
             (response=> 
                this.setState({responseData:response.data}),

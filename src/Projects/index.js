@@ -53,7 +53,7 @@ class Projects extends Component{
             alert("Please Enter Projectname")
           }
           else{
-            const apiUrl="http://13.233.231.34:9000/createProject"
+            const apiUrl="https://venkatsai.onrender.com/createProject"
             const projectData={projectName,hello:"hello"}
             const options={
               method:"POST",

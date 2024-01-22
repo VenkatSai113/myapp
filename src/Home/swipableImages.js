@@ -5,7 +5,7 @@ const SwipImages=(props)=>{
    
     return(
         <>
-        {multipleImages === null? <img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFx1pD-5y61mO3S-e1grpCuf24c6zMIGanYrbzcIwB&s" className="feed-image" />: <img alt="" src={`http://13.233.231.34:9000/${multipleImages}`} className="feed-image" />}
+        {multipleImages === null? <img alt="" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFx1pD-5y61mO3S-e1grpCuf24c6zMIGanYrbzcIwB&s" className="feed-image" />: <img alt="" src={`https://venkatsai.onrender.com/${multipleImages}`} className="feed-image" />}
        
         </>
     )
